@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Packing — Australia &amp; Thailand</title>
+<meta name="theme-color" content="#0d0d0d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Packing">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-512.png">
+<style>
+:root{color-scheme:dark;--page:#0d0d0d;--surface:#1a1a19;--surface-2:#222220;--ink:#fff;--ink-2:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--ring:rgba(255,255,255,.10);
+--blue:#3987e5;--magenta:#d55181;--violet:#9085e9;--aqua:#199e70;--yellow:#c98500;--orange:#d95926;--good:#0ca30c;--radius:14px;
+--font:system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:clip}
+body{background:var(--page);color:var(--ink);font-family:var(--font);line-height:1.45;-webkit-font-smoothing:antialiased;
+padding-bottom:calc(76px + env(safe-area-inset-bottom));-webkit-tap-highlight-color:transparent;overscroll-behavior:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+header{position:sticky;top:0;z-index:50;background:rgba(13,13,13,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--grid);
+padding:calc(10px + env(safe-area-inset-top)) 0 10px}
+.kicker{font-size:10.5px;letter-spacing:1.6px;color:var(--muted);text-transform:uppercase}
+h1{font-size:21px;font-weight:700;letter-spacing:-.3px;margin-top:2px}
+h1 .b{color:var(--blue)} h1 .o{color:var(--orange)}
+.bar{height:5px;background:var(--surface-2);border-radius:99px;overflow:hidden;margin-top:9px}
+.bar i{display:block;height:100%;background:var(--good);transition:width .3s}
+.barlab{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:5px}
+nav{position:fixed;bottom:0;left:0;right:0;z-index:60;display:flex;background:rgba(13,13,13,.94);backdrop-filter:blur(12px);
+border-top:1px solid var(--grid);padding-bottom:env(safe-area-inset-bottom)}
+nav button{flex:1;background:none;border:0;color:var(--muted);font:inherit;font-size:10.5px;padding:9px 2px 10px;cursor:pointer;
+display:flex;flex-direction:column;align-items:center;gap:3px;border-top:2px solid transparent}
+nav button[aria-current="true"]{color:var(--ink);border-top-color:var(--blue)}
+nav svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.6}
+main{padding-top:16px}
+.sec{margin-bottom:26px}
+.sg-head{display:flex;align-items:baseline;gap:9px;margin-bottom:11px}
+h2{font-size:15px;font-weight:650;letter-spacing:-.2px}
+.n{font-size:11.5px;color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--grid);border-radius:var(--radius);padding:14px;margin-bottom:9px}
+.bagcard{display:block;width:100%;text-align:left;background:var(--surface);border:1px solid var(--grid);border-radius:var(--radius);
+padding:14px;margin-bottom:9px;color:inherit;font:inherit;cursor:pointer;transition:border-color .15s}
+.bagcard:hover{border-color:var(--ring)}
+.bagcard.on{border-color:var(--blue)}
+.bagtop{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.bagname{font-size:15px;font-weight:650}
+.bagmeta{font-size:11.5px;color:var(--muted);margin-top:3px}
+.pill{font-size:10.5px;padding:2.5px 8px;border-radius:99px;background:var(--surface-2);color:var(--ink-2);white-space:nowrap}
+.pill.ok{background:rgba(12,163,12,.16);color:#6ede6e}
+.pill.warn{background:rgba(217,89,38,.18);color:#ff9163}
+.pill.crit{background:rgba(213,81,129,.18);color:#f08cb0}
+.pill.blue{background:rgba(57,135,229,.18);color:#7fb4f2}
+.row{display:flex;gap:11px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--grid)}
+.row:last-child{border-bottom:0}
+.tick{flex:0 0 auto;width:22px;height:22px;margin-top:1px;border-radius:6px;border:1.5px solid var(--grid);background:var(--surface-2);
+cursor:pointer;display:grid;place-items:center;transition:.15s}
+.tick:hover{border-color:var(--ring)}
+.tick.on{background:var(--good);border-color:var(--good)}
+.tick svg{width:13px;height:13px;stroke:#fff;stroke-width:3;fill:none;opacity:0}
+.tick.on svg{opacity:1}
+.rbody{flex:1;min-width:0}
+.rname{font-size:14px;display:flex;flex-wrap:wrap;gap:6px;align-items:baseline}
+.row.done .rname{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--grid)}
+.qty{font-size:11px;color:var(--muted)}
+.rnote{font-size:12.5px;color:var(--ink-2);margin-top:4px;line-height:1.4}
+.rfoot{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px;align-items:center}
+.bagsel{font:inherit;font-size:10.5px;background:var(--surface-2);color:var(--ink-2);border:1px solid var(--grid);
+border-radius:99px;padding:2.5px 7px;cursor:pointer}
+.catline{font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin:19px 0 7px;font-weight:600}
+.catline:first-child{margin-top:0}
+.legcard{background:var(--surface);border:1px solid var(--grid);border-radius:var(--radius);padding:14px;margin-bottom:9px;
+cursor:pointer;transition:border-color .15s}
+.legcard:hover{border-color:var(--ring)}
+.legcard.key{border-color:var(--orange)}
+.legtop{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.legname{font-size:14.5px;font-weight:650}
+.legdate{font-size:11.5px;color:var(--muted);white-space:nowrap}
+.legwhere{font-size:12px;color:var(--blue);margin-top:2px}
+.legnote{font-size:12.5px;color:var(--ink-2);margin-top:8px;line-height:1.45}
+.bagchips{display:flex;gap:5px;margin-top:9px;flex-wrap:wrap}
+.chip{font-size:10px;padding:2.5px 7px;border-radius:99px;background:var(--surface-2);color:var(--muted);letter-spacing:.4px}
+.chip.has{background:rgba(57,135,229,.16);color:#7fb4f2}
+.split{display:grid;gap:11px}
+@media(min-width:720px){.split{grid-template-columns:1fr 1fr}}
+.col{background:var(--surface);border:1px solid var(--grid);border-radius:var(--radius);padding:14px}
+.col.stay{border-color:rgba(137,135,129,.4)}
+.col.come{border-color:rgba(57,135,229,.4)}
+.colhead{font-size:13px;font-weight:650;margin-bottom:3px}
+.colsub{font-size:11.5px;color:var(--muted);margin-bottom:11px}
+.mini{font-size:13px;padding:6px 0;border-bottom:1px solid var(--grid);display:flex;justify-content:space-between;gap:8px}
+.mini:last-child{border-bottom:0}
+.mini span{color:var(--muted);font-size:11px;white-space:nowrap}
+.alert{background:rgba(217,89,38,.1);border:1px dashed rgba(217,89,38,.45);border-radius:var(--radius);padding:13px;margin-bottom:14px}
+.alert b{color:var(--orange)}
+.alert p{font-size:12.5px;color:var(--ink-2);margin-top:5px;line-height:1.45}
+.search{width:100%;background:var(--surface);border:1px solid var(--grid);border-radius:10px;color:var(--ink);
+font:inherit;font-size:14px;padding:10px 12px;margin-bottom:14px}
+.search::placeholder{color:var(--muted)}
+.center{text-align:center;color:var(--muted);padding:40px 20px;font-size:13.5px}
+.back{background:none;border:0;color:var(--blue);font:inherit;font-size:13px;cursor:pointer;padding:0;margin-bottom:12px}
+.addrow{display:flex;gap:8px;margin-top:12px}
+.addrow input{flex:1;background:var(--surface-2);border:1px solid var(--grid);border-radius:9px;color:var(--ink);font:inherit;font-size:13px;padding:9px 11px}
+.addrow button{background:var(--blue);border:0;color:#fff;font:inherit;font-size:13px;font-weight:600;border-radius:9px;padding:9px 15px;cursor:pointer}
+.stale{font-size:11px;color:var(--yellow);margin-top:5px}
+.wsum{display:flex;gap:14px;font-size:11.5px;color:var(--muted);margin-top:9px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="kicker" id="kicker">19 Nov 2026 – 24 Jan 2027</div>
+  <h1><span class="b">Australia</span> &amp; <span class="o">Thailand</span> — packing</h1>
+  <div class="bar"><i id="pbar" style="width:0%"></i></div>
+  <div class="barlab"><span id="plab">—</span><span id="pstale"></span></div>
+</div></header>
+<main class="wrap" id="view"></main>
+<nav id="tabs">
+  <button data-t="bags"><svg viewBox="0 0 24 24"><path d="M5 8h14v12H5z"/><path d="M9 8V5h6v3"/></svg><span>Bags</span></button>
+  <button data-t="legs"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 4 3 14 0 18M12 3c-3 4-3 14 0 18"/></svg><span>Legs</span></button>
+  <button data-t="repack"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 17h16"/><path d="M8 4l-4 3 4 3M16 14l4 3-4 3"/></svg><span>Repack</span></button>
+  <button data-t="all"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg><span>Everything</span></button>
+</nav>
+<script>
+const DATA={"items":[{"id":"passport","name":"Passport","cat":"docs","bag":"SL","qty":1,"g":40,"fate":"always","note":"Needs six months' validity beyond 24 Jan 2027. Check it now, not in November.","crit":true},{"id":"passport-copy","name":"Passport copy — printed and digital","cat":"docs","bag":"BP","qty":1,"g":10,"fate":"always","note":"Kept somewhere other than the passport itself.","crit":false},{"id":"eta-aus","name":"Australian ETA","cat":"docs","bag":"SL","qty":1,"g":5,"fate":"always","note":"Must be approved before you fly. Checked by the airline at Gatwick.","crit":true},{"id":"insurance","name":"Travel insurance + emergency number","cat":"docs","bag":"SL","qty":1,"g":10,"fate":"always","note":"67 days, two countries, boats and jungle. Confirm the policy covers the full duration.","crit":true},{"id":"cards","name":"Bank cards — two providers","cat":"docs","bag":"SL","qty":2,"g":20,"fate":"always","note":"Split across two bags. Set up fee-free FX before you go.","crit":true},{"id":"cash-gbp","name":"Cash — GBP float","cat":"docs","bag":"SL","qty":1,"g":20,"fate":"always","note":"For Gatwick and the taxi home on the 24th.","crit":false},{"id":"cash-aud","name":"Cash — AUD","cat":"docs","bag":"SL","qty":1,"g":20,"fate":"buy","note":"Withdraw on arrival. Perth is near-cashless, markets aren't.","crit":false},{"id":"cash-thb","name":"Cash — THB","cat":"docs","bag":"SL","qty":1,"g":20,"fate":"buy","note":"Ferries, taxis and the Khao Sok transfers are cash-only.","crit":true},{"id":"flights-off","name":"All 8 flight confirmations — offline","cat":"docs","bag":"SL","qty":1,"g":0,"fate":"always","note":"Saved offline. Phuket and Khao Sok have patchy signal.","crit":true},{"id":"hotels-off","name":"Accommodation confirmations — offline","cat":"docs","bag":"SL","qty":1,"g":0,"fate":"always","note":"Theatre Residence and the 500 Rai transfer details especially.","crit":false},{"id":"taxi-conf","name":"Bangkok taxi — booking 911245279","cat":"docs","bag":"SL","qty":1,"g":0,"fate":"always","note":"Driver contacts you on WhatsApp at +44 7951 592634. Check WhatsApp works on landing.","crit":true},{"id":"licence","name":"Driving licence","cat":"docs","bag":"SL","qty":1,"g":10,"fate":"store","note":"Hire car from 29 Dec. Into the stored case at the Phuket repack — you don't drive again.","crit":true},{"id":"storage-receipt","name":"Smilelugg receipt — ref 14XIWBX4","cat":"docs","bag":"SL","qty":1,"g":5,"fate":"always","note":"Paid, GBP 90.26, two cases, 10–23 Jan. B Floor at Suvarnabhumi, the Airport Rail Link level. Photograph it and keep a copy in your email. Without it you are not getting the cases back.","crit":true},{"id":"jetstar-baggage","name":"Jetstar 40kg prepaid — confirmation","cat":"docs","bag":"SL","qty":1,"g":0,"fate":"always","note":"AUD 138, booked online. Have it on your phone at the Perth bag drop.","crit":true},{"id":"phone","name":"Phone","cat":"tech","bag":"SL","qty":1,"g":200,"fate":"always","note":"","crit":true},{"id":"powerbank","name":"Power bank","cat":"tech","bag":"SL","qty":1,"g":300,"fate":"always","note":"Cabin baggage only, never checked. Earns its place at Khao Sok and on the 06:00 ferry day.","crit":true},{"id":"over-ears","name":"Over-ear headphones","cat":"tech","bag":"SL","qty":1,"g":250,"fate":"store","note":"Worth it for the 26 hours out. Into the stored case at the Phuket repack — don't take them to the islands.","crit":false},{"id":"in-ears","name":"In-ear headphones","cat":"tech","bag":"SL","qty":1,"g":50,"fate":"always","note":"Your island set, and your backup if the over-ears die.","crit":false},{"id":"ereader","name":"E-reader","cat":"tech","bag":"SL","qty":1,"g":200,"fate":"always","note":"Load it before you go.","crit":false},{"id":"eye-mask","name":"Eye mask + earplugs","cat":"flight","bag":"SL","qty":1,"g":40,"fate":"always","note":"QR835 is an overnight and QR107 lands at 06:35.","crit":false},{"id":"pen","name":"Pen","cat":"flight","bag":"SL","qty":1,"g":10,"fate":"always","note":"Arrival cards.","crit":false},{"id":"lip-balm","name":"Lip balm","cat":"toiletries","bag":"SL","qty":1,"g":15,"fate":"always","note":"Three long-haul sectors.","crit":false},{"id":"hand-san","name":"Hand sanitiser 50ml","cat":"toiletries","bag":"SL","qty":1,"g":60,"fate":"always","note":"","crit":false},{"id":"glasses","name":"Glasses or contacts + spares","cat":"health","bag":"SL","qty":1,"g":100,"fate":"always","note":"Bring a spare pair. Nothing is replaceable at Khao Sok.","crit":true},{"id":"sunglasses","name":"Sunglasses","cat":"clothing","bag":"SL","qty":1,"g":40,"fate":"always","note":"Perth in December is punishing. A cheap spare pair isn't a bad idea.","crit":true},{"id":"water-bottle","name":"Refillable water bottle","cat":"kit","bag":"BP","qty":1,"g":150,"fate":"always","note":"Empty through security, fill after. Non-optional in Thai heat.","crit":true},{"id":"snacks","name":"Snacks for travel days","cat":"flight","bag":"SL","qty":1,"g":150,"fate":"always","note":"","crit":false},{"id":"laptop","name":"Laptop","cat":"tech","bag":"CB","qty":1,"g":1400,"fate":"store","note":"You work from Perth and stop in Thailand. Into the stored case at the Phuket repack — don't carry it round Samui and Khao Sok.","crit":true},{"id":"laptop-charger","name":"Laptop charger","cat":"tech","bag":"CB","qty":1,"g":300,"fate":"store","note":"Stores with the laptop.","crit":false},{"id":"mouse","name":"Mouse","cat":"tech","bag":"CB","qty":1,"g":80,"fate":"store","note":"Seven weeks of work justifies it.","crit":false},{"id":"adapter-au","name":"Adapter — Type I for Australia","cat":"tech","bag":"CB","qty":2,"g":120,"fate":"store","note":"Two, so you can charge at the bed and the desk.","crit":true},{"id":"adapter-th","name":"Adapter — Type A/C for Thailand","cat":"tech","bag":"BP","qty":1,"g":60,"fate":"always","note":"Many Thai sockets take UK plugs in combo fittings, but don't count on it.","crit":true},{"id":"multi-usb","name":"Multi-port USB charger","cat":"tech","bag":"BP","qty":1,"g":150,"fate":"always","note":"One plug, four devices.","crit":false},{"id":"phone-cable","name":"Charging cables","cat":"tech","bag":"SL","qty":2,"g":80,"fate":"always","note":"","crit":false},{"id":"backup","name":"Cloud backup switched on","cat":"tech","bag":"BP","qty":1,"g":0,"fate":"always","note":"Before you go. Phones get wet and stolen.","crit":false},{"id":"washbag","name":"Hanging wash bag","cat":"toiletries","bag":"CB","qty":1,"g":200,"fate":"always","note":"Thai bathrooms are small and permanently wet.","crit":false},{"id":"liquids-bag","name":"Clear 1L liquids bag","cat":"toiletries","bag":"SL","qty":1,"g":20,"fate":"always","note":"Re-cleared at Perth, Phuket, Bangkok and Krabi. Keep it accessible.","crit":true},{"id":"bottles","name":"Refillable 100ml bottles","cat":"toiletries","bag":"CB","qty":5,"g":150,"fate":"always","note":"Refill from the full-size supply while the cases are still with you.","crit":true},{"id":"fullsize","name":"Full-size refills","cat":"toiletries","bag":"L2","qty":1,"g":800,"fate":"store","note":"Buy in Perth. Lives in the stored case — refill the 100ml bottles at the Phuket repack.","crit":false},{"id":"toothbrush","name":"Toothbrush + toothpaste","cat":"toiletries","bag":"CB","qty":1,"g":120,"fate":"always","note":"","crit":false},{"id":"deodorant","name":"Deodorant — solid or stick","cat":"toiletries","bag":"CB","qty":1,"g":100,"fate":"always","note":"Doesn't count as a liquid, unlike aerosol.","crit":false},{"id":"razor","name":"Razor + cartridges","cat":"toiletries","bag":"CB","qty":1,"g":100,"fate":"always","note":"Cartridge razors are fine in cabin baggage. Loose blades are not.","crit":false},{"id":"suncream","name":"Suncream SPF50","cat":"toiletries","bag":"CB","qty":1,"g":200,"fate":"buy","note":"Buy in Perth — Australian suncream is the best there is and cheap. Decant 100ml for the islands.","crit":true},{"id":"aftersun","name":"Aftersun","cat":"toiletries","bag":"CB","qty":1,"g":150,"fate":"buy","note":"You will need it.","crit":false},{"id":"insect","name":"Insect repellent with DEET","cat":"toiletries","bag":"CB","qty":1,"g":120,"fate":"buy","note":"Buy in Thailand, where it's stronger and cheaper. Khao Sok is jungle on water.","crit":true},{"id":"nail","name":"Nail clippers + tweezers","cat":"toiletries","bag":"CB","qty":1,"g":40,"fate":"always","note":"Fine in checked. Tweezers in cabin vary by airport.","crit":false},{"id":"comb","name":"Comb or brush","cat":"toiletries","bag":"CB","qty":1,"g":30,"fate":"always","note":"","crit":false},{"id":"quick-towel","name":"Quick-dry travel towel","cat":"kit","bag":"CB","qty":1,"g":180,"fate":"always","note":"Beaches, the ferry, and Khao Sok where nothing dries.","crit":true},{"id":"medkit","name":"Zip medical pouch","cat":"health","bag":"CB","qty":1,"g":60,"fate":"always","note":"","crit":false},{"id":"plasters","name":"Plasters + blister plasters","cat":"health","bag":"CB","qty":1,"g":50,"fate":"always","note":"Blister plasters specifically — new sandals and a lot of walking.","crit":true},{"id":"paracetamol","name":"Paracetamol","cat":"health","bag":"CB","qty":1,"g":40,"fate":"always","note":"","crit":false},{"id":"ibuprofen","name":"Ibuprofen","cat":"health","bag":"CB","qty":1,"g":40,"fate":"always","note":"","crit":false},{"id":"imodium","name":"Imodium","cat":"health","bag":"CB","qty":1,"g":20,"fate":"always","note":"Non-negotiable before a 06:00 ferry and a 2h15 road transfer.","crit":true},{"id":"athletes","name":"Athlete's foot cream","cat":"health","bag":"CB","qty":1,"g":50,"fate":"always","note":"Humidity, flip-flops, wet bathrooms.","crit":false},{"id":"rehydration","name":"Rehydration sachets","cat":"health","bag":"CB","qty":6,"g":60,"fate":"always","note":"Heat, beer and stomach trouble. Tiny and cheap.","crit":false},{"id":"antihistamine","name":"Antihistamine","cat":"health","bag":"CB","qty":1,"g":20,"fate":"always","note":"Bites, heat rash, unfamiliar food.","crit":false},{"id":"antiseptic","name":"Antiseptic cream","cat":"health","bag":"CB","qty":1,"g":40,"fate":"always","note":"Coral and scooter scrapes infect fast in the tropics.","crit":false},{"id":"motion","name":"Motion sickness tablets","cat":"health","bag":"CB","qty":1,"g":20,"fate":"always","note":"Samui to Donsak is 1h30 of open water at 06:00.","crit":true},{"id":"prescriptions","name":"Prescription medication","cat":"health","bag":"SL","qty":1,"g":100,"fate":"always","note":"Enough for 67 days plus buffer, in original packaging, in hand luggage.","crit":true},{"id":"trainers","name":"Trainers — running and gym","cat":"footwear","bag":"L2","qty":1,"g":800,"fate":"store","note":"Perth running and gym. Into the stored case at the Phuket repack.","crit":false},{"id":"walking","name":"Walking shoes","cat":"footwear","bag":"CB","qty":1,"g":700,"fate":"always","note":"Khao Sok and the Perth hills. Wear them on travel days rather than packing them.","crit":true},{"id":"sandals","name":"Sandals with a real sole","cat":"footwear","bag":"CB","qty":1,"g":400,"fate":"always","note":"Not flip-flops — something you can walk miles in and get wet.","crit":true},{"id":"flipflops","name":"Flip-flops","cat":"footwear","bag":"CB","qty":1,"g":200,"fate":"always","note":"Beach, pool, questionable shower floors.","crit":false},{"id":"smart-shoes","name":"Smart shoes — closed, dark","cat":"footwear","bag":"CB","qty":1,"g":600,"fate":"always","note":"Christmas dinner, and the Bangkok rooftops which enforce closed shoes. Must be in the cabin bag — Bangkok happens after the cases are parked.","crit":true},{"id":"tees","name":"T-shirts","cat":"clothing","bag":"L1","qty":10,"g":1500,"fate":"store","note":"Ten for Perth, where you do your own washing. Four come onward.","crit":false},{"id":"tees-is","name":"T-shirts — onward","cat":"clothing","bag":"CB","qty":4,"g":600,"fate":"always","note":"Quick-dry or merino if you have it. Thai laundry is cheap and same-day.","crit":false},{"id":"shorts","name":"Shorts","cat":"clothing","bag":"L1","qty":4,"g":800,"fate":"store","note":"Two come onward.","crit":false},{"id":"shorts-is","name":"Shorts — onward","cat":"clothing","bag":"CB","qty":2,"g":400,"fate":"always","note":"","crit":false},{"id":"underwear","name":"Underwear","cat":"clothing","bag":"L1","qty":12,"g":400,"fate":"store","note":"Seven come onward.","crit":false},{"id":"underwear-is","name":"Underwear — onward","cat":"clothing","bag":"CB","qty":7,"g":250,"fate":"always","note":"","crit":false},{"id":"socks","name":"Socks","cat":"clothing","bag":"L1","qty":10,"g":400,"fate":"store","note":"Three pairs come onward — you'll be in sandals most days.","crit":false},{"id":"socks-is","name":"Socks — onward","cat":"clothing","bag":"CB","qty":3,"g":120,"fate":"always","note":"","crit":false},{"id":"trousers-light","name":"Light trousers or chinos","cat":"clothing","bag":"CB","qty":1,"g":400,"fate":"always","note":"Temples, Bangkok restaurants, mosquitoes at dusk, and the cold landing on the 24th.","crit":true},{"id":"shirt-casual","name":"Casual shirts — linen","cat":"clothing","bag":"CB","qty":2,"g":400,"fate":"always","note":"Sun cover that still reads as clothing. Doubles for dinner.","crit":false},{"id":"midlayer","name":"Packable midlayer","cat":"clothing","bag":"CB","qty":1,"g":350,"fate":"always","note":"Aircraft air con, the 06:00 ferry, and Heathrow in January.","crit":true},{"id":"sleepwear","name":"Sleepwear","cat":"clothing","bag":"CB","qty":1,"g":200,"fate":"always","note":"Qatar provide pyjamas on the long-haul, but there are 65 other nights.","crit":false},{"id":"cap","name":"Cap or hat","cat":"clothing","bag":"BP","qty":1,"g":100,"fate":"always","note":"Perth sun in December is genuinely dangerous.","crit":true},{"id":"smart-shirt","name":"Smart shirts — collared","cat":"clothing","bag":"CB","qty":2,"g":400,"fate":"always","note":"One for Christmas, one for Bangkok. Stays with you — Bangkok is after the drop.","crit":true},{"id":"smart-trousers","name":"Smart trousers — dark, long","cat":"clothing","bag":"CB","qty":1,"g":450,"fate":"always","note":"Required at Vertigo and Blue Elephant, both after the cases are parked. Cabin bag.","crit":true},{"id":"belt","name":"Belt","cat":"clothing","bag":"CB","qty":1,"g":150,"fate":"always","note":"","crit":false},{"id":"swim","name":"Swim shorts","cat":"clothing","bag":"L1","qty":3,"g":300,"fate":"store","note":"Two come onward.","crit":false},{"id":"swim-is","name":"Swim shorts — onward","cat":"clothing","bag":"CB","qty":2,"g":200,"fate":"always","note":"Two, so one is always dry.","crit":true},{"id":"rashvest","name":"Rash vest","cat":"clothing","bag":"CB","qty":1,"g":200,"fate":"always","note":"Snorkelling with a bare back in Thai sun ruins a week.","crit":true},{"id":"gym-kit","name":"Gym shorts + technical tees","cat":"clothing","bag":"L2","qty":3,"g":500,"fate":"store","note":"Perth only. Stored with the trainers.","crit":false},{"id":"beach-towel","name":"Beach towel","cat":"kit","bag":"L2","qty":1,"g":500,"fate":"store","note":"Hotels provide them. The quick-dry towel covers the islands.","crit":false},{"id":"drybag","name":"Dry bag — 10L","cat":"kit","bag":"BP","qty":1,"g":150,"fate":"always","note":"Khao Sok arrives by boat, the ferry deck is wet, and Krabi longtails soak everything.","crit":true},{"id":"headtorch","name":"Head torch","cat":"kit","bag":"BP","qty":1,"g":100,"fate":"always","note":"500 Rai is a raft house. Limited power and properly dark.","crit":true},{"id":"packing-cubes","name":"Packing cubes","cat":"kit","bag":"CB","qty":4,"g":200,"fate":"always","note":"What makes the Phuket repack take twenty minutes instead of two hours.","crit":true},{"id":"laundry-bag","name":"Laundry bag","cat":"kit","bag":"CB","qty":1,"g":80,"fate":"always","note":"Thai laundry charges by the kilo. Bagged is faster to drop off.","crit":false},{"id":"daypack","name":"Foldable daypack","cat":"kit","bag":"CB","qty":1,"g":200,"fate":"always","note":"For days out when the backpack is too much.","crit":false},{"id":"locks","name":"Luggage locks","cat":"kit","bag":"CB","qty":3,"g":150,"fate":"always","note":"Three bags go in the Jetstar hold, and two sit in storage for ten days.","crit":true},{"id":"tags","name":"Luggage tags","cat":"kit","bag":"L2","qty":5,"g":60,"fate":"always","note":"On all five bags, with your phone number.","crit":false},{"id":"scales","name":"Luggage scales","cat":"kit","bag":"CB","qty":1,"g":100,"fate":"always","note":"40kg is prepaid but still enforced, and the gate charge is brutal. Pays for itself once.","crit":true}],"legs":[{"id":"prep","name":"Before you go","dates":"Nov","where":"Home","bags":"L1 L2 CB BP SL","note":"Everything assembled. The only leg where forgetting something is fixable."},{"id":"out","name":"Outbound long-haul","dates":"19–20 Nov","where":"LGW→DOH→PER","bags":"L1 L2 CB BP SL","note":"QR330 08:40 from Gatwick, QR900 out of Doha. ~26 hrs door to door. Qsuite, so pyjamas and bedding are provided — the sling is your seat-side kit."},{"id":"perth","name":"Perth — the long stay","dates":"20 Nov–18 Dec","where":"The Sebel West Perth","bags":"L1 L2 CB BP SL","note":"Four weeks. Working. Self-service laundry, so wash weekly and live out of the cases. Peak summer — 30–40°C."},{"id":"perth2","name":"Perth — interim","dates":"18–29 Dec","where":"Not booked","bags":"L1 L2 CB BP SL","note":"11 nights still unbooked. Same kit as the Sebel stay."},{"id":"scar","name":"Scarborough — Christmas","dates":"29 Dec–7 Jan","where":"Scarborough house","bags":"L1 L2 CB BP SL","note":"Christmas and New Year with everyone. Hire car from the 29th. Beach Christmas, but one smart evening."},{"id":"jet","name":"Jetstar to Phuket","dates":"7 Jan","where":"PER→HKT, JQ71","bags":"BP SL","note":"07:25 departure. 40kg checked booked for AUD 138 — both cases and the cabin bag go in the hold. Backpack and sling are your only cabin items: 7kg combined, weighed at the gate."},{"id":"phu","name":"Phuket","dates":"7–10 Jan","where":"Courtyard by Marriott Phuket Town","bags":"L1 L2 CB BP SL","note":"Three nights with everything still in tow. The last leg where you have the cases open."},{"id":"repack","name":"THE REPACK — Phuket","dates":"10 Jan, morning","where":"Courtyard, before TG206","bags":"L1 L2 CB BP SL","note":"Do this here, with space and time, not at an airport. Everything you need for the next 13 days goes into the cabin bag, backpack and sling. Everything else goes into the two cases and gets locked. TG206 departs 11:50 — start after breakfast."},{"id":"drop","name":"Land and dump","dates":"10 Jan, 13:20","where":"Suvarnabhumi","bags":"CB BP SL","note":"Booked and paid: Smilelugg, ref 14XIWBX4, two suitcases, 10–23 Jan, GBP 90.26. B Floor — the Airport Rail Link level. From the SA City Line station entrance walk ~50 m past the ticket kiosk to the Smilelugg counter. Straight off TG206, both cases in, photograph the receipt. Your taxi waits 45 min after landing, so there is time — but go directly.","after":"repack"},{"id":"bkk1","name":"Bangkok","dates":"10–13 Jan","where":"Theatre Residence","bags":"CB BP SL","note":"Cabin bag only from here. Smart dress nights — Blue Elephant and the rooftops enforce long trousers and closed shoes, so that kit has to be in the cabin bag, not the cases.","after":"repack"},{"id":"sam","name":"Koh Samui","dates":"13–17 Jan","where":"Hansar Samui Resort","bags":"CB BP SL","note":"Beach and resort. Light kit from here on.","after":"repack"},{"id":"kha","name":"Khao Sok","dates":"17–19 Jan","where":"500 Rai Floating Resort","bags":"CB BP SL","note":"06:00 ferry from Lipa Noi, 2h15 by road, then in by boat. Floating raft house — limited power, properly dark, everything stays damp. Check-out 09:30 on the 19th.","after":"repack"},{"id":"kra","name":"Ao Nang, Krabi","dates":"19–23 Jan","where":"Krabi La Playa Resort","bags":"CB BP SL","note":"Longtails to the beaches soak everything. Free cancellation ended 4 Jan — already paid.","after":"repack"},{"id":"ret","name":"Collect and fly home","dates":"23–24 Jan","where":"KBV→BKK→DOH→LHR","bags":"L1 L2 CB BP SL","note":"TG246 lands 14:10, QR835 departs 18:55 — 4h45 to clear arrivals, collect both cases from Smilelugg on B Floor (ref 14XIWBX4) and re-check. The counter is landside, so you have to come out first. Lands Heathrow 06:35 on the 24th, in January — have something warm reachable."}],"bags":[{"id":"L1","name":"Large suitcase 1 — clothing","note":"The clothing bulk for seven Perth weeks. Checked the whole way, parked with Smilelugg 10–23 Jan."},{"id":"L2","name":"Large suitcase 2 — shoes and bulk","note":"Footwear, gym kit, full-size toiletries. Deliberately half-empty going out, so there's room for what you buy in Australia."},{"id":"CB","name":"Cabin bag — your onward bag","note":"Packed as the bag you'll live out of for the 13 days after Phuket. Goes in the hold on Jetstar as part of the 40 kg."},{"id":"BP","name":"Backpack","note":"A cabin item on every flight. One of your two on Jetstar."},{"id":"SL","name":"Sling bag","note":"Passport, phone, power bank, cards. Seat-side kit on the long-haul."}]};
+const SB_URL="https://xsgvdwoekpluynhsdlxm.supabase.co",
+      SB_KEY="sb_publishable_5LTV2buBZgF3Fg0UVfOjvw_YiRD3oqc",
+      HDRS={apikey:SB_KEY,Authorization:"Bearer "+SB_KEY};
+const store={get(k,d){try{const v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch(e){return d}},
+             set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const BAGS=DATA.bags, LEGS=DATA.legs;
+let ITEMS=DATA.items.slice().concat(store.get("pack:custom",[]));
+let STATE=store.get("pack:state",{});
+let TAB=store.get("pack:tab","bags"), OPEN=store.get("pack:openbag",null), OPENLEG=null, Q="", STALE=false;
+
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bagOf=i=>(STATE[i.id]&&STATE[i.id].bag)||i.bag;
+const isPacked=i=>!!(STATE[i.id]&&STATE[i.id].packed);
+const bagName=id=>(BAGS.find(b=>b.id===id)||{}).name||id;
+const grams=i=>i.g||0;
+const destOf=i=>i.cat==="clothing"?"L1":"L2";
+const KEYLEGS={jet:1,repack:1,drop:1,ret:1};
+
+function totals(){const t=ITEMS.length,d=ITEMS.filter(isPacked).length;return{t,d,pc:t?Math.round(d/t*100):0}}
+function bagStats(id){const in_=ITEMS.filter(i=>bagOf(i)===id);
+  return{n:in_.length,done:in_.filter(isPacked).length,kg:in_.reduce((a,i)=>a+grams(i),0)/1000}}
+
+async function pull(){
+  try{const r=await fetch(`${SB_URL}/rest/v1/pack_state?select=*`,{headers:HDRS,cache:"no-store"});
+    if(!r.ok)throw 0;const rows=await r.json();const s={};
+    rows.forEach(x=>s[x.iid]={packed:!!x.packed,bag:x.bag||null,note:x.note||""});
+    STATE=s;store.set("pack:state",s);STALE=false;
+  }catch(e){STALE=true}
+  render();
+}
+async function push(iid){
+  const s=STATE[iid]||{};
+  try{await fetch(`${SB_URL}/rest/v1/pack_state`,{method:"POST",
+    headers:Object.assign({},HDRS,{"Content-Type":"application/json",Prefer:"resolution=merge-duplicates,return=minimal"}),
+    body:JSON.stringify({iid,packed:!!s.packed,bag:s.bag||null,note:s.note||null})});STALE=false}
+  catch(e){STALE=true}
+  paintBar();
+}
+function toggle(id){const s=STATE[id]||(STATE[id]={});s.packed=!s.packed;store.set("pack:state",STATE);push(id);render()}
+function move(id,bag){const s=STATE[id]||(STATE[id]={});s.bag=bag;store.set("pack:state",STATE);push(id);render()}
+
+function paintBar(){const{t,d,pc}=totals();
+  document.getElementById("pbar").style.width=pc+"%";
+  document.getElementById("plab").textContent=d+" of "+t+" packed · "+pc+"%";
+  document.getElementById("pstale").textContent=STALE?"offline — saved on this device":"";
+  document.getElementById("pstale").className=STALE?"stale":"";}
+
+function tickHTML(i){return `<button class="tick${isPacked(i)?" on":""}" onclick="toggle('${i.id}')" aria-label="packed">
+  <svg viewBox="0 0 24 24"><path d="M4 12l6 6L20 6"/></svg></button>`}
+function bagSel(i){return `<select class="bagsel" onchange="move('${i.id}',this.value)">`+
+  BAGS.map(b=>`<option value="${b.id}"${bagOf(i)===b.id?" selected":""}>${esc(b.id)} · ${esc(b.name)}</option>`).join("")+`</select>`}
+function rowHTML(i){
+  const tags=[];
+  if(i.crit)tags.push('<span class="pill crit">essential</span>');
+  if(i.fate==="store")tags.push('<span class="pill">parks in Bangkok</span>');
+  if(i.fate==="buy")tags.push('<span class="pill blue">buy en route</span>');
+  return `<div class="row${isPacked(i)?" done":""}">${tickHTML(i)}<div class="rbody">
+    <div class="rname">${esc(i.name)}${i.qty>1?` <span class="qty">×${i.qty}</span>`:""}</div>
+    ${i.note?`<div class="rnote">${esc(i.note)}</div>`:""}
+    <div class="rfoot">${bagSel(i)}${tags.join("")}</div></div></div>`}
+
+function vBags(){
+  if(OPEN){const b=BAGS.find(x=>x.id===OPEN)||BAGS[0];const in_=ITEMS.filter(i=>bagOf(i)===b.id);
+    const st=bagStats(b.id);
+    const cats={};in_.forEach(i=>(cats[i.cat]=cats[i.cat]||[]).push(i));
+    return `<button class="back" onclick="OPEN=null;store.set('pack:openbag',null);render()">← All bags</button>
+      <div class="sec"><div class="sg-head"><h2>${esc(b.name)}</h2><span class="n">${st.done}/${st.n} packed · ~${st.kg.toFixed(1)} kg</span></div>
+      <div class="card" style="margin-bottom:14px"><div class="rnote" style="margin:0">${esc(b.note)}</div></div>
+      ${Object.keys(cats).map(c=>`<div class="catline">${esc(c)}</div>`+cats[c].map(rowHTML).join("")).join("")}
+      ${in_.length?"":'<div class="center">Nothing assigned to this bag.</div>'}</div>`}
+  const cabin=bagStats("BP").kg+bagStats("SL").kg;
+  return `<div class="sec">
+    ${cabin>7?`<div class="alert"><b>Jetstar JQ71, 7 Jan — cabin is over.</b>
+      <p>Backpack and sling come to about ${cabin.toFixed(1)} kg. Jetstar allow two cabin items at 7 kg combined and weigh at the gate, where going over costs AUD 110. Your 40 kg of checked covers both cases and the cabin bag, so move weight into the cabin bag before you fly.</p></div>`:""}
+    <div class="sg-head"><h2>Your five bags</h2><span class="n">tap to open</span></div>
+    ${BAGS.map(b=>{const s=bagStats(b.id);const pc=s.n?Math.round(s.done/s.n*100):0;
+      return `<button class="bagcard" onclick="OPEN='${b.id}';store.set('pack:openbag','${b.id}');render()">
+        <div class="bagtop"><div><div class="bagname">${esc(b.name)}</div>
+        <div class="bagmeta">${s.n} items · ~${s.kg.toFixed(1)} kg</div></div>
+        <span class="pill ${pc===100?"ok":""}">${s.done}/${s.n}</span></div>
+        <div class="bagmeta" style="margin-top:8px">${esc(b.note)}</div></button>`}).join("")}
+    <div class="card"><div class="colhead">Add something</div>
+      <div class="colsub">Anything I've missed. It saves to your list.</div>
+      <div class="addrow"><input id="newitem" placeholder="e.g. snorkel mask"><button onclick="addItem()">Add</button></div></div>
+  </div>`}
+
+function addItem(){const el=document.getElementById("newitem");const v=(el.value||"").trim();if(!v)return;
+  const id="custom-"+Date.now();
+  const item={id,name:v,cat:"added",bag:OPEN||"CB",qty:1,g:0,fate:"always",note:"",crit:false};
+  const c=store.get("pack:custom",[]);c.push(item);store.set("pack:custom",c);ITEMS.push(item);el.value="";render()}
+
+function vLegs(){
+  if(OPENLEG){const l=LEGS.find(x=>x.id===OPENLEG);const has=(l.bags||"").split(" ").filter(Boolean);
+    const avail=ITEMS.filter(i=>has.includes(bagOf(i)) && !(l.after==="repack"&&i.fate==="store"));
+    const crit=avail.filter(i=>i.crit);
+    return `<button class="back" onclick="OPENLEG=null;render()">← All legs</button>
+      <div class="sec"><div class="sg-head"><h2>${esc(l.name)}</h2><span class="n">${esc(l.dates)}</span></div>
+      <div class="legwhere" style="margin-bottom:10px">${esc(l.where)}</div>
+      <div class="card"><div class="rnote" style="margin:0">${esc(l.note)}</div>
+        <div class="bagchips">${BAGS.map(b=>`<span class="chip${has.includes(b.id)?" has":""}">${b.id}</span>`).join("")}</div></div>
+      <div class="sg-head" style="margin-top:20px"><h2>With you</h2><span class="n">${avail.length} items</span></div>
+      ${crit.length?`<div class="card"><div class="colhead">Don't be without</div><div class="colsub">The ones that matter on this leg</div>
+        ${crit.map(i=>`<div class="mini"><span style="color:var(--ink)">${esc(i.name)}</span><span>${bagOf(i)}</span></div>`).join("")}</div>`:""}
+      </div>`}
+  return `<div class="sec"><div class="sg-head"><h2>The trip, leg by leg</h2><span class="n">${LEGS.length} stages</span></div>
+    ${LEGS.map(l=>{const has=(l.bags||"").split(" ").filter(Boolean);
+      return `<div class="legcard${KEYLEGS[l.id]?" key":""}" onclick="OPENLEG='${l.id}';render()">
+      <div class="legtop"><div class="legname">${esc(l.name)}</div><div class="legdate">${esc(l.dates)}</div></div>
+      <div class="legwhere">${esc(l.where)}</div>
+      <div class="legnote">${esc(l.note)}</div>
+      <div class="bagchips">${BAGS.map(b=>`<span class="chip${has.includes(b.id)?" has":""}">${b.id}</span>`).join("")}</div>
+      </div>`}).join("")}</div>`}
+
+function vRepack(){
+  const stay=ITEMS.filter(i=>i.fate==="store");
+  const come=ITEMS.filter(i=>i.fate!=="store");
+  const kgCome=come.reduce((a,i)=>a+grams(i),0)/1000;
+  const kgStay=stay.reduce((a,i)=>a+grams(i),0)/1000;
+  return `<div class="sec">
+    <div class="alert"><b>The repack — Phuket, morning of 10 January.</b>
+      <p>Do this at the Courtyard with space and time, not at an airport. TG206 leaves at 11:50, so start after breakfast.
+      Everything on the right carries on with you for the next 13 days. Everything on the left goes into the two cases,
+      gets locked, and is dumped at Suvarnabhumi the moment you land at 13:20 — then collected on the 23rd during your 4h45 connection.</p></div>
+    <div class="split">
+      <div class="col stay"><div class="colhead">Into the cases — parked in Bangkok</div>
+        <div class="colsub">${stay.length} items · ~${kgStay.toFixed(1)} kg · 13 days in storage</div>
+        ${stay.map(i=>`<div class="mini"><span style="color:var(--ink)">${esc(i.name)}${i.qty>1?" ×"+i.qty:""}</span><span>→ ${destOf(i)}</span></div>`).join("")}</div>
+      <div class="col come"><div class="colhead">Comes with you</div>
+        <div class="colsub">${come.length} items · ~${kgCome.toFixed(1)} kg · cabin bag, backpack, sling</div>
+        ${come.filter(i=>i.crit).map(i=>`<div class="mini"><span style="color:var(--ink)">${esc(i.name)}</span><span>${bagOf(i)}</span></div>`).join("")}
+        <div class="colsub" style="margin:10px 0 0">Showing the essentials. The rest is on the Everything tab.</div></div>
+    </div>
+    <div class="card" style="margin-top:14px"><div class="colhead">Before you leave the hotel</div>
+      <div class="mini"><span style="color:var(--ink)">Refill the 100ml bottles from the full-size supply</span><span>CB</span></div>
+      <div class="mini"><span style="color:var(--ink)">Lock both cases</span><span>L1 L2</span></div>
+      <div class="mini"><span style="color:var(--ink)">Photograph what went in each case</span><span>phone</span></div>
+      <div class="mini"><span style="color:var(--ink)">Check smart shirt, trousers and shoes are in the cabin bag</span><span>CB</span></div>
+      <div class="mini"><span style="color:var(--ink)">Power bank out of the cases — cabin only</span><span>SL</span></div></div>
+  </div>`}
+
+function vAll(){
+  const q=Q.toLowerCase();
+  const list=ITEMS.filter(i=>!q||i.name.toLowerCase().includes(q)||(i.note||"").toLowerCase().includes(q)||i.cat.includes(q));
+  const cats={};list.forEach(i=>(cats[i.cat]=cats[i.cat]||[]).push(i));
+  return `<input class="search" id="q" placeholder="Search everything…" value="${esc(Q)}" oninput="Q=this.value;render();document.getElementById('q').focus()">
+    <div class="sec">${Object.keys(cats).length?Object.keys(cats).map(c=>
+      `<div class="catline">${esc(c)} <span class="n">${cats[c].length}</span></div>`+cats[c].map(rowHTML).join("")).join("")
+      :'<div class="center">Nothing matches.</div>'}</div>`}
+
+function render(){
+  document.querySelectorAll("#tabs button").forEach(b=>b.setAttribute("aria-current",b.dataset.t===TAB));
+  document.getElementById("view").innerHTML=
+    TAB==="bags"?vBags():TAB==="legs"?vLegs():TAB==="repack"?vRepack():vAll();
+  paintBar();
+}
+document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{
+  TAB=b.dataset.t;store.set("pack:tab",TAB);OPENLEG=null;if(TAB!=="bags")OPEN=null;window.scrollTo(0,0);render()});
+render();pull();
+if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+# -*- coding: utf-8 -*-
+# bag: L1/L2 large cases, CB cabin bag, BP backpack, SL sling
+# fate: always = with you the whole trip | store = stays in the parked Bangkok cases 13–23 Jan
+#       buy = buy en route | wear = worn on travel days
+I=[]
+def it(id,name,cat,bag,qty=1,g=0,fate="always",note="",crit=False):
+    I.append(dict(id=id,name=name,cat=cat,bag=bag,qty=qty,g=g,fate=fate,note=note,crit=crit))
+
+# ---------- DOCUMENTS & MONEY ----------
+it("passport","Passport","docs","SL",1,40,"always","Needs six months' validity beyond 24 Jan 2027. Check it now, not in November.",True)
+it("passport-copy","Passport copy — printed and digital","docs","BP",1,10,"always","Kept somewhere other than the passport itself.")
+it("eta-aus","Australian ETA","docs","SL",1,5,"always","Must be approved before you fly. Checked by the airline at Gatwick.",True)
+it("insurance","Travel insurance + emergency number","docs","SL",1,10,"always","67 days, two countries, boats and jungle. Confirm the policy covers the full duration.",True)
+it("cards","Bank cards — two providers","docs","SL",2,20,"always","Split across two bags. Set up fee-free FX before you go.",True)
+it("cash-gbp","Cash — GBP float","docs","SL",1,20,"always","For Gatwick and the taxi home on the 24th.")
+it("cash-aud","Cash — AUD","docs","SL",1,20,"buy","Withdraw on arrival. Perth is near-cashless, markets aren't.")
+it("cash-thb","Cash — THB","docs","SL",1,20,"buy","Ferries, taxis and the Khao Sok transfers are cash-only.",True)
+it("flights-off","All 8 flight confirmations — offline","docs","SL",1,0,"always","Saved offline. Phuket and Khao Sok have patchy signal.",True)
+it("hotels-off","Accommodation confirmations — offline","docs","SL",1,0,"always","Theatre Residence and the 500 Rai transfer details especially.")
+it("taxi-conf","Bangkok taxi — booking 911245279","docs","SL",1,0,"always","Driver contacts you on WhatsApp at +44 7951 592634. Check WhatsApp works on landing.",True)
+it("licence","Driving licence","docs","SL",1,10,"store","Hire car from 29 Dec. Into the stored case at the Phuket repack — you don't drive again.",True)
+it("storage-receipt","Smilelugg receipt — ref 14XIWBX4","docs","SL",1,5,"always","Paid, GBP 90.26, two cases, 10–23 Jan. B Floor at Suvarnabhumi, the Airport Rail Link level. Photograph it and keep a copy in your email. Without it you are not getting the cases back.",True)
+it("jetstar-baggage","Jetstar 40kg prepaid — confirmation","docs","SL",1,0,"always","AUD 138, booked online. Have it on your phone at the Perth bag drop.",True)
+
+# ---------- FLIGHT & SEAT-SIDE ----------
+it("phone","Phone","tech","SL",1,200,"always","",True)
+it("powerbank","Power bank","tech","SL",1,300,"always","Cabin baggage only, never checked. Earns its place at Khao Sok and on the 06:00 ferry day.",True)
+it("over-ears","Over-ear headphones","tech","SL",1,250,"store","Worth it for the 26 hours out. Into the stored case at the Phuket repack — don't take them to the islands.")
+it("in-ears","In-ear headphones","tech","SL",1,50,"always","Your island set, and your backup if the over-ears die.")
+it("ereader","E-reader","tech","SL",1,200,"always","Load it before you go.")
+it("eye-mask","Eye mask + earplugs","flight","SL",1,40,"always","QR835 is an overnight and QR107 lands at 06:35.")
+it("pen","Pen","flight","SL",1,10,"always","Arrival cards.")
+it("lip-balm","Lip balm","toiletries","SL",1,15,"always","Three long-haul sectors.")
+it("hand-san","Hand sanitiser 50ml","toiletries","SL",1,60,"always","")
+it("glasses","Glasses or contacts + spares","health","SL",1,100,"always","Bring a spare pair. Nothing is replaceable at Khao Sok.",True)
+it("sunglasses","Sunglasses","clothing","SL",1,40,"always","Perth in December is punishing. A cheap spare pair isn't a bad idea.",True)
+it("water-bottle","Refillable water bottle","kit","BP",1,150,"always","Empty through security, fill after. Non-optional in Thai heat.",True)
+it("snacks","Snacks for travel days","flight","SL",1,150,"always","")
+
+# ---------- TECH ----------
+it("laptop","Laptop","tech","CB",1,1400,"store","You work from Perth and stop in Thailand. Into the stored case at the Phuket repack — don't carry it round Samui and Khao Sok.",True)
+it("laptop-charger","Laptop charger","tech","CB",1,300,"store","Stores with the laptop.")
+it("mouse","Mouse","tech","CB",1,80,"store","Seven weeks of work justifies it.")
+it("adapter-au","Adapter — Type I for Australia","tech","CB",2,120,"store","Two, so you can charge at the bed and the desk.",True)
+it("adapter-th","Adapter — Type A/C for Thailand","tech","BP",1,60,"always","Many Thai sockets take UK plugs in combo fittings, but don't count on it.",True)
+it("multi-usb","Multi-port USB charger","tech","BP",1,150,"always","One plug, four devices.")
+it("phone-cable","Charging cables","tech","SL",2,80,"always","")
+it("backup","Cloud backup switched on","tech","BP",1,0,"always","Before you go. Phones get wet and stolen.")
+
+# ---------- TOILETRIES ----------
+it("washbag","Hanging wash bag","toiletries","CB",1,200,"always","Thai bathrooms are small and permanently wet.")
+it("liquids-bag","Clear 1L liquids bag","toiletries","SL",1,20,"always","Re-cleared at Perth, Phuket, Bangkok and Krabi. Keep it accessible.",True)
+it("bottles","Refillable 100ml bottles","toiletries","CB",5,150,"always","Refill from the full-size supply while the cases are still with you.",True)
+it("fullsize","Full-size refills","toiletries","L2",1,800,"store","Buy in Perth. Lives in the stored case — refill the 100ml bottles at the Phuket repack.")
+it("toothbrush","Toothbrush + toothpaste","toiletries","CB",1,120,"always","")
+it("deodorant","Deodorant — solid or stick","toiletries","CB",1,100,"always","Doesn't count as a liquid, unlike aerosol.")
+it("razor","Razor + cartridges","toiletries","CB",1,100,"always","Cartridge razors are fine in cabin baggage. Loose blades are not.")
+it("suncream","Suncream SPF50","toiletries","CB",1,200,"buy","Buy in Perth — Australian suncream is the best there is and cheap. Decant 100ml for the islands.",True)
+it("aftersun","Aftersun","toiletries","CB",1,150,"buy","You will need it.")
+it("insect","Insect repellent with DEET","toiletries","CB",1,120,"buy","Buy in Thailand, where it's stronger and cheaper. Khao Sok is jungle on water.",True)
+it("nail","Nail clippers + tweezers","toiletries","CB",1,40,"always","Fine in checked. Tweezers in cabin vary by airport.")
+it("comb","Comb or brush","toiletries","CB",1,30,"always","")
+it("quick-towel","Quick-dry travel towel","kit","CB",1,180,"always","Beaches, the ferry, and Khao Sok where nothing dries.",True)
+
+# ---------- HEALTH ----------
+it("medkit","Zip medical pouch","health","CB",1,60,"always","")
+it("plasters","Plasters + blister plasters","health","CB",1,50,"always","Blister plasters specifically — new sandals and a lot of walking.",True)
+it("paracetamol","Paracetamol","health","CB",1,40,"always","")
+it("ibuprofen","Ibuprofen","health","CB",1,40,"always","")
+it("imodium","Imodium","health","CB",1,20,"always","Non-negotiable before a 06:00 ferry and a 2h15 road transfer.",True)
+it("athletes","Athlete's foot cream","health","CB",1,50,"always","Humidity, flip-flops, wet bathrooms.")
+it("rehydration","Rehydration sachets","health","CB",6,60,"always","Heat, beer and stomach trouble. Tiny and cheap.")
+it("antihistamine","Antihistamine","health","CB",1,20,"always","Bites, heat rash, unfamiliar food.")
+it("antiseptic","Antiseptic cream","health","CB",1,40,"always","Coral and scooter scrapes infect fast in the tropics.")
+it("motion","Motion sickness tablets","health","CB",1,20,"always","Samui to Donsak is 1h30 of open water at 06:00.",True)
+it("prescriptions","Prescription medication","health","SL",1,100,"always","Enough for 67 days plus buffer, in original packaging, in hand luggage.",True)
+
+# ---------- FOOTWEAR ----------
+it("trainers","Trainers — running and gym","footwear","L2",1,800,"store","Perth running and gym. Into the stored case at the Phuket repack.")
+it("walking","Walking shoes","footwear","CB",1,700,"always","Khao Sok and the Perth hills. Wear them on travel days rather than packing them.",True)
+it("sandals","Sandals with a real sole","footwear","CB",1,400,"always","Not flip-flops — something you can walk miles in and get wet.",True)
+it("flipflops","Flip-flops","footwear","CB",1,200,"always","Beach, pool, questionable shower floors.")
+it("smart-shoes","Smart shoes — closed, dark","footwear","CB",1,600,"always","Christmas dinner, and the Bangkok rooftops which enforce closed shoes. Must be in the cabin bag — Bangkok happens after the cases are parked.",True)
+
+# ---------- CLOTHING ----------
+it("tees","T-shirts","clothing","L1",10,1500,"store","Ten for Perth, where you do your own washing. Four come onward.")
+it("tees-is","T-shirts — onward","clothing","CB",4,600,"always","Quick-dry or merino if you have it. Thai laundry is cheap and same-day.")
+it("shorts","Shorts","clothing","L1",4,800,"store","Two come onward.")
+it("shorts-is","Shorts — onward","clothing","CB",2,400,"always","")
+it("underwear","Underwear","clothing","L1",12,400,"store","Seven come onward.")
+it("underwear-is","Underwear — onward","clothing","CB",7,250,"always","")
+it("socks","Socks","clothing","L1",10,400,"store","Three pairs come onward — you'll be in sandals most days.")
+it("socks-is","Socks — onward","clothing","CB",3,120,"always","")
+it("trousers-light","Light trousers or chinos","clothing","CB",1,400,"always","Temples, Bangkok restaurants, mosquitoes at dusk, and the cold landing on the 24th.",True)
+it("shirt-casual","Casual shirts — linen","clothing","CB",2,400,"always","Sun cover that still reads as clothing. Doubles for dinner.")
+it("midlayer","Packable midlayer","clothing","CB",1,350,"always","Aircraft air con, the 06:00 ferry, and Heathrow in January.",True)
+it("sleepwear","Sleepwear","clothing","CB",1,200,"always","Qatar provide pyjamas on the long-haul, but there are 65 other nights.")
+it("cap","Cap or hat","clothing","BP",1,100,"always","Perth sun in December is genuinely dangerous.",True)
+it("smart-shirt","Smart shirts — collared","clothing","CB",2,400,"always","One for Christmas, one for Bangkok. Stays with you — Bangkok is after the drop.",True)
+it("smart-trousers","Smart trousers — dark, long","clothing","CB",1,450,"always","Required at Vertigo and Blue Elephant, both after the cases are parked. Cabin bag.",True)
+it("belt","Belt","clothing","CB",1,150,"always","")
+it("swim","Swim shorts","clothing","L1",3,300,"store","Two come onward.")
+it("swim-is","Swim shorts — onward","clothing","CB",2,200,"always","Two, so one is always dry.",True)
+it("rashvest","Rash vest","clothing","CB",1,200,"always","Snorkelling with a bare back in Thai sun ruins a week.",True)
+it("gym-kit","Gym shorts + technical tees","clothing","L2",3,500,"store","Perth only. Stored with the trainers.")
+it("beach-towel","Beach towel","kit","L2",1,500,"store","Hotels provide them. The quick-dry towel covers the islands.")
+
+# ---------- KIT ----------
+it("drybag","Dry bag — 10L","kit","BP",1,150,"always","Khao Sok arrives by boat, the ferry deck is wet, and Krabi longtails soak everything.",True)
+it("headtorch","Head torch","kit","BP",1,100,"always","500 Rai is a raft house. Limited power and properly dark.",True)
+it("packing-cubes","Packing cubes","kit","CB",4,200,"always","What makes the Phuket repack take twenty minutes instead of two hours.",True)
+it("laundry-bag","Laundry bag","kit","CB",1,80,"always","Thai laundry charges by the kilo. Bagged is faster to drop off.")
+it("daypack","Foldable daypack","kit","CB",1,200,"always","For days out when the backpack is too much.")
+it("locks","Luggage locks","kit","CB",3,150,"always","Three bags go in the Jetstar hold, and two sit in storage for ten days.",True)
+it("tags","Luggage tags","kit","L2",5,60,"always","On all five bags, with your phone number.")
+it("scales","Luggage scales","kit","CB",1,100,"always","40kg is prepaid but still enforced, and the gate charge is brutal. Pays for itself once.",True)
