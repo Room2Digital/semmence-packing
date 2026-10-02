@@ -20,7 +20,7 @@ it("hotels-off","Accommodation confirmations — offline","docs","SL",1,0,"alway
 it("taxi-conf","Bangkok taxi — booking 911245279","docs","SL",1,0,"always","Driver contacts you on WhatsApp at +44 7951 592634. Check WhatsApp works on landing.",True)
 it("licence","Driving licence","docs","SL",1,10,"store","Hire car from 29 Dec. Into the stored case at the Phuket repack — you don't drive again.",True)
 it("storage-receipt","Smilelugg receipt — ref 14XIWBX4","docs","SL",1,5,"always","Paid, GBP 90.26, two cases, 10–23 Jan. B Floor at Suvarnabhumi, the Airport Rail Link level. Photograph it and keep a copy in your email. Without it you are not getting the cases back.",True)
-it("jetstar-baggage","Jetstar 40kg prepaid — confirmation","docs","SL",1,0,"always","GBP 72.27, paid. The Starter fare includes no hold baggage, so this is the entire allowance. Have it on your phone at the Perth bag drop.",True)
+it("jetstar-baggage","Baggage confirmations — JQ71 and TG206","docs","SL",1,0,"always","JQ71: 40 kg checked prepaid, GBP 72.27, ref DMF5N5 — the Starter fare includes none, so that is the whole allowance. TG206: 2 bags at 23 kg, GBP 15.05, PNR FV844G. Have both on your phone at the bag drops.",True)
 
 # ---------- FLIGHT & SEAT-SIDE ----------
 it("phone","Phone","tech","SL",1,200,"always","",True)
