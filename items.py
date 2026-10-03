@@ -62,6 +62,10 @@ it("charger-3in1","Fold-up 3-in-1 charger","tech","SL",1,180,"always",
 it("cable-ext","Extendable USB-C cable","tech","SL",1,70,"always","")
 it("brick-sm","Power bank — small","tech","SL",1,200,"always",
    "The only one you are taking — the large one is out. Cabin baggage only, never checked.",True)
+it("chargers-personal","Shaver + toothbrush chargers","tech","CB",1,220,"always",
+   "The two devices you just added both need their own charger, and neither is USB-C on most models. These are the classic thing left plugged into a bathroom wall.",True)
+it("esim","Mobile data — Australian and Thai eSIM","tech","SL",1,0,"always",
+   "Sixty-seven days across two countries and nothing on the list covers connectivity. Everything you rely on — this app, the trip app, maps, boarding passes, the Booking.com taxi on WhatsApp, the Smilelugg receipt — needs data. Sort an Australian eSIM before you fly and a Thai one before 7 Jan, or check what your UK roaming actually costs beyond the EU.",True)
 it("airtags","AirTags","tech","CB",5,55,"always",
    "On the tech bag, sling, backpack and both cases. Get the fifth so suitcase 2 is covered — it sits in third-party storage for 13 days.",True)
 
@@ -89,12 +93,13 @@ it("eyecream","Eye cream","toiletries","CB",1,40,"always","")
 it("sanitiser","Hand sanitiser","toiletries","SL",1,60,"always","")
 it("mozzie","Mosquito spray","toiletries","CB",1,120,"always",
    "Khao Sok is jungle on water and the lake is worst at dusk. Top up with stronger DEET in Thailand if yours is mild.",True)
-it("toothbrush","Toothbrush + toothpaste","toiletries","CB",1,120,"always",
-   "Not on your list. Thai hotels usually provide them; the Sebel, Calum's and the Scarborough house will not, and neither will 26 hours of transit.",True)
+it("shaver","Electric shaver","toiletries","CB",1,220,"always",
+   "Check how it charges — if it's a proprietary barrel plug rather than USB-C, that charger has to come too and it's easy to leave behind.",True)
+it("shave-foam","Mini shaving foam","toiletries","CB",1,100,"always","Under 100 ml so it clears cabin security.")
+it("etoothbrush","Electric toothbrush","toiletries","CB",1,180,"always",
+   "Toothpaste bought on arrival; Qatar give you a travel one for the flight. Check the charger — most are an inductive base with a fixed plug, which needs the travel adapter.",True)
 it("deodorant","Deodorant","toiletries","CB",1,100,"always",
    "Not on your list either. Solid or stick travels better than aerosol and does not count as a liquid.",True)
-it("razor","Razor + blades","toiletries","CB",1,100,"always",
-   "Sixty-seven days. Cartridge razors are fine in cabin baggage; loose blades are not.")
 it("lipbalm","Lip balm with SPF","toiletries","SL",1,15,"always",
    "Six hours cycling at Rottnest, a lot of beach, and three long-haul sectors of dry cabin air.")
 it("nail","Nail clippers","toiletries","CB",1,40,"always","Fine in checked. Cabin rules on clippers vary by airport.")
