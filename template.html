@@ -123,6 +123,7 @@ h2{font-size:17px;font-weight:750;letter-spacing:-.015em}
 .pill.crit{background:rgba(240,96,141,.14);color:#ff9bbb;border-color:rgba(240,96,141,.34)}
 .pill.store{background:rgba(155,140,244,.14);color:#c0b4ff;border-color:rgba(155,140,244,.32)}
 .pill.buy{background:rgba(74,158,255,.14);color:#8cc4ff;border-color:rgba(74,158,255,.32)}
+.pill.hand{background:rgba(43,182,115,.14);color:#6ee7a8;border-color:rgba(43,182,115,.32)}
 .bagsel{font:inherit;font-size:10.5px;font-weight:600;background:var(--surface-2);color:var(--ink-2);
   border:1px solid var(--ring);border-radius:999px;padding:3px 8px;cursor:pointer}
 
@@ -312,6 +313,7 @@ function rowHTML(i){
   if(i.crit)tags.push('<span class="pill crit">essential</span>');
   if(i.fate==="store")tags.push('<span class="pill store">parks in Bangkok</span>');
   if(i.fate==="buy")tags.push('<span class="pill buy">buy en route</span>');
+  if(i.fate==="handover")tags.push('<span class="pill hand">given away in Phuket</span>');
   return `<div class="row${isPacked(i)?" done":""}">${tickHTML(i)}<div class="rbody">
     <div class="rname">${esc(i.name)}${i.qty>1?` <span class="qty">×${i.qty}</span>`:""}</div>
     ${i.note?`<div class="rnote">${esc(i.note)}</div>`:""}
@@ -439,7 +441,9 @@ function vLegs(){
 
 /* ---------- repack ---------- */
 function vRepack(){
-  const stay=ITEMS.filter(i=>i.fate==="store"), come=ITEMS.filter(i=>i.fate!=="store");
+  const stay=ITEMS.filter(i=>i.fate==="store"),
+        come=ITEMS.filter(i=>i.fate!=="store"&&i.fate!=="handover"),
+        gone=ITEMS.filter(i=>i.fate==="handover");
   const kgStay=stay.reduce((a,i)=>a+grams(i),0), kgCome=come.reduce((a,i)=>a+grams(i),0);
   return `<div class="sec">
     <div class="alert"><b>The repack — Phuket, morning of 10 January</b>
@@ -456,6 +460,7 @@ function vRepack(){
         ${come.filter(i=>i.crit).map(i=>`<div class="mini"><b>${esc(i.name)}</b><span>${bagOf(i)}</span></div>`).join("")}
         <div class="colsub" style="margin:11px 0 0">Essentials shown. The rest is on the All tab.</div></div>
     </div>
+    ${gone.length?`<div class="alert info"><b>Hand these over first</b><p>${gone.map(i=>esc(i.name.replace(" — for handover",""))).join(" and ")} are given away in Phuket, so they should be out of your bags before you start the repack. Sign out of your Apple ID, erase them and remove them from Find My <b>before you fly</b> — an activation-locked device is useless to whoever gets it.</p></div>`:""}
     <div class="label">Before you leave the hotel</div>
     <div class="card">
       <div class="mini"><b>Refill the 100 ml bottles from the full-size supply</b><span>CB</span></div>
