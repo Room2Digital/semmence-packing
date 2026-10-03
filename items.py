@@ -26,8 +26,8 @@ it("cards","Bank cards — two providers","docs","SL",2,20,"always",
    "Tracker card in the wallet. Split across two bags so one loss isn't total.",True)
 it("cash-gbp","Cash — GBP float","docs","SL",1,20,"always","Gatwick, and the taxi home on the 24th.")
 it("cash-aud","Cash — AUD","docs","SL",1,20,"buy","Withdraw on arrival. Perth is near-cashless but markets aren't.")
-it("cash-thb","Cash — THB","docs","SL",1,20,"buy",
-   "Ferries, longtails, the Khao Sok transfers and 500 Rai extras. The lake is the least card-friendly place on the trip.",True)
+it("cash-thb","Cash — 50,000 THB","docs","SL",1,120,"always",
+   "About GBP 1,150. Well under Thailand's declaration threshold, which is USD 20,000 equivalent, so nothing to declare. Split it: some in the sling, some in a case, some in the hotel safe — do not carry the lot in one place for 67 days. It funds the ferries, longtails, Khao Sok and the 500 Rai extras, which is where cards stop working.",True)
 it("flights-off","All 8 flight confirmations — offline","docs","SL",1,0,"always",
    "Saved offline. Phuket and Khao Sok have patchy signal.",True)
 it("hotels-off","Accommodation confirmations — offline","docs","SL",1,0,"always",
@@ -151,7 +151,7 @@ it("shirts-nice","Nice shirts","clothing","CB",7,1400,"always","Dinners, Christm
 it("tees","T-shirts","clothing","CB",10,1500,"always","")
 it("shorts","Shorts","clothing","CB",5,1000,"always","")
 it("trousers","Trousers","clothing","CB",1,450,"always",
-   "One pair doing four jobs: Vertigo and Blue Elephant (long trousers are the hard requirement), the Grand Palace dress code, and the cold landing on the 24th. If they get soaked on the 10th you have no backup.",True)
+   "For the two or three nights out — Vertigo, Blue Elephant, Christmas dinner. Elephant pants bought in Thailand cover the temples; shorts cover everything else.",True)
 it("swim","Swim shorts","clothing","CB",2,200,"always","Two, so one is always dry.",True)
 it("boxers","Boxers","clothing","CB",8,270,"always","")
 it("socks-white","White socks","clothing","CB",8,320,"always","")
@@ -159,9 +159,15 @@ it("socks-gym","Gym socks","clothing","CB",3,120,"always","")
 it("gym-tops","Gym tops","clothing","CB",3,300,"always","")
 it("gym-shorts","Gym shorts","clothing","CB",2,300,"always","")
 it("belt","Belt","clothing","CB",1,150,"always","")
+it("hoodie","Hoodie","clothing","CB",1,520,"always",
+   "Worn on the flight out with the tracksuit bottoms. Also the layer for aircraft air con, the 06:00 Donsak ferry and nights on the lake.",True)
+it("windbreaker","Windbreaker","clothing","CB",1,280,"always",
+   "Packs to nothing. The one thing between you and a British 06:35 landing on 24 January.",True)
+it("tracksuit","Tracksuit bottoms","clothing","CB",1,420,"always",
+   "Worn on the long-haul with the hoodie. Doubles as something to sleep in and to throw on at Khao Sok.")
+it("pyjamas","Qatar pyjamas","clothing","CB",1,250,"always",
+   "They don't take them back, so you have them from 19 Nov. Covers sleepwear for the rest of the trip.")
 it("hats","Hats","clothing","CB",3,300,"always","")
 it("hat-gym","Gym hat","clothing","CB",1,100,"always","")
 it("midlayer","Packable midlayer — TO GET","clothing","CB",1,350,"buy",
    "Nothing on your list is warm. You land at Heathrow 06:35 on 24 January in British winter, you leave Gatwick on 19 November, and in between there are eight flights of aggressive air con, a 06:00 ferry across open water and nights on the lake at Khao Sok.",True)
-it("rashvest","Rash vest — TO GET","clothing","CB",1,200,"buy",
-   "Six hours on a bike at Rottnest with no shade, plus snorkelling at Samui and Krabi. Your back faces the sun the whole time.",True)
