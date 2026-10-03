@@ -60,9 +60,8 @@ it("adapter-universal","Travel adapter with USB-C","tech","CB",1,180,"always",
 it("charger-3in1","Fold-up 3-in-1 charger","tech","SL",1,180,"always",
    "Watch, phone and AirPods from one plug. The best single item in the sling.")
 it("cable-ext","Extendable USB-C cable","tech","SL",1,70,"always","")
-it("brick-lg","Power bank — large","tech","SL",1,500,"always",
-   "CABIN ONLY, never checked, on every airline. Check the watt-hour rating on the casing: anything over 100 Wh needs airline approval and over 160 Wh is refused outright.",True)
-it("brick-sm","Power bank — small","tech","SL",1,200,"always","Cabin only, same rule.")
+it("brick-sm","Power bank — small","tech","SL",1,200,"always",
+   "The only one you are taking — the large one is out. Cabin baggage only, never checked.",True)
 it("airtags","AirTags","tech","CB",5,55,"always",
    "On the tech bag, sling, backpack and both cases. Get the fifth so suitcase 2 is covered — it sits in third-party storage for 13 days.",True)
 
