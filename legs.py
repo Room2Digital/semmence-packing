@@ -28,7 +28,7 @@ LEGS = [
           dict(n="2 boxers"), dict(n="2 socks"), dict(n="2 T-shirts"),
           dict(n="1 gym shirt"), dict(n="1 gym shorts"), dict(n="1 gym socks"),
           dict(n="Running shoes"), dict(n="1 swim shorts"), dict(n="MacBook Air"),
-          dict(n="Mini washbag", note="Toothbrush, travel face wash, roll-on deodorant, aftershave atomiser. Covers the 26 hours and the Doha spa at 23:30."),
+          dict(n="Mini washbag", note="Electric toothbrush, mini toothpaste, travel face wash, roll-on deodorant, aftershave atomiser. Covers the Gatwick night, the 26 hours and the Doha spa at 23:30."),
           dict(n="Windbreaker", add=True, note="Not worn, so it needs a home. Perth at 18:45 in November is warm — you do not actually need this again until Heathrow on 24 January, so a suitcase would do just as well."),
         ],
       )),

@@ -99,6 +99,8 @@ it("mozzie","Mosquito spray","toiletries","CB",1,120,"always",
 it("shaver","Electric shaver","toiletries","CB",1,220,"always",
    "Check how it charges — if it's a proprietary barrel plug rather than USB-C, that charger has to come too and it's easy to leave behind.",True)
 it("shave-foam","Mini shaving foam","toiletries","CB",1,100,"always","Under 100 ml so it clears cabin security.")
+it("toothpaste-mini","Mini toothpaste","toiletries","CB",1,40,"always",
+   "For the Gatwick night and the flight. Full size bought in Perth.",True)
 it("etoothbrush","Electric toothbrush","toiletries","CB",1,180,"always",
    "Toothpaste bought on arrival; Qatar give you a travel one for the flight. Check the charger — most are an inductive base with a fixed plug, which needs the travel adapter.",True)
 it("deodorant","Roll-on deodorant","toiletries","CB",3,300,"always",
