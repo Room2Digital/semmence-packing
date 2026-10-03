@@ -56,7 +56,6 @@ DAYBAGS = [
         note="Saved offline. Show the barcode to the crew at the vessel."),
   ],
  ),
-,
  dict(
   id="cricket",
   name="BBL at Optus Stadium",
