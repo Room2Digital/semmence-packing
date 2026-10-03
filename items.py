@@ -89,6 +89,14 @@ it("eyecream","Eye cream","toiletries","CB",1,40,"always","")
 it("sanitiser","Hand sanitiser","toiletries","SL",1,60,"always","")
 it("mozzie","Mosquito spray","toiletries","CB",1,120,"always",
    "Khao Sok is jungle on water and the lake is worst at dusk. Top up with stronger DEET in Thailand if yours is mild.",True)
+it("toothbrush","Toothbrush + toothpaste","toiletries","CB",1,120,"always",
+   "Not on your list. Thai hotels usually provide them; the Sebel, Calum's and the Scarborough house will not, and neither will 26 hours of transit.",True)
+it("deodorant","Deodorant","toiletries","CB",1,100,"always",
+   "Not on your list either. Solid or stick travels better than aerosol and does not count as a liquid.",True)
+it("razor","Razor + blades","toiletries","CB",1,100,"always",
+   "Sixty-seven days. Cartridge razors are fine in cabin baggage; loose blades are not.")
+it("lipbalm","Lip balm with SPF","toiletries","SL",1,15,"always",
+   "Six hours cycling at Rottnest, a lot of beach, and three long-haul sectors of dry cabin air.")
 it("nail","Nail clippers","toiletries","CB",1,40,"always","Fine in checked. Cabin rules on clippers vary by airport.")
 
 # ────────────────────────────── HEALTH ──────────────────────────────
@@ -169,5 +177,3 @@ it("pyjamas","Qatar pyjamas","clothing","CB",1,250,"always",
    "They don't take them back, so you have them from 19 Nov. Covers sleepwear for the rest of the trip.")
 it("hats","Hats","clothing","CB",3,300,"always","")
 it("hat-gym","Gym hat","clothing","CB",1,100,"always","")
-it("midlayer","Packable midlayer — TO GET","clothing","CB",1,350,"buy",
-   "Nothing on your list is warm. You land at Heathrow 06:35 on 24 January in British winter, you leave Gatwick on 19 November, and in between there are eight flights of aggressive air con, a 06:00 ferry across open water and nights on the lake at Khao Sok.",True)
