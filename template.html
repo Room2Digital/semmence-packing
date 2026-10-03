@@ -442,6 +442,28 @@ function toggleDay(id){const s=STATE[id]||(STATE[id]={});s.packed=!s.packed;
   store.set("pack:state",STATE);push(id);render()}
 
 /* ---------- legs ---------- */
+const BAGFULL={L1:"Suitcase 1",L2:"Suitcase 2",CB:"Cabin bag",BP:"Backpack",SL:"Sling bag"};
+function planList(key,arr,l){
+  if(!arr||!arr.length)return"";
+  const id=b=>"plan:"+l.id+":"+key+":"+b;
+  return `<div class="label">${key==="worn"?"Worn":esc(BAGFULL[key]||key)}</div>
+    <div class="card" style="--bc:${BAGCOL[key]||"var(--muted)"}">
+    ${arr.map((x,n)=>{const k=id(n),on=!!(STATE[k]&&STATE[k].packed);
+      return `<div class="row${on?" done":""}" style="padding:10px 0">
+        <button class="tick${on?" on":""}" onclick="toggleDay('${k}')" aria-label="packed">
+          <svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg></button>
+        <div class="rbody"><div class="rname">${esc(x.n)}
+          ${x.add?'<span class="pill buy">I\'d add this</span>':""}</div>
+          ${x.note?`<div class="rnote">${esc(x.note)}</div>`:""}</div></div>`}).join("")}
+    </div>`;
+}
+function planHTML(l){
+  const p=l.plan,added=["SL","BP","CB"].reduce((a,k)=>a+((p[k]||[]).filter(x=>x.add).length),0);
+  return `<div class="label">What goes where</div>
+    ${added?`<div class="alert info"><b>${added} things I'd add</b>
+      <p>Marked below. The rest is your plan as you gave it.</p></div>`:""}
+    ${planList("worn",p.worn,l)}${planList("SL",p.SL,l)}${planList("BP",p.BP,l)}${planList("CB",p.CB,l)}`;
+}
 function vLegs(){
   if(OPENLEG){
     const l=LEGS.find(x=>x.id===OPENLEG);
@@ -453,8 +475,8 @@ function vLegs(){
       <div class="legwhere" style="margin-bottom:11px">${esc(l.where)}</div>
       <div class="card"><div class="note">${esc(l.note)}</div>
         <div class="bagchips">${BAGS.map(b=>`<span class="chip${has.includes(b.id)?" has":""}">${b.id}</span>`).join("")}</div></div>
-      ${crit.length?`<div class="label">Don't be without</div><div class="card">
-        ${crit.map(i=>`<div class="mini"><b>${esc(i.name)}</b><span>${bagOf(i)}</span></div>`).join("")}</div>`:""}
+      ${l.plan?planHTML(l):`<div class="label">Don't be without</div><div class="card">
+        ${crit.map(i=>`<div class="mini"><b>${esc(i.name)}</b><span>${bagOf(i)}</span></div>`).join("")}</div>`}
       </div>`;
   }
   return `<div class="sec"><div class="sg-head"><h2>The trip, leg by leg</h2><span class="n">${LEGS.length} stages</span></div>

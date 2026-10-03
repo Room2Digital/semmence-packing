@@ -1,7 +1,37 @@
 # Pack legs — Robbie's real route
 LEGS = [
  dict(id="prep",   name="Before you go",      dates="Nov",             where="Home",            bags="L1 L2 CB BP SL", note="Everything assembled. The only leg where forgetting something is fixable."),
- dict(id="out",    name="Outbound long-haul", dates="19–20 Nov",       where="LGW→DOH→PER",     bags="L1 L2 CB BP SL", note="QR330 08:40 from Gatwick, QR900 out of Doha. ~26 hrs door to door. Qsuite, so pyjamas and bedding are provided — the sling is your seat-side kit."),
+ dict(id="out",    name="Outbound long-haul", dates="19–20 Nov",       where="LGW→DOH→PER",     bags="L1 L2 CB BP SL",
+      note="QR330 08:40 from Gatwick, QR900 out of Doha at 02:40, into Perth 18:45 on the 20th. About 26 hrs door to door with an 8h25 layover. Qsuite, so pyjamas and bedding are provided. Qatar Business gives you two cabin pieces at 15 kg plus a personal item, so the sling, backpack and cabin bag all travel with you — the cabin bag is your lost-luggage insurance.",
+      plan=dict(
+        worn=[
+          dict(n="Hoodie and tracksuit bottoms", note="Your flight comfort set."),
+          dict(n="Windbreaker", note="Gatwick in November, and Perth at 18:45 is the other way round."),
+          dict(n="Nice trainers", note="Wear the bulkiest footwear rather than packing it."),
+        ],
+        SL=[
+          dict(n="Wallet and cards"), dict(n="Passport holder"), dict(n="Cash"),
+          dict(n="AirPods Pro"), dict(n="Fold-up 3-in-1 charger"), dict(n="Extendable USB-C cable"),
+          dict(n="Earplugs"), dict(n="Eye mask"), dict(n="Mouth tape"),
+          dict(n="Phone", add=True, note="Not on your list — on you rather than in a bag, but it is the one thing the whole trip runs on."),
+          dict(n="Power bank, small", add=True, note="Cabin only, never checked. 26 hours and an 8-hour layover."),
+          dict(n="Prescription medication", add=True, note="Has to be hand luggage, in original packaging. Not in a hold bag."),
+          dict(n="Clear 1L liquids bag", add=True, note="Travel suncream, sanitiser, lip balm. Needed at Gatwick and again at Doha."),
+          dict(n="Australian ETA + insurance details", add=True, note="The airline checks the ETA at Gatwick."),
+        ],
+        BP=[
+          dict(n="iPad Air", note="The main one — not the one being handed over in Phuket."),
+          dict(n="USB-C dongle"), dict(n="HDMI cable"), dict(n="Compression socks"), dict(n="Larq bottle"),
+          dict(n="Sony over-ear headphones", add=True, note="This is the flight you bought them for. They are not in any of your three bags."),
+          dict(n="Mini washbag", add=True, note="26 hours plus a spa treatment in Doha at 23:30. Qatar's amenity kit is thin and you will want your own."),
+          dict(n="Travel adapter", add=True, note="Perth is Type I. Doha is Type G like the UK, so the layover is fine, but you want this reachable on landing."),
+        ],
+        CB=[
+          dict(n="2 boxers"), dict(n="2 socks"), dict(n="2 T-shirts"),
+          dict(n="1 gym shirt"), dict(n="1 gym shorts"), dict(n="1 gym socks"),
+          dict(n="Running shoes"), dict(n="1 swim shorts"), dict(n="MacBook Air"),
+        ],
+      )),
  dict(id="perth",  name="Perth — the long stay", dates="20 Nov–18 Dec", where="The Sebel West Perth", bags="L1 L2 CB BP SL", note="Four weeks. Working. Self-service laundry, so wash weekly and live out of the cases. Peak summer — 30–40°C."),
  dict(id="perth2", name="Perth — interim",     dates="18–29 Dec",       where="Not booked",      bags="L1 L2 CB BP SL", note="11 nights still unbooked. Same kit as the Sebel stay."),
  dict(id="scar",   name="Scarborough — Christmas", dates="29 Dec–7 Jan", where="Scarborough house", bags="L1 L2 CB BP SL", note="Christmas and New Year with everyone. Hire car from the 29th. Beach Christmas, but one smart evening."),

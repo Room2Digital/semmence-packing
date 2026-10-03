@@ -179,6 +179,8 @@ it("swim","Swim shorts","clothing","CB",2,200,"always","Two, so one is always dr
 it("boxers","Boxers","clothing","CB",8,270,"always","")
 it("socks-white","White socks","clothing","CB",8,320,"always","")
 it("socks-gym","Gym socks","clothing","CB",3,120,"always","")
+it("compression","Compression socks","clothing","BP",1,90,"always",
+   "For the long-haul. Worth it on a 26-hour door-to-door and again on the way back.",True)
 it("gym-tops","Gym tops","clothing","CB",3,300,"always","")
 it("gym-shorts","Gym shorts","clothing","CB",2,300,"always","")
 it("belt","Belt","clothing","CB",1,150,"always","")
