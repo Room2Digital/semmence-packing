@@ -235,7 +235,6 @@ h2{font-size:17px;font-weight:750;letter-spacing:-.015em}
 <nav id="tabs">
   <button data-t="bags"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span>Bags</span></button>
   <button data-t="legs"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 4 3 14 0 18M12 3c-3 4-3 14 0 18"/></svg><span>Legs</span></button>
-  <button data-t="repack"><svg viewBox="0 0 24 24"><path d="M4 7h13l-3-3M20 17H7l3 3"/></svg><span>Repack</span></button>
   <button data-t="all"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg><span>All</span></button>
 </nav>
 
@@ -250,14 +249,14 @@ const store={get(k,d){try{const v=localStorage.getItem(k);return v===null?d:JSON
 const BAGS=DATA.bags, LEGS=DATA.legs, DAYBAGS=DATA.daybags||[], SHOPPING=DATA.shopping||[];
 let ITEMS=DATA.items.slice().concat(store.get("pack:custom",[]));
 let STATE=store.get("pack:state",{});
-let TAB=store.get("pack:tab","bags"), OPEN=store.get("pack:openbag",null),
+let TAB=["bags","legs","all"].includes(store.get("pack:tab","bags"))?store.get("pack:tab","bags"):"bags", OPEN=store.get("pack:openbag",null),
     OPENLEG=null, OPENDAY=null, OPENSHOP=null, Q="", STALE=false;
 
 const BAGCOL={L1:"var(--blue)",L2:"var(--green)",CB:"var(--violet)",BP:"var(--orange)",SL:"var(--pink)"};
 const BAGICON={L1:"🧳",L2:"👟",CB:"🎒",BP:"🪢",SL:"📱"};
 const CATICON={docs:"📄",tech:"🔌",toiletries:"🧴",health:"💊",clothing:"👕",footwear:"👟",
                kit:"🧰",flight:"✈️",added:"✏️"};
-const KEYLEGS={jet:1,repack:1,drop:1,ret:1};
+
 
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const bagOf=i=>(STATE[i.id]&&STATE[i.id].bag)||i.bag;
@@ -442,7 +441,8 @@ function toggleDay(id){const s=STATE[id]||(STATE[id]={});s.packed=!s.packed;
   store.set("pack:state",STATE);push(id);render()}
 
 /* ---------- legs ---------- */
-const BAGFULL={L1:"Into the cases",L2:"Suitcase 2",CB:"Cabin bag",BP:"Backpack",SL:"Sling bag"};
+const BAGFULL={do:"To do here",worn:"Worn",SL:"Sling bag",BP:"Backpack",CB:"Cabin bag",L1:"Suitcases",L2:"Suitcase 2",checked:"Checked in"};
+const PLANORDER=["do","worn","SL","BP","CB","checked","L1","L2"];
 function planList(key,arr,l){
   if(!arr||!arr.length)return"";
   const id=b=>"plan:"+l.id+":"+key+":"+b;
@@ -458,11 +458,17 @@ function planList(key,arr,l){
     </div>`;
 }
 function planHTML(l){
-  const p=l.plan,added=["SL","BP","CB"].reduce((a,k)=>a+((p[k]||[]).filter(x=>x.add).length),0);
+  const p=l.plan,added=PLANORDER.reduce((a,k)=>a+((p[k]||[]).filter(x=>x.add).length),0);
+  const total=PLANORDER.reduce((a,k)=>a+((p[k]||[]).length),0);
+  const done=PLANORDER.reduce((a,k)=>a+((p[k]||[]).filter((x,n)=>STATE["plan:"+l.id+":"+k+":"+n]&&STATE["plan:"+l.id+":"+k+":"+n].packed).length),0);
   return `<div class="label">What goes where</div>
-    ${added?`<div class="alert info"><b>${added} things I'd add</b>
-      <p>Marked below. The rest is your plan as you gave it.</p></div>`:""}
-    ${planList("worn",p.worn,l)}${planList("SL",p.SL,l)}${planList("BP",p.BP,l)}${planList("CB",p.CB,l)}${planList("L1",p.L1,l)}`;
+    <div class="card" style="margin-bottom:14px"><div class="bagtop">
+      <span style="flex:1"><span class="bagname" style="display:block">${done} of ${total} done</span>
+      <span class="bagmeta">Tick as you pack</span></span>
+      <span class="bagpill${done===total&&total?" done":""}">${total?Math.round(done/total*100):0}%</span></div>
+      <div class="fill" style="--bc:var(--blue)"><i style="width:${total?done/total*100:0}%"></i></div></div>
+    ${added?`<div class="alert info"><b>${added} things I'd add</b><p>Marked below.</p></div>`:""}
+    ${PLANORDER.map(k=>planList(k,p[k],l)).join("")}`;
 }
 function vLegs(){
   if(OPENLEG){
@@ -475,50 +481,18 @@ function vLegs(){
       <div class="legwhere" style="margin-bottom:11px">${esc(l.where)}</div>
       <div class="card"><div class="note">${esc(l.note)}</div>
         <div class="bagchips">${BAGS.map(b=>`<span class="chip${has.includes(b.id)?" has":""}">${b.id}</span>`).join("")}</div></div>
-      ${l.plan?planHTML(l):`<div class="label">Don't be without</div><div class="card">
+      ${l.plan?planHTML(l):`<div class="label">With you</div><div class="card">
         ${crit.map(i=>`<div class="mini"><b>${esc(i.name)}</b><span>${bagOf(i)}</span></div>`).join("")}</div>`}
       </div>`;
   }
   return `<div class="sec"><div class="sg-head"><h2>The trip, leg by leg</h2><span class="n">${LEGS.length} stages</span></div>
     <div class="tl">${LEGS.map(l=>{const has=(l.bags||"").split(" ").filter(Boolean);
-      return `<div class="legcard${KEYLEGS[l.id]?" key":""}" onclick="OPENLEG='${l.id}';render()">
+      return `<div class="legcard${l.key?" key":""}" onclick="OPENLEG='${l.id}';render()">
         <div class="legtop"><div class="legname">${esc(l.name)}</div><div class="legdate">${esc(l.dates)}</div></div>
         <div class="legwhere">${esc(l.where)}</div>
         <div class="legnote">${esc(l.note)}</div>
         <div class="bagchips">${BAGS.map(b=>`<span class="chip${has.includes(b.id)?" has":""}">${b.id}</span>`).join("")}</div>
       </div>`}).join("")}</div></div>`;
-}
-
-/* ---------- repack ---------- */
-function vRepack(){
-  const stay=ITEMS.filter(i=>i.fate==="store"),
-        come=ITEMS.filter(i=>i.fate!=="store"&&i.fate!=="handover"),
-        gone=ITEMS.filter(i=>i.fate==="handover");
-  const kgStay=stay.reduce((a,i)=>a+grams(i),0), kgCome=come.reduce((a,i)=>a+grams(i),0);
-  return `<div class="sec">
-    <div class="alert"><b>The repack — Phuket, morning of 10 January</b>
-      <p>Do this at the Courtyard with space and time, not at an airport. TG206 leaves at 11:50,
-      so start after breakfast. Everything on the right carries on with you for the next 13 days.
-      Everything on the left goes into the two cases, gets locked, and is dropped at Smilelugg
-      the moment you land at 13:20 — then collected on the 23rd during your 4h45 connection.</p></div>
-    <div class="split">
-      <div class="col stay"><div class="colhead">📦 Into the cases</div>
-        <div class="colsub">${stay.length} items · ${kg(kgStay)} · 13 days in storage</div>
-        ${stay.map(i=>`<div class="mini"><b>${esc(i.name)}${i.qty>1?" ×"+i.qty:""}</b><span>→ ${destOf(i)}</span></div>`).join("")}</div>
-      <div class="col come"><div class="colhead">🎒 Comes with you</div>
-        <div class="colsub">${come.length} items · ${kg(kgCome)} · cabin bag, backpack, sling</div>
-        ${come.filter(i=>i.crit).map(i=>`<div class="mini"><b>${esc(i.name)}</b><span>${bagOf(i)}</span></div>`).join("")}
-        <div class="colsub" style="margin:11px 0 0">Essentials shown. The rest is on the All tab.</div></div>
-    </div>
-    ${gone.length?`<div class="alert info"><b>Hand these over first</b><p>${gone.map(i=>esc(i.name.replace(" — for handover",""))).join(" and ")} are given away in Phuket, so they should be out of your bags before you start the repack. Sign out of your Apple ID, erase them and remove them from Find My <b>before you fly</b> — an activation-locked device is useless to whoever gets it.</p></div>`:""}
-    <div class="label">Before you leave the hotel</div>
-    <div class="card">
-      <div class="mini"><b>Refill the 100 ml bottles from the full-size supply</b><span>CB</span></div>
-      <div class="mini"><b>Lock both cases</b><span>L1 L2</span></div>
-      <div class="mini"><b>Photograph what went in each case</b><span>phone</span></div>
-      <div class="mini"><b>Smart shirt, trousers and shoes in the cabin bag</b><span>CB</span></div>
-      <div class="mini"><b>Power bank out of the cases — cabin only</b><span>SL</span></div>
-    </div></div>`;
 }
 
 /* ---------- all ---------- */
@@ -538,7 +512,7 @@ function render(){
   document.getElementById("view").innerHTML =
     OPENSHOP?vShop():
     OPENDAY?vDayBag():
-    TAB==="bags"?vBags():TAB==="legs"?vLegs():TAB==="repack"?vRepack():vAll();
+    TAB==="bags"?vBags():TAB==="legs"?vLegs():vAll();
   paintHead();
 }
 document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{
