@@ -147,7 +147,14 @@ it("locks","TSA padlocks","kit","CB",3,150,"always",
    "Three bags go in the Jetstar hold and two sit in storage for 13 days.",True)
 it("scales","Luggage scales","kit","CB",1,100,"always",
    "You have a live 7 kg problem on TG206. Pays for itself once.",True)
-it("laundry-bag","Laundry bag","kit","CB",1,80,"always","Thai laundry charges by the kilo; bagged is faster to drop off.")
+it("laundry-bag","Dirty laundry bags","kit","CB",2,110,"always",
+   "Two, so dirty and damp stay apart from clean. Thai laundry charges by the kilo and bagged is faster to drop off.")
+it("binbags","Bin bags","kit","CB",5,60,"always",
+   "Wet swimwear, sandy shoes, the shirt you sweated through on the ferry. Weigh nothing and solve a problem every few days.")
+it("goggles","Swimming goggles","kit","CB",1,80,"buy",
+   "Worth having — the Sebel and the office both have gyms, and there is a lot of sea between Scarborough, Samui and Krabi.")
+it("apps","Phone apps page","docs","SL",1,0,"always",
+   "Airlines, TripIt, Avios, Amex, Monzo, Booking.com, Grab, Uber, Uber Eats, Ticketmaster. Add WhatsApp — the Bangkok driver contacts you on it — plus Line, which is how Thai businesses actually communicate, and GetYourGuide for the Rottnest ferry booking.")
 it("notepad","Thai notepad","kit","SL",1,90,"always","")
 it("daypack","Lockable daypack","kit","CB",1,320,"always",
    "Rottnest, the ferries and Bangkok. Lockable zips and a slash-resistant strap.",True)

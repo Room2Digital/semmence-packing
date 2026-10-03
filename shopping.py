@@ -12,9 +12,12 @@ SHOPPING = [
         "not a top-up. Chemist Warehouse is substantially cheaper than a supermarket for "
         "suncream, toiletries and supplements — it's the one worth a dedicated trip."),
   items=[
-   dict(name="Suncream SPF50+, large", crit=True,
+   dict(name="Suncream SPF50+, large — check it is reef-safe", crit=True,
         note="Australian suncream is the best in the world and cheap here. Buy the big bottle "
-             "and a small one for the bag. This is also what you decant for Thailand."),
+             "and a small one for the bag — this is also what you decant for Thailand. Check the "
+             "ingredients now: Thai marine national parks ban oxybenzone, octinoxate, "
+             "4-methylbenzylidene camphor and butylparaben, with fines up to 100,000 baht. "
+             "Khao Sok and the Krabi marine parks both count."),
    dict(name="Protein powder", crit=True,
         note="Chemist Warehouse or a sports shop beats the supermarket on price. Buy a tub "
              "sized for seven weeks — you won't be taking it to Thailand, so don't over-buy."),
@@ -34,10 +37,6 @@ SHOPPING = [
    dict(name="Breakfast and kitchen basics",
         note="Coffee, cereal, bread — whatever stops you buying breakfast out every day "
              "for four weeks."),
-   dict(name="Gym membership or day passes", crit=True,
-        note="You're carrying gym kit for all 67 days but nothing is arranged. Seven weeks "
-             "is long enough that a casual membership beats day passes — sort it in the first "
-             "week rather than drifting."),
    dict(name="Insect repellent, if yours is mild",
         note="Perth doesn't need much. Buy the serious DEET in Thailand instead, where it's "
              "stronger and cheaper."),
