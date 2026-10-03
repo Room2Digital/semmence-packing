@@ -188,12 +188,12 @@ it("compression","Compression socks","clothing","BP",1,90,"always",
 it("gym-tops","Gym tops","clothing","CB",3,300,"always","")
 it("gym-shorts","Gym shorts","clothing","CB",2,300,"always","")
 it("belt","Belt","clothing","CB",1,150,"always","")
-it("hoodie","Hoodie","clothing","CB",1,520,"always",
-   "Worn on the flight out with the tracksuit bottoms. Also the layer for aircraft air con, the 06:00 Donsak ferry and nights on the lake.",True)
+it("hoodie","Hoodie","clothing","L1",1,520,"store",
+   "Suitcase, not worn. Note the consequence: the cases sit in Bangkok storage 10–23 Jan, so you have no warm layer for the 06:00 Donsak ferry or nights on the lake. You collect it on the 23rd in time for the flight home.",True)
 it("windbreaker","Windbreaker","clothing","CB",1,280,"always",
    "Packs to nothing. The one thing between you and a British 06:35 landing on 24 January.",True)
-it("tracksuit","Tracksuit bottoms","clothing","CB",1,420,"always",
-   "Worn on the long-haul with the hoodie. Doubles as something to sleep in and to throw on at Khao Sok.")
+it("tracksuit","Tracksuit bottoms","clothing","L1",1,420,"store",
+   "Suitcase. Back in your hands on the 23rd for the flight home.")
 it("pyjamas","Qatar pyjamas","clothing","CB",1,250,"always",
    "They don't take them back, so you have them from 19 Nov. Covers sleepwear for the rest of the trip.")
 it("hats","Hats","clothing","CB",3,300,"always","")
