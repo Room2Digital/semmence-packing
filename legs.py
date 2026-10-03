@@ -38,7 +38,7 @@ LEGS = [
  dict(id="jet",    name="Jetstar to Phuket",   dates="7 Jan",           where="PER→HKT, JQ71",   bags="BP SL", note="07:25 departure. 40 kg prepaid across as many bags as you like, so check all three — both cases AND the cabin bag — and walk on with just the backpack and sling. Short flight, nothing on your person. Jetstar cabin is two items at 7 kg combined, weighed at the gate, and backpack plus sling is comfortably inside that.",
       plan=dict(
         checked=[dict(n="Suitcase 1"),dict(n="Suitcase 2"),dict(n="Cabin bag", note="Goes in the hold here. Nothing in it you need for five hours.")],
-        BP=[dict(n="iPad Air, Switch, chargers, Larq"),dict(n="Anything you want in the air")],
+        BP=[dict(n="iPad Air, chargers, Larq, both sunglasses cases"),dict(n="Anything you want in the air")],
         SL=[dict(n="Passport, phone, cards, cash, AirPods, power bank"),
             dict(n="Prescriptions and the liquids bag", note="Never in the hold.")],
       )),
@@ -55,7 +55,7 @@ LEGS = [
         L1=[
           dict(n="CUBE 1 — clothing", note="5 tees, 3 shorts, 2 nice shirts, 1 trousers, 5 boxers, 3 socks, 2 swim shorts. About 4 kg."),
           dict(n="CUBE 2 — gym and footwear", note="Gym top, shorts, socks, running shoes, sandals, sliders. About 2.5 kg. Shoes in a bin bag inside the cube."),
-          dict(n="CUBE 3 — kit", note="Mini towel, dry bag, laundry and bin bags, goggles, daypack, locks, spare sunglasses. About 1.5 kg."),
+          dict(n="CUBE 3 — kit", note="Mini towel, dry bag, laundry and bin bags, goggles, daypack, locks. About 1.4 kg. Sunglasses stay in the backpack throughout."),
           dict(n="LOOSE — Larq bottle", note="Too awkward for a cube. Near the top with the cubes."),
           dict(n="Pack all four near the top", note="The whole point is that Bangkok is lifting, not sorting."),
           dict(n="Genuinely staying behind", note="MacBook Air and its kit, Sony over-ears, Switch, PS5 pad, Perth clothing surplus, old trainers, hoodie, tracksuit, large washbag, full-size suncream, large towel, driving licence, Apple Watch. About 8.8 kg, not seen again until the 23rd."),

@@ -145,8 +145,10 @@ it("drybag","Dry bag, small — TO BUY","kit","BP",1,120,"buy",
    "Not owned yet. Khao Sok arrives by boat, the ferry deck is wet and Krabi longtails soak everything. Phone, wallet and the Switch while you're on the water.",True)
 it("cubes","Packing cubes","kit","CB",4,220,"always",
    "What makes the Phuket repack take twenty minutes instead of two hours.",True)
-it("sunglasses","Sunglasses — 4 pairs, one case","kit","CB",4,400,"always",
-   "Trimmed from eight. Keep one cheap pair for the water and the longtails — that is the pair that gets lost.",True)
+it("sunglasses","Sunglasses — 4 pairs in a travel case","kit","BP",4,400,"always",
+   "The four-pair travel case, in the backpack. Keep one cheap pair in there for the water and the longtails — that is the pair that gets lost.",True)
+it("sunglasses-daily","Sunglasses — daily pair in a normal case","kit","BP",1,120,"always",
+   "The one that lives on your face or in the backpack. Five pairs total, down from eight.",True)
 it("locks","TSA padlocks","kit","CB",3,150,"always",
    "Three bags go in the Jetstar hold and two sit in storage for 13 days.",True)
 it("scales","Luggage scales","kit","CB",1,100,"always",
