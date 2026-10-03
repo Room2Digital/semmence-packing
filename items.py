@@ -137,40 +137,33 @@ it("daypack","Lockable daypack","kit","CB",1,320,"always",
    "Rottnest, the ferries and Bangkok. Lockable zips and a slash-resistant strap.",True)
 
 # ───────────────────────────── FOOTWEAR ─────────────────────────────
-it("trainers","Trainers — running and gym","footwear","CB",1,800,"always",
-   "Gym the whole trip, so these come onward. Bulkiest single item in the cabin bag — wear them on travel days.",True)
-it("walking","Walking shoes","footwear","CB",1,700,"always",
-   "Khao Sok and the Perth hills. Wear them rather than pack them.",True)
-it("sandals","Sandals with a real sole","footwear","CB",1,400,"always",
-   "Not flip-flops — something you can walk miles in and get wet.",True)
-it("flipflops","Flip-flops","footwear","CB",1,200,"always","Beach, pool, questionable shower floors.")
-it("smart-shoes","Smart shoes — closed, dark","footwear","CB",1,600,"always",
-   "Christmas dinner, and Vertigo and Blue Elephant both enforce closed shoes. Bangkok is after the cases are parked, so these stay with you.",True)
+it("trainers-nice","Nice trainers","footwear","CB",1,780,"always",
+   "Everyday smart-casual. NOT accepted at Vertigo — they bar athletic footwear and check it in the lift lobby before you go up.")
+it("trainers-old","Old trainers","footwear","L1",1,750,"store",
+   "The pair you don't mind ruining. Perth beaches and anything messy.")
+it("running","Running shoes","footwear","CB",1,720,"always","Gym the whole trip, so these travel onward.")
+it("sandals","Sandals","footwear","CB",1,400,"always",
+   "The ones you can walk miles in and get wet — Khao Sok, the piers, Krabi.",True)
+it("sliders","Sliders","footwear","CB",1,280,"always","Beach, pool, hotel bathrooms.")
+it("smart-shoes","Smart shoes — closed, dark — TO GET","footwear","CB",1,600,"buy",
+   "Not on your list and you need them. Vertigo on 11 Jan requires long trousers AND closed non-athletic shoes, enforced at the ground-floor lift lobby. Blue Elephant is the same. Nice trainers will not get you in.",True)
 
 # ───────────────────────────── CLOTHING ─────────────────────────────
-it("tees","T-shirts","clothing","L1",10,1500,"store","Ten for Perth, where you wash your own. Four come onward.")
-it("tees-on","T-shirts — onward","clothing","CB",4,600,"always","Quick-dry or merino. Thai laundry is cheap and same-day.")
-it("shorts","Shorts","clothing","L1",4,800,"store","Two come onward.")
-it("shorts-on","Shorts — onward","clothing","CB",2,400,"always","")
-it("underwear","Underwear","clothing","L1",12,400,"store","Seven come onward.")
-it("underwear-on","Underwear — onward","clothing","CB",7,250,"always","")
-it("socks","Socks","clothing","L1",10,400,"store","Three pairs come onward — you'll be in sandals most days.")
-it("socks-on","Socks — onward","clothing","CB",3,120,"always","")
-it("gym-kit","Gym shorts + technical tees","clothing","CB",3,500,"always",
-   "Gym the whole trip. Quick-dry, so they wash in a sink and are dry by morning.")
-it("trousers-light","Light trousers or chinos","clothing","CB",1,400,"always",
-   "Temples, Bangkok restaurants, mosquitoes at dusk, and the cold landing on the 24th.",True)
-it("shirt-casual","Casual shirts — linen","clothing","CB",2,400,"always","Sun cover that still reads as clothing.")
-it("midlayer","Packable midlayer","clothing","CB",1,350,"always",
-   "Aircraft air con, the 06:00 ferry, and Heathrow in January.",True)
-it("sleepwear","Sleepwear","clothing","CB",1,200,"always","Qatar provide pyjamas on the long-haul; there are 65 other nights.")
-it("cap","Cap or hat","clothing","BP",1,100,"always","Perth sun in December is genuinely dangerous.",True)
-it("smart-shirt","Smart shirts — collared","clothing","CB",2,400,"always",
-   "One for Christmas, one for Bangkok. Bangkok is after the drop, so they stay with you.",True)
-it("smart-trousers","Smart trousers — dark, long","clothing","CB",1,450,"always",
-   "Required at Vertigo and Blue Elephant.",True)
+it("shirts-nice","Nice shirts","clothing","CB",7,1400,"always","Dinners, Christmas, Bangkok, and sun cover that still reads as clothing.")
+it("tees","T-shirts","clothing","CB",10,1500,"always","")
+it("shorts","Shorts","clothing","CB",5,1000,"always","")
+it("trousers","Trousers","clothing","CB",1,450,"always",
+   "One pair doing four jobs: Vertigo, Blue Elephant, the Grand Palace dress code (knees covered) and the cold landing on the 24th. A second pair is cheap insurance.",True)
+it("swim","Swim shorts","clothing","CB",2,200,"always","Two, so one is always dry.",True)
+it("boxers","Boxers","clothing","CB",8,270,"always","")
+it("socks-white","White socks","clothing","CB",8,320,"always","")
+it("socks-gym","Gym socks","clothing","CB",3,120,"always","")
+it("gym-tops","Gym tops","clothing","CB",3,300,"always","")
+it("gym-shorts","Gym shorts","clothing","CB",2,300,"always","")
 it("belt","Belt","clothing","CB",1,150,"always","")
-it("swim","Swim shorts","clothing","L1",3,300,"store","Two come onward.")
-it("swim-on","Swim shorts — onward","clothing","CB",2,200,"always","Two, so one is always dry.",True)
-it("rashvest","Rash vest","clothing","CB",1,200,"always",
-   "Snorkelling with a bare back in Thai sun ruins a week. Also the Rottnest bike day.",True)
+it("hats","Hats","clothing","CB",3,300,"always","")
+it("hat-gym","Gym hat","clothing","CB",1,100,"always","")
+it("midlayer","Packable midlayer — TO GET","clothing","CB",1,350,"buy",
+   "Nothing on your list is warm. You land at Heathrow 06:35 on 24 January in British winter, you leave Gatwick on 19 November, and in between there are eight flights of aggressive air con, a 06:00 ferry across open water and nights on the lake at Khao Sok.",True)
+it("rashvest","Rash vest — TO GET","clothing","CB",1,200,"buy",
+   "Six hours on a bike at Rottnest with no shade, plus snorkelling at Samui and Krabi. Your back faces the sun the whole time.",True)
