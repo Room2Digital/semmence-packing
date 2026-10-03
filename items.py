@@ -54,7 +54,7 @@ it("hdmi","HDMI cable","tech","CB",1,90,"store","General purpose — hotel TVs, 
 it("hdmi-switch","Nintendo Switch HDMI cable","tech","CB",1,80,"always",
    "Stays with the Switch. Theatre Residence, Hansar and Krabi La Playa all have TVs.")
 it("ps5-pad","PS5 controller","tech","CB",1,280,"always",
-   "For Remote Play. Worth knowing: Remote Play needs a live connection back to the PS5 at home, so aircraft wifi will not carry it — Qatar's is nowhere near the bandwidth or latency it wants. It does pair natively with the iPad Air though, which is the version of this that actually works at 38,000 feet.")
+   "For Remote Play. Qatar's Starlink should genuinely carry it — the bandwidth is there and satellite latency is usually workable. Worth testing on the Gatwick to Doha leg before you count on it for the 14 hours to Perth. Pairs natively with the iPad Air as the fallback.")
 it("switch","Nintendo Switch","tech","CB",1,400,"always","Long transits and the Khao Sok evenings.")
 it("charger-mac","MacBook charger — high wattage","tech","CB",1,300,"store",
    "Check the wattage covers the Air. The fold-up 3-in-1 will not charge a laptop.",True)
@@ -64,12 +64,12 @@ it("adapter-universal","Travel adapter with USB-C","tech","CB",1,180,"always",
 it("charger-3in1","Fold-up 3-in-1 charger","tech","SL",1,180,"always",
    "Watch, phone and AirPods from one plug. The best single item in the sling.")
 it("cable-ext","Extendable USB-C cable","tech","SL",1,70,"always","")
+it("cable-shaver","Shaver cable","tech","CB",1,40,"always",
+   "Not USB-C at both ends, so nothing else in the bag will charge it. The one cable with no substitute — pack it with the shaver, not loose.",True)
 it("brick-sm","Power bank — small","tech","SL",1,200,"always",
    "The only one you are taking — the large one is out. Cabin baggage only, never checked.",True)
-it("chargers-personal","Shaver + toothbrush chargers","tech","CB",1,220,"always",
-   "The two devices you just added both need their own charger, and neither is USB-C on most models. These are the classic thing left plugged into a bathroom wall.",True)
-it("esim","Mobile data — Australian and Thai eSIM","tech","SL",1,0,"always",
-   "Sixty-seven days across two countries and nothing on the list covers connectivity. Everything you rely on — this app, the trip app, maps, boarding passes, the Booking.com taxi on WhatsApp, the Smilelugg receipt — needs data. Sort an Australian eSIM before you fly and a Thai one before 7 Jan, or check what your UK roaming actually costs beyond the EU.",True)
+it("esim","Global SIM — 2 months","tech","SL",1,0,"always",
+   "Already organised. Covers both countries for the whole trip, so no Australian or Thai eSIM needed on arrival.")
 it("airtags","AirTags","tech","CB",5,55,"always",
    "On the tech bag, sling, backpack and both cases. Get the fifth so suitcase 2 is covered — it sits in third-party storage for 13 days.",True)
 
