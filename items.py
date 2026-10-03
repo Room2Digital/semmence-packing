@@ -101,8 +101,10 @@ it("shaver","Electric shaver","toiletries","CB",1,220,"always",
 it("shave-foam","Mini shaving foam","toiletries","CB",1,100,"always","Under 100 ml so it clears cabin security.")
 it("etoothbrush","Electric toothbrush","toiletries","CB",1,180,"always",
    "Toothpaste bought on arrival; Qatar give you a travel one for the flight. Check the charger — most are an inductive base with a fixed plug, which needs the travel adapter.",True)
-it("deodorant","Deodorant","toiletries","CB",1,100,"always",
-   "Not on your list either. Solid or stick travels better than aerosol and does not count as a liquid.",True)
+it("deodorant","Roll-on deodorant","toiletries","CB",3,300,"always",
+   "One lives in the mini washbag for the flight; two spares in the main toiletries. Roll-on is not a liquid for cabin purposes and does not leak at altitude.",True)
+it("aftershave","Aftershave atomiser","toiletries","CB",1,60,"always",
+   "One small atomiser covers all 67 days and clears cabin liquids without a thought.")
 it("lipbalm","Lip balm with SPF","toiletries","SL",1,15,"always",
    "Six hours cycling at Rottnest, a lot of beach, and three long-haul sectors of dry cabin air.")
 it("nail","Nail clippers","toiletries","CB",1,40,"always","Fine in checked. Cabin rules on clippers vary by airport.")

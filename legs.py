@@ -6,15 +6,14 @@ LEGS = [
       plan=dict(
         worn=[
           dict(n="Hoodie and tracksuit bottoms", note="Your flight comfort set."),
-          dict(n="Windbreaker", note="Gatwick in November, and Perth at 18:45 is the other way round."),
           dict(n="Nice trainers", note="Wear the bulkiest footwear rather than packing it."),
         ],
         SL=[
           dict(n="Wallet and cards"), dict(n="Passport holder"), dict(n="Cash"),
           dict(n="AirPods Pro"), dict(n="Fold-up 3-in-1 charger"), dict(n="Extendable USB-C cable"),
           dict(n="Earplugs"), dict(n="Eye mask"), dict(n="Mouth tape"),
-          dict(n="Phone", add=True, note="Not on your list — on you rather than in a bag, but it is the one thing the whole trip runs on."),
-          dict(n="Power bank, small", add=True, note="Cabin only, never checked. 26 hours and an 8-hour layover."),
+          dict(n="Phone"),
+          dict(n="Mini charger brick", note="Cabin only, never checked."),
           dict(n="Prescription medication", add=True, note="Has to be hand luggage, in original packaging. Not in a hold bag."),
           dict(n="Clear 1L liquids bag", add=True, note="Travel suncream, sanitiser, lip balm. Needed at Gatwick and again at Doha."),
           dict(n="Australian ETA + insurance details", add=True, note="The airline checks the ETA at Gatwick."),
@@ -22,14 +21,15 @@ LEGS = [
         BP=[
           dict(n="iPad Air", note="The main one — not the one being handed over in Phuket."),
           dict(n="USB-C dongle"), dict(n="HDMI cable"), dict(n="Compression socks"), dict(n="Larq bottle"),
-          dict(n="Sony over-ear headphones", add=True, note="This is the flight you bought them for. They are not in any of your three bags."),
-          dict(n="Mini washbag", add=True, note="26 hours plus a spa treatment in Doha at 23:30. Qatar's amenity kit is thin and you will want your own."),
+          dict(n="Sony over-ear headphones", note="The flight you bought them for."),
           dict(n="Travel adapter", add=True, note="Perth is Type I. Doha is Type G like the UK, so the layover is fine, but you want this reachable on landing."),
         ],
         CB=[
           dict(n="2 boxers"), dict(n="2 socks"), dict(n="2 T-shirts"),
           dict(n="1 gym shirt"), dict(n="1 gym shorts"), dict(n="1 gym socks"),
           dict(n="Running shoes"), dict(n="1 swim shorts"), dict(n="MacBook Air"),
+          dict(n="Mini washbag", note="Toothbrush, travel face wash, roll-on deodorant, aftershave atomiser. Covers the 26 hours and the Doha spa at 23:30."),
+          dict(n="Windbreaker", add=True, note="Not worn, so it needs a home. Perth at 18:45 in November is warm — you do not actually need this again until Heathrow on 24 January, so a suitcase would do just as well."),
         ],
       )),
  dict(id="perth",  name="Perth — the long stay", dates="20 Nov–18 Dec", where="The Sebel West Perth", bags="L1 L2 CB BP SL", note="Four weeks. Working. Self-service laundry, so wash weekly and live out of the cases. Peak summer — 30–40°C."),
