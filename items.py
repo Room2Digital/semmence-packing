@@ -138,22 +138,20 @@ it("daypack","Lockable daypack","kit","CB",1,320,"always",
 
 # ───────────────────────────── FOOTWEAR ─────────────────────────────
 it("trainers-nice","Nice trainers","footwear","CB",1,780,"always",
-   "Everyday smart-casual. NOT accepted at Vertigo — they bar athletic footwear and check it in the lift lobby before you go up.")
+   "Your smart-casual pair. Fine at Vertigo and Blue Elephant — long trousers are the part they actually care about.")
 it("trainers-old","Old trainers","footwear","L1",1,750,"store",
    "The pair you don't mind ruining. Perth beaches and anything messy.")
 it("running","Running shoes","footwear","CB",1,720,"always","Gym the whole trip, so these travel onward.")
 it("sandals","Sandals","footwear","CB",1,400,"always",
    "The ones you can walk miles in and get wet — Khao Sok, the piers, Krabi.",True)
 it("sliders","Sliders","footwear","CB",1,280,"always","Beach, pool, hotel bathrooms.")
-it("smart-shoes","Smart shoes — closed, dark — TO GET","footwear","CB",1,600,"buy",
-   "Not on your list and you need them. Vertigo on 11 Jan requires long trousers AND closed non-athletic shoes, enforced at the ground-floor lift lobby. Blue Elephant is the same. Nice trainers will not get you in.",True)
 
 # ───────────────────────────── CLOTHING ─────────────────────────────
 it("shirts-nice","Nice shirts","clothing","CB",7,1400,"always","Dinners, Christmas, Bangkok, and sun cover that still reads as clothing.")
 it("tees","T-shirts","clothing","CB",10,1500,"always","")
 it("shorts","Shorts","clothing","CB",5,1000,"always","")
 it("trousers","Trousers","clothing","CB",1,450,"always",
-   "One pair doing four jobs: Vertigo, Blue Elephant, the Grand Palace dress code (knees covered) and the cold landing on the 24th. A second pair is cheap insurance.",True)
+   "One pair doing four jobs: Vertigo and Blue Elephant (long trousers are the hard requirement), the Grand Palace dress code, and the cold landing on the 24th. If they get soaked on the 10th you have no backup.",True)
 it("swim","Swim shorts","clothing","CB",2,200,"always","Two, so one is always dry.",True)
 it("boxers","Boxers","clothing","CB",8,270,"always","")
 it("socks-white","White socks","clothing","CB",8,320,"always","")
