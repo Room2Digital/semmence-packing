@@ -442,7 +442,7 @@ function toggleDay(id){const s=STATE[id]||(STATE[id]={});s.packed=!s.packed;
   store.set("pack:state",STATE);push(id);render()}
 
 /* ---------- legs ---------- */
-const BAGFULL={L1:"Suitcase 1",L2:"Suitcase 2",CB:"Cabin bag",BP:"Backpack",SL:"Sling bag"};
+const BAGFULL={L1:"Into the cases",L2:"Suitcase 2",CB:"Cabin bag",BP:"Backpack",SL:"Sling bag"};
 function planList(key,arr,l){
   if(!arr||!arr.length)return"";
   const id=b=>"plan:"+l.id+":"+key+":"+b;
@@ -462,7 +462,7 @@ function planHTML(l){
   return `<div class="label">What goes where</div>
     ${added?`<div class="alert info"><b>${added} things I'd add</b>
       <p>Marked below. The rest is your plan as you gave it.</p></div>`:""}
-    ${planList("worn",p.worn,l)}${planList("SL",p.SL,l)}${planList("BP",p.BP,l)}${planList("CB",p.CB,l)}`;
+    ${planList("worn",p.worn,l)}${planList("SL",p.SL,l)}${planList("BP",p.BP,l)}${planList("CB",p.CB,l)}${planList("L1",p.L1,l)}`;
 }
 function vLegs(){
   if(OPENLEG){
