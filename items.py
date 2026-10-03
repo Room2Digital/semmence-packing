@@ -50,7 +50,11 @@ it("mba","MacBook Air","tech","CB",1,1240,"store",
    "You work from Perth and stop in Thailand. Into the stored case at the Phuket repack — it does not need to see Samui or the lake.",True)
 it("dongle","USB-C dongle","tech","CB",1,40,"store","Stores with the Air.")
 it("mouse","Mouse","tech","CB",1,80,"store","Seven weeks of work earns it. Stores with the Air.")
-it("hdmi","HDMI cable","tech","CB",1,90,"store","Hotel TVs and the Switch. Stores at Phuket.")
+it("hdmi","HDMI cable","tech","CB",1,90,"store","General purpose — hotel TVs, the MacBook. Stores at Phuket.")
+it("hdmi-switch","Nintendo Switch HDMI cable","tech","CB",1,80,"always",
+   "Stays with the Switch. Theatre Residence, Hansar and Krabi La Playa all have TVs.")
+it("ps5-pad","PS5 controller","tech","CB",1,280,"always",
+   "For Remote Play. Worth knowing: Remote Play needs a live connection back to the PS5 at home, so aircraft wifi will not carry it — Qatar's is nowhere near the bandwidth or latency it wants. It does pair natively with the iPad Air though, which is the version of this that actually works at 38,000 feet.")
 it("switch","Nintendo Switch","tech","CB",1,400,"always","Long transits and the Khao Sok evenings.")
 it("charger-mac","MacBook charger — high wattage","tech","CB",1,300,"store",
    "Check the wattage covers the Air. The fold-up 3-in-1 will not charge a laptop.",True)
