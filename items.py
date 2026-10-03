@@ -50,11 +50,11 @@ it("mba","MacBook Air","tech","CB",1,1240,"store",
 it("dongle","USB-C dongle","tech","CB",1,40,"store","Stores with the Air.")
 it("mouse","Mouse","tech","CB",1,80,"store","Seven weeks of work earns it. Stores with the Air.")
 it("hdmi","HDMI cable","tech","CB",1,90,"store","General purpose — hotel TVs, the MacBook. Stores at Phuket.")
-it("hdmi-switch","Nintendo Switch HDMI cable","tech","CB",1,80,"always",
-   "Stays with the Switch. Theatre Residence, Hansar and Krabi La Playa all have TVs.")
-it("ps5-pad","PS5 controller","tech","CB",1,280,"always",
+it("hdmi-switch","Nintendo Switch HDMI cable","tech","L1",1,80,"store","Travels with the Switch.")
+it("ps5-pad","PS5 controller","tech","L1",1,280,"store",
    "For Remote Play. Qatar's Starlink should genuinely carry it — the bandwidth is there and satellite latency is usually workable. Worth testing on the Gatwick to Doha leg before you count on it for the 14 hours to Perth. Pairs natively with the iPad Air as the fallback.")
-it("switch","Nintendo Switch","tech","CB",1,400,"always","Long transits and the Khao Sok evenings.")
+it("switch","Nintendo Switch","tech","L1",1,400,"store",
+   "Stays in the stored cases 10–23 Jan, then into the cabin bag at Bangkok for the flight home.")
 it("charger-mac","MacBook charger — high wattage","tech","CB",1,300,"store",
    "Check the wattage covers the Air. The fold-up 3-in-1 will not charge a laptop.",True)
 it("plug-uk","Mains plug — UK","tech","CB",1,90,"always","")

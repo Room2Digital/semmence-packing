@@ -56,9 +56,9 @@ LEGS = [
           dict(n="CUBE 1 — clothing", note="5 tees, 3 shorts, 2 nice shirts, 1 trousers, 5 boxers, 3 socks, 2 swim shorts. About 4 kg."),
           dict(n="CUBE 2 — gym and footwear", note="Gym top, shorts, socks, running shoes, sandals, sliders. About 2.5 kg. Shoes in a bin bag inside the cube."),
           dict(n="CUBE 3 — kit", note="Mini towel, dry bag, laundry and bin bags, goggles, daypack, locks, spare sunglasses. About 1.5 kg."),
-          dict(n="LOOSE — Switch, PS5 pad, HDMI, Larq", note="Too awkward for a cube. Keep them together and near the top."),
+          dict(n="LOOSE — Larq bottle", note="Too awkward for a cube. Near the top with the cubes."),
           dict(n="Pack all four near the top", note="The whole point is that Bangkok is lifting, not sorting."),
-          dict(n="Genuinely staying behind", note="MacBook Air and its kit, Sony over-ears, Perth clothing surplus, old trainers, hoodie, tracksuit, large washbag, full-size suncream, large towel, driving licence, Apple Watch. About 8 kg, not seen again until the 23rd."),
+          dict(n="Genuinely staying behind", note="MacBook Air and its kit, Sony over-ears, Switch, PS5 pad, Perth clothing surplus, old trainers, hoodie, tracksuit, large washbag, full-size suncream, large towel, driving licence, Apple Watch. About 8.8 kg, not seen again until the 23rd."),
         ],
       )),
 
@@ -66,7 +66,7 @@ LEGS = [
       plan=dict(
         CB=[
           dict(n="Lift in Cube 1, Cube 2, Cube 3", note="No sorting, no decisions — you did that in Phuket."),
-          dict(n="Plus the loose tech and the Larq", note="Takes the cabin bag to about 12.7 kg. Your only bag until the 23rd."),
+          dict(n="Plus the Larq bottle", note="Takes the cabin bag to about 11.9 kg. Your only bag until the 23rd."),
         ],
         L1=[
           dict(n="Lock both cases and photograph the receipt", note="About 8 kg between them."),
@@ -77,5 +77,13 @@ LEGS = [
  dict(id="sam",    name="Koh Samui",           dates="13–17 Jan",       where="Hansar Samui Resort", bags="CB BP SL", note="Beach and resort. Light kit from here on."),
  dict(id="kha",    name="Khao Sok",            dates="17–19 Jan",       where="500 Rai Floating Resort", bags="CB BP SL", note="06:00 ferry from Lipa Noi, 2h15 by road, then in by boat. Floating raft house — limited power, properly dark, everything stays damp. Check-out 09:30 on the 19th."),
  dict(id="kra",    name="Ao Nang, Krabi",      dates="19–23 Jan",       where="Krabi La Playa Resort", bags="CB BP SL", note="Longtails to the beaches soak everything. Free cancellation ended 4 Jan — already paid."),
- dict(id="ret",    name="Collect and fly home", dates="23–24 Jan",      where="KBV→BKK→DOH→LHR", bags="L1 L2 CB BP SL", note="TG246 lands 14:10, QR835 departs 18:55 — 4h45 to clear arrivals, collect both cases from Smilelugg on B Floor (ref 14XIWBX4) and re-check. The counter is landside, so you have to come out first. Lands Heathrow 06:35 on the 24th, in January — have something warm reachable."),
+ dict(id="ret",    name="Collect and fly home", dates="23–24 Jan",      where="KBV→BKK→DOH→LHR", bags="L1 L2 CB BP SL", note="TG246 lands 14:10, QR835 departs 18:55 — 4h45 to clear arrivals, collect both cases from Smilelugg on B Floor (ref 14XIWBX4) and re-check. The counter is landside, so you come out first. Lands Heathrow 06:35 on the 24th, in January.",
+      plan=dict(
+        CB=[
+          dict(n="Switch, PS5 pad and HDMI out of the cases", note="Thirteen hours Bangkok to Doha to London. This is what they are for."),
+          dict(n="Sony over-ears back out too", note="Same reason. They have been in storage since the 10th."),
+          dict(n="Hoodie and tracksuit within reach", note="Heathrow at 06:35 in January, straight off a plane from 30°C."),
+        ],
+        L1=[dict(n="Re-check both cases to London", note="Qatar allows 40 kg across any number of bags, so weight is not a concern here.")],
+      )),
 ]
