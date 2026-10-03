@@ -25,7 +25,6 @@ it("insurance","Travel insurance — policy and 24hr number","docs","SL",1,10,"a
 it("cards","Bank cards — two providers","docs","SL",2,20,"always",
    "Tracker card in the wallet. Split across two bags so one loss isn't total.",True)
 it("cash-gbp","Cash — GBP float","docs","SL",1,20,"always","Gatwick, and the taxi home on the 24th.")
-it("cash-aud","Cash — AUD","docs","SL",1,20,"buy","Withdraw on arrival. Perth is near-cashless but markets aren't.")
 it("cash-thb","Cash — 50,000 THB","docs","SL",1,120,"always",
    "About GBP 1,150. Well under Thailand's declaration threshold, which is USD 20,000 equivalent, so nothing to declare. Split it: some in the sling, some in a case, some in the hotel safe — do not carry the lot in one place for 67 days. It funds the ferries, longtails, Khao Sok and the 500 Rai extras, which is where cards stop working.",True)
 it("flights-off","All 8 flight confirmations — offline","docs","SL",1,0,"always",

@@ -29,9 +29,15 @@ SHOPPING = [
              "Thailand is paid-for and you won't need these there."),
    dict(name="Reusable shopping bag",
         note="Supermarkets charge for bags and you're here seven weeks."),
+   dict(name="Milk", note="First shop. The Sebel has a kitchen."),
+   dict(name="Eggs", note=""),
    dict(name="Breakfast and kitchen basics",
-        note="You have an apartment at the Sebel until 18 Dec — coffee, milk, cereal, "
-             "whatever stops you buying breakfast out every day."),
+        note="Coffee, cereal, bread — whatever stops you buying breakfast out every day "
+             "for four weeks."),
+   dict(name="Gym membership or day passes", crit=True,
+        note="You're carrying gym kit for all 67 days but nothing is arranged. Seven weeks "
+             "is long enough that a casual membership beats day passes — sort it in the first "
+             "week rather than drifting."),
    dict(name="Insect repellent, if yours is mild",
         note="Perth doesn't need much. Buy the serious DEET in Thailand instead, where it's "
              "stronger and cheaper."),

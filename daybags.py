@@ -56,4 +56,33 @@ DAYBAGS = [
         note="Saved offline. Show the barcode to the crew at the vessel."),
   ],
  ),
+,
+ dict(
+  id="cricket",
+  name="BBL at Optus Stadium",
+  date="2026-12-26",
+  dates="Sat 26 Dec",
+  bag="Sling bag only",
+  where="Perth Scorchers v Melbourne Stars",
+  note=("18:15 to 22:15, Boxing Day. Four tickets at A$74 each, bought through Ticketmaster — "
+        "they live in the Ticketmaster app, so have it installed and logged in before you go."),
+  warn=("Bag rules are enforced: nothing larger than 40 x 30 cm, and some events ban backpacks "
+        "entirely. Take the sling, not the daypack. A sealed or empty water bottle is fine, "
+        "glass and cans are not."),
+  items=[
+   dict(name="Tickets in the Ticketmaster app", ref=None, g=0, crit=True,
+        note="Installed, logged in and tickets downloaded before you leave — stadium wifi at "
+             "a full house is not something to rely on."),
+   dict(name="Sling bag, not the daypack", ref="daypack", g=0, crit=True,
+        note="Under 40 x 30 cm. Backpacks are refused at some events."),
+   dict(name="Hat", ref="hats", g=100, crit=True, note="A 18:15 start in December still has hours of sun."),
+   dict(name="Suncream", ref="suncream-tr", g=80, crit=True),
+   dict(name="Sunglasses", ref="sunglasses", g=40),
+   dict(name="Water bottle — empty or sealed", ref="larq", g=500,
+        note="Allowed either empty or factory-sealed. Fill it inside."),
+   dict(name="Card", ref="cards", g=20, note="The stadium is cashless."),
+   dict(name="Layer for later", ref="hoodie", g=520,
+        note="Finishes at 22:15. Perth drops more than people expect after dark."),
+  ],
+ ),
 ]
