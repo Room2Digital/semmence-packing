@@ -10,4 +10,7 @@ BAGS = [
  dict(id="CB", name="Cabin bag",  img="img/bag-CB.jpg", airtag=1),
  dict(id="BP", name="Backpack",   img="img/bag-BP.jpg", airtag=1),
  dict(id="SL", name="Sling",      img="img/bag-SL.jpg", airtag=1),
+ # Not a bag. Things that travel on your body, so they never count against a
+ # cabin allowance and never need finding at a bag drop.
+ dict(id="WORN", name="Worn"),
 ]

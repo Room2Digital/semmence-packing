@@ -303,8 +303,9 @@ let STATE=store.get("pack:state",{});
 let TAB=["bags","legs","all"].includes(store.get("pack:tab","bags"))?store.get("pack:tab","bags"):"bags", OPEN=store.get("pack:openbag",null),
     OPENLEG=null, OPENBAGLEG=null, OPENDAY=null, OPENSHOP=null, Q="", STALE=false;
 
-const BAGCOL={L1:"var(--blue)",L2:"var(--green)",CB:"var(--violet)",BP:"var(--orange)",SL:"var(--pink)"};
-const BAGICON={L1:"🧳",L2:"👟",CB:"🎒",BP:"🪢",SL:"📱"};
+const BAGCOL={L1:"var(--blue)",L2:"var(--green)",CB:"var(--violet)",BP:"var(--orange)",SL:"var(--pink)",
+               WORN:"var(--violet)",worn:"var(--violet)"};
+const BAGICON={L1:"🧳",L2:"👟",CB:"🎒",BP:"🪢",SL:"📱",WORN:"👕",worn:"👕"};
 const CATICON={docs:"📄",tech:"🔌",toiletries:"🧴",health:"💊",clothing:"👕",footwear:"👟",
                kit:"🧰",flight:"✈️",added:"✏️"};
 
@@ -409,7 +410,7 @@ function vBags(){
       Jetstar is fine — the cabin bag goes in the hold there against your prepaid 40 kg.
       It's the Phuket to Bangkok hop that's exposed. Wear the trainers and the heaviest layers,
       and keep the dense things in the suitcases that get checked.</p></div>`:""}
-    <div class="sg-head"><h2>Your five bags</h2><span class="n">tap to open</span></div>
+    <div class="sg-head"><h2>Your bags</h2><span class="n">tap to open</span></div>
     <div class="baggrid">
     ${BAGS.map(b=>{const s=bagStats(b.id);const pc=s.n?Math.round(s.done/s.n*100):0;
       return `<button class="bagcard" style="--bc:${BAGCOL[b.id]||"var(--blue)"}"
@@ -420,7 +421,7 @@ function vBags(){
            :`<span class="bagic">${BAGICON[b.id]||"🧳"}</span>`}
           <span style="flex:1;min-width:0">
             <span class="bagname" style="display:block">${esc(b.name)}</span>
-            <span class="bagmeta">${s.n} items · ${kg(s.g)}</span>
+            <span class="bagmeta">${s.n} item${s.n===1?"":"s"} · ${kg(s.g)}</span>
           </span>
           <span class="bagpill${pc===100&&s.n?" done":""}">${s.done}/${s.n}</span>
         </div>

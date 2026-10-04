@@ -61,7 +61,7 @@ LEGS = [
                 P("Driving licence, physical card", "Needed for the Avis hire car on 29 Dec. Photos and photocopies are refused."),
                 P("Bank cards, two providers", "Split so one loss is not total."),
                 P("Cash — GBP float, THB 25,000, AUD 200", "Ref STM30429677. Split the baht between here and a case — not 25,000 in one pocket. Nothing to declare at either end."),
-                P("Phone, Apple Watch, AirPods Pro"),
+                P("Phone and AirPods Pro"),
                 P("Power bank, small", "Cabin only, never checked."),
                 P("Global SIM — 2 months", "Already organised."),
                 P("Sunglasses — daily pair", "The other four pairs are in a case in Suitcase 1."),
@@ -70,7 +70,7 @@ LEGS = [
                 P("Offline documents — TDAC, Australian ETA, insurance, all 8 flights, all hotels, JQ71 and TG206 baggage receipts, Smilelugg 14XIWBX4, Bangkok taxi 911245279, apps page",
                   "Everything digital and saved offline. Phuket and Khao Sok have patchy signal."),
             ],
-                  ids=["passport","licence","cards","cash-gbp","cash-thb","cash-aud","phone","watch",
+                  ids=["passport","licence","cards","cash-gbp","cash-thb","cash-aud","phone",
                     "airpods","brick-sm","esim","sunglasses-daily","snacks","notepad","tdac","eta-aus",
                     "insurance","flights-off","hotels-off","bag-conf","storage-receipt","taxi-conf","apps"]),
 
@@ -135,11 +135,12 @@ LEGS = [
                     "locks","scales","cubes","daypack","laundry-bag","binbags","drybag","goggles"]),
 
             B("worn", "worn", [
+                P("Apple Watch", "On your wrist on every leg. It never goes in a bag."),
                 P("Nice trainers", "Wear the bulkiest footwear rather than packing it."),
                 P("T-shirt and light trousers", "Qatar hand you pyjamas, so do not overthink this."),
                 P("Qatar pyjamas — nothing to pack", "Given to you on board and they do not take them back, so you have them from the 19th. That is your sleepwear for the whole trip."),
             ],
-                  ids=["trainers-nice","pyjamas"]),
+                  ids=["trainers-nice","pyjamas","watch"]),
         ],
     ),
     dict(
@@ -175,7 +176,7 @@ LEGS = [
             ]),
             B("L1", "checked", [P("Cubes 1, 2 and 3 near the top", "You open this case once, in Phuket, and you want the cubes to be the first thing you see.")]),
             B("L2", "checked", [P("Everything else"), P("The Perth surplus", "Whatever you bought and are keeping.")]),
-            B("worn", "worn", [P("Trainers and a layer", "The plane is cold, Phuket is not.")]),
+            B("worn", "worn", [P("Apple Watch"), P("Trainers and a layer", "The plane is cold, Phuket is not.")]),
         ],
     ),
     dict(
@@ -200,6 +201,7 @@ LEGS = [
             P("Photograph the Smilelugg receipt", "Your taxi waits 45 minutes, so this is not a rush."),
         ],
         bags=[
+            B("worn", "worn", [P("Apple Watch")]),
             B("SL", "cabin", [P("As always", "Passport, phone, cards, cash, sunglasses, prescriptions, liquids.")]),
             B("BP", "cabin", [P("Your personal item", "Thai allow a handbag under 1.5 kg alongside the one cabin piece. Keep it genuinely small today.")]),
             B("CB", "cabin", [
@@ -242,6 +244,7 @@ LEGS = [
             P("Dry bag ready for Khao Sok", "Everything after Samui is boats — the Donsak ferry, then an open longtail onto the lake and back off it. Pack the dry bag once and leave it packed; there is no repack between Samui, Khao Sok and Krabi."),
         ],
         bags=[
+            B("worn", "worn", [P("Apple Watch")]),
             B("SL", "cabin", [P("As always")]),
             B("BP", "cabin", [P("Day kit", "Dry bag, mini towel, daily sunglasses, suncream, Larq."), P("iPad and chargers", "The cabin bag is in the hold, so anything you want on the way travels here.")]),
             B("CB", "checked", [P("Packed as it is", "5 kg cabin is not worth fighting. It goes in the hold and comes back to you at Samui.")]),
@@ -266,6 +269,7 @@ LEGS = [
             P("Keep the Smilelugg ref to hand", "14XIWBX4. The counter is landside on B Floor, so you clear arrivals first."),
         ],
         bags=[
+            B("worn", "worn", [P("Apple Watch")]),
             B("SL", "cabin", [P("As always")]),
             B("BP", "cabin", [P("iPad, chargers, Larq")]),
             B("CB", "checked", [P("In the hold", "One checked bag is included and you have a 4h45 connection to use.")]),
@@ -306,7 +310,7 @@ LEGS = [
             ]),
             B("L1", "checked", [P("Re-checked to London", "Collected from storage, repacked, straight back in the hold.")]),
             B("L2", "checked", [P("Re-checked to London", "Everything you are not using on the flight.")]),
-            B("worn", "worn", [P("Hoodie and tracksuit bottoms", "Out of the case before you re-check, not after you land.")]),
+            B("worn", "worn", [P("Apple Watch"), P("Hoodie and tracksuit bottoms", "Out of the case before you re-check, not after you land.")]),
         ],
     ),
 ]

@@ -47,7 +47,7 @@ it("taxi-conf","Bangkok taxi — booking 911245279","docs","SL",1,0,"always",
 
 # ───────────────────────────── TECH ─────────────────────────────
 it("phone","Phone","tech","SL",1,220,"always","",True)
-it("watch","Apple Watch","tech","SL",1,50,"always","")
+it("watch","Apple Watch","tech","WORN",1,50,"always","")
 it("airpods","AirPods Pro","tech","SL",1,60,"always","Your everyday set once the over-ears are parked.")
 it("sony","Sony over-ear headphones","tech","SL",1,250,"store",
    "Earn their place over the 26 hours out. Into the stored case at the Phuket repack, collected on the 23rd for the flight home.")
