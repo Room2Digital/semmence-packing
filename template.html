@@ -196,6 +196,7 @@ h2{font-size:17px;font-weight:750;letter-spacing:-.015em}
   display:flex;align-items:center;gap:6px;position:relative;z-index:1}
 .atag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--good,#5dd692);
   box-shadow:0 0 0 3px color-mix(in srgb,var(--good,#5dd692) 22%,transparent)}
+.subnote{font-size:12px;color:var(--ink-2);line-height:1.5;margin:-4px 0 8px}
 .covered{margin-top:11px;font-size:12px;color:#7fe0ad;text-align:center;
   background:rgba(93,214,146,.1);border:1px solid rgba(93,214,146,.26);
   border-radius:10px;padding:8px 10px}
@@ -535,16 +536,48 @@ const MODE={
 const bagMeta=id=>id==="worn"
   ? {id:"worn",name:"Worn",note:"On you, not in a bag.",img:""}
   : (BAGS.find(b=>b.id===id)||{id:id,name:id,note:"",img:""});
-const legBagKey=(l,b,n)=>"plan:"+l.id+":"+b.bag+":"+n;
-const legBagDone=(l,b)=>b.items.filter((x,n)=>{const k=legBagKey(l,b,n);return STATE[k]&&STATE[k].packed}).length;
+const legBagKey=(l,b,n,k)=>"plan:"+l.id+":"+b.bag+":"+n+(k==null?"":":"+k);
+/* A container line counts as its contents, not as one tick — otherwise a
+   washbag with twelve things in it would be a single box to check. */
+const legBagRows=b=>b.items.reduce((a,x)=>a+(x.inside&&x.inside.length?x.inside.length:1),0);
+/* Estimated weight. If the bag lists the items.py ids it holds on this leg,
+   that is the honest number. Otherwise fall back to whatever items.py says
+   lives in this bag, minus anything sitting in storage for this leg. */
+function legBagG(l,b){
+  if(b.mode==="left")return 0;
+  if(b.ids&&b.ids.length)
+    return b.ids.reduce((a,id)=>{const i=ITEMS.find(x=>x.id===id);return a+(i?(i.g||0):0)},0);
+  return ITEMS.filter(i=>bagOf(i)===b.bag&&!(l.stored&&i.fate==="store"))
+              .reduce((a,i)=>a+(i.g||0),0);
+}
+const legKg=g=>g>=1000?(g/1000).toFixed(1)+" kg":g+" g";
+const legExact=b=>!!(b.ids&&b.ids.length)||b.mode==="left";
+function legBagDone(l,b){
+  let d=0;
+  b.items.forEach((x,n)=>{
+    if(x.inside&&x.inside.length)
+      x.inside.forEach((y,k)=>{const q=legBagKey(l,b,n,k);if(STATE[q]&&STATE[q].packed)d++});
+    else{const q=legBagKey(l,b,n);if(STATE[q]&&STATE[q].packed)d++}
+  });
+  return d;
+}
+function legItemHTML(l,b,x,n,k){
+  const key=legBagKey(l,b,n,k),on=!!(STATE[key]&&STATE[key].packed);
+  return `<div class="row${on?" done":""}" style="padding:10px 0">
+    <button class="tick${on?" on":""}" onclick="toggleDay('${key}')" aria-label="packed">
+      <svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg></button>
+    <div class="rbody"><div class="rname">${esc(x.n)}
+      ${x.add?'<span class="pill buy">I\'d add this</span>':""}</div>
+      ${x.note?`<div class="rnote">${esc(x.note)}</div>`:""}</div></div>`;
+}
 function legProgress(l){
   let t=0,d=0;
-  (l.bags||[]).forEach(b=>{if(b.mode==="left")return;t+=b.items.length;d+=legBagDone(l,b)});
+  (l.bags||[]).forEach(b=>{if(b.mode==="left")return;t+=legBagRows(b);d+=legBagDone(l,b)});
   (l.do||[]).forEach((x,n)=>{t++;const k="do:"+l.id+":"+n;if(STATE[k]&&STATE[k].packed)d++});
   return {t:t,d:d,pc:t?Math.round(d/t*100):0};
 }
 function vLegBag(l,b){
-  const m=MODE[b.mode]||MODE.with, meta=bagMeta(b.bag), done=legBagDone(l,b);
+  const m=MODE[b.mode]||MODE.with, meta=bagMeta(b.bag), done=legBagDone(l,b), rows=legBagRows(b), g=legBagG(l,b);
   return `<button class="back" onclick="OPENBAGLEG=null;render()">‹ ${esc(l.name)}</button>
     <div class="sec">
       <div class="sg-head"><h2>${esc(meta.name)}</h2><span class="n">${esc(l.dates)}</span></div>
@@ -555,33 +588,35 @@ function vLegBag(l,b){
            :`<span class="bagic">${BAGICON[b.bag]||"👕"}</span>`}
           <span style="flex:1;min-width:0">
             <span class="sash ${m.cls}">${m.label}</span>
-            <span class="bagmeta" style="display:block;margin-top:5px">${done} of ${b.items.length} packed</span>
+            <span class="bagmeta" style="display:block;margin-top:5px">${done} of ${rows} packed${g?" · "+(legExact(b)?"about ":"roughly ~")+legKg(g):""}</span>
           </span>
         </div>
-        <div class="fill" style="--bc:${BAGCOL[b.bag]||"var(--muted)"}"><i style="width:${b.items.length?done/b.items.length*100:0}%"></i></div>
+        <div class="fill" style="--bc:${BAGCOL[b.bag]||"var(--muted)"}"><i style="width:${rows?done/rows*100:0}%"></i></div>
       </div>
       <div class="card">
-      ${b.items.map((x,n)=>{const k=legBagKey(l,b,n),on=!!(STATE[k]&&STATE[k].packed);
-        return `<div class="row${on?" done":""}" style="padding:10px 0">
-          <button class="tick${on?" on":""}" onclick="toggleDay('${k}')" aria-label="packed">
-            <svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg></button>
-          <div class="rbody"><div class="rname">${esc(x.n)}
-            ${x.add?'<span class="pill buy">I\'d add this</span>':""}</div>
-            ${x.note?`<div class="rnote">${esc(x.note)}</div>`:""}</div></div>`}).join("")}
+      ${b.items.filter(x=>!x.inside||!x.inside.length).map((x,n)=>legItemHTML(l,b,x,b.items.indexOf(x))).join("")}
       </div>
+      ${b.items.map((x,n)=>{
+        if(!x.inside||!x.inside.length)return "";
+        const done=x.inside.filter((y,k)=>{const q=legBagKey(l,b,n,k);return STATE[q]&&STATE[q].packed}).length;
+        return `<div class="label" style="margin-top:16px">${esc(x.n)}
+            <span class="inside">${done}/${x.inside.length}</span></div>
+          ${x.note?`<div class="subnote">${esc(x.note)}</div>`:""}
+          <div class="card">${x.inside.map((y,k)=>legItemHTML(l,b,y,n,k)).join("")}</div>`;
+      }).join("")}
     </div>`;
 }
 function vLeg(l){
   const pr=legProgress(l);
   const tiles=(l.bags||[]).map((b,i)=>{
-    const m=MODE[b.mode]||MODE.with, meta=bagMeta(b.bag), done=legBagDone(l,b), n=b.items.length;
+    const m=MODE[b.mode]||MODE.with, meta=bagMeta(b.bag), done=legBagDone(l,b), n=legBagRows(b), g=legBagG(l,b);
     return `<button class="btile ${m.cls}${b.mode==="left"?" off":""}" style="--bc:${BAGCOL[b.bag]||"var(--muted)"}"
       onclick="OPENBAGLEG=${i};render()">
       <span class="sash ${m.cls}">${m.label}</span>
       <span class="btile-ph">${meta.img?`<img src="${esc(meta.img)}" alt="" loading="lazy"
         onerror="this.closest('.btile-ph').classList.add('noimg')">`:`<i>${BAGICON[b.bag]||"👕"}</i>`}</span>
       <span class="btile-n">${esc(meta.name)}</span>
-      <span class="btile-m">${b.mode==="left"?"Left behind":done+" / "+n}${meta.airtag?" · AirTag":""}</span>
+      <span class="btile-m">${b.mode==="left"?"Left behind":done+" / "+n}${g?" · "+(legExact(b)?"":"~")+legKg(g):""}</span>
       ${b.mode==="left"?"":`<span class="btile-f"><i style="width:${n?done/n*100:0}%"></i></span>`}
     </button>`}).join("");
   return `<button class="back" onclick="OPENLEG=null;render()">‹ All legs</button>
@@ -593,12 +628,16 @@ function vLeg(l){
         <div class="note">${esc(l.note)}</div>
         <div class="bagtop" style="margin-top:13px">
           <span style="flex:1"><span class="bagname" style="display:block">${pr.d} of ${pr.t} done</span>
-          <span class="bagmeta">Tick as you pack</span></span>
+          <span class="bagmeta">Tick as you pack${(()=>{const t=(l.bags||[]).reduce((a,b)=>a+legBagG(l,b),0);
+            return t?" · about "+legKg(t)+" all in":""})()}</span></span>
           <span class="bagpill${pr.pc===100&&pr.t?" done":""}">${pr.pc}%</span></div>
         <div class="fill" style="--bc:var(--blue)"><i style="width:${pr.pc}%"></i></div>
       </div>
       <div class="label">The bags</div>
       <div class="btiles">${tiles}</div>
+      ${(l.bags||[]).some(b=>!legExact(b))
+        ? '<div class="alert info"><b>Weights here are rough</b><p>This leg has not been worked through item by item yet, so the figures come from where things live by default. The London to Perth leg is the accurate one.</p></div>'
+        : ""}
       ${(()=>{const ids=new Set();(l.bags||[]).forEach(b=>(b.ids||[]).forEach(i=>ids.add(i)));
         if(!ids.size)return"";
         const missing=ITEMS.filter(i=>!ids.has(i.id));
