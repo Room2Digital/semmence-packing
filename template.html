@@ -161,6 +161,16 @@ h2{font-size:17px;font-weight:750;letter-spacing:-.015em}
   background:var(--surface-2);color:var(--baseline);border:1px solid var(--grid)}
 .chip.has{background:rgba(74,158,255,.15);color:#8cc4ff;border-color:rgba(74,158,255,.32)}
 .legvia{font-size:11.5px;color:var(--muted);margin-top:3px;font-variant-numeric:tabular-nums}
+/* full-width leg picker at the top of the packing page */
+.legpick{position:relative;margin:0 0 16px}
+.legpick select{appearance:none;-webkit-appearance:none;width:100%;
+  background:var(--surface);color:var(--ink);border:1px solid var(--ring);border-radius:13px;
+  padding:15px 44px 15px 16px;font:inherit;font-size:15px;font-weight:650;letter-spacing:-.01em;
+  cursor:pointer}
+.legpick select:focus{outline:none;border-color:var(--blue)}
+.legpick svg{position:absolute;right:15px;top:50%;transform:translateY(-50%);
+  width:18px;height:18px;fill:none;stroke:var(--muted);stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
 .legmodes{display:flex;gap:5px;margin-top:11px;flex-wrap:wrap}
 
 /* ---------- sashes: cabin / checked / with you / worn ---------- */
@@ -285,8 +295,7 @@ h2{font-size:17px;font-weight:750;letter-spacing:-.015em}
 <main class="wrap" id="view"></main>
 
 <nav id="tabs">
-  <button data-t="bags"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span>Bags</span></button>
-  <button data-t="legs"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 4 3 14 0 18M12 3c-3 4-3 14 0 18"/></svg><span>Legs</span></button>
+  <button data-t="bags"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span>Packing</span></button>
   <button data-t="all"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg><span>All</span></button>
 </nav>
 
@@ -301,8 +310,8 @@ const store={get(k,d){try{const v=localStorage.getItem(k);return v===null?d:JSON
 const BAGS=DATA.bags, LEGS=DATA.legs, DAYBAGS=DATA.daybags||[], SHOPPING=DATA.shopping||[];
 let ITEMS=DATA.items.slice().concat(store.get("pack:custom",[]));
 let STATE=store.get("pack:state",{});
-let TAB=["bags","legs","all"].includes(store.get("pack:tab","bags"))?store.get("pack:tab","bags"):"bags", OPEN=store.get("pack:openbag",null),
-    OPENLEG=null, OPENBAGLEG=null, OPENDAY=null, OPENSHOP=null, Q="", STALE=false;
+let TAB=["bags","all"].includes(store.get("pack:tab","bags"))?store.get("pack:tab","bags"):"bags",
+    LEG=store.get("pack:leg",null), OPENBAGLEG=null, OPENDAY=null, OPENSHOP=null, Q="", STALE=false;
 
 const BAGCOL={L1:"var(--blue)",L2:"var(--green)",CB:"var(--violet)",BP:"var(--orange)",SL:"var(--pink)",
                WORN:"var(--violet)",worn:"var(--violet)"};
@@ -400,36 +409,24 @@ function rowHTML(i,extra){
 }
 
 /* ---------- bags ---------- */
+function curLeg(){
+  return LEGS.find(x=>x.id===LEG)||LEGS[0];
+}
+function setLeg(id){
+  (LEG=id,store.set("pack:leg",id),OPENBAGLEG=null,window.scrollTo(0,0),render());
+}
 function vBags(){
-  if(OPEN)return vBagDetail();
-  const cabin=(bagStats("BP").g+bagStats("SL").g)/1000;
-  const onward=ITEMS.filter(i=>i.fate!=="store").reduce((a,i)=>a+grams(i),0)/1000;
-  return `<div class="sec">
-    ${onward>7?`<div class="alert"><b>Cabin bag is over Thai's limit</b>
-      <p>Your onward kit is about ${onward.toFixed(1)} kg across the cabin bag, backpack and sling.
-      Thai Airways Economy allows <b>one cabin piece at 7 kg</b> on TG206, plus a handbag under 1.5 kg.
-      Jetstar is fine — the cabin bag goes in the hold there against your prepaid 40 kg.
-      It's the Phuket to Bangkok hop that's exposed. Wear the trainers and the heaviest layers,
-      and keep the dense things in the suitcases that get checked.</p></div>`:""}
-    <div class="sg-head"><h2>Your bags</h2><span class="n">tap to open</span></div>
-    <div class="baggrid">
-    ${BAGS.map(b=>{const s=bagStats(b.id);const pc=s.n?Math.round(s.done/s.n*100):0;
-      return `<button class="bagcard" style="--bc:${BAGCOL[b.id]||"var(--blue)"}"
-        onclick="OPEN='${b.id}';store.set('pack:openbag','${b.id}');render()">
-        <div class="bagtop">
-          ${b.img?`<span class="bagph"><img src="${esc(b.img)}" alt="" loading="lazy"
-            onerror="this.closest('.bagph').classList.add('noimg')"></span>`
-           :`<span class="bagic">${BAGICON[b.id]||"🧳"}</span>`}
-          <span style="flex:1;min-width:0">
-            <span class="bagname" style="display:block">${esc(b.name)}</span>
-            <span class="bagmeta">${s.n} item${s.n===1?"":"s"} · ${kg(s.g)}</span>
-          </span>
-          <span class="bagpill${pc===100&&s.n?" done":""}">${s.done}/${s.n}</span>
-        </div>
-        <div class="fill"><i style="width:${pc}%"></i></div>
-        ${b.airtag?'<div class="atag">AirTag attached</div>':""}</button>`}).join("")}
-    </div>
-
+  const l=curLeg();
+  if(!l)return '<div class="center">No legs defined.</div>';
+  if(OPENBAGLEG!==null&&l.bags&&l.bags[OPENBAGLEG])return vLegBag(l,l.bags[OPENBAGLEG]);
+  return `<div class="legpick">
+      <select onchange="setLeg(this.value)" aria-label="Which leg">
+        ${LEGS.map(x=>`<option value="${x.id}"${x.id===l.id?" selected":""}>${esc(x.name)} · ${esc(x.dates)}</option>`).join("")}
+      </select>
+      <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+    </div>`
+    + vLeg(l)
+    + `<div class="sec">
     ${DAYBAGS.length?`<div class="label">Day bags</div>
       ${DAYBAGS.map(d=>`<button class="daycard" onclick="OPENDAY='${d.id}';render()">
         <div class="dayhead"><span>
@@ -450,75 +447,6 @@ function vBags(){
       <div class="colsub">It saves to your list and syncs.</div>
       <div class="addrow"><input id="newitem" placeholder="e.g. snorkel mask"><button onclick="addItem()">Add</button></div></div>
   </div>`;
-}
-
-function vBagDetail(){
-  const b=BAGS.find(x=>x.id===OPEN)||BAGS[0];
-  const in_=ITEMS.filter(i=>bagOf(i)===b.id), s=bagStats(b.id);
-  const pc=s.n?Math.round(s.done/s.n*100):0;
-  const cats={},nst=nestedIds(in_);
-  in_.forEach(i=>{if(!nst.has(i.id))(cats[i.cat]=cats[i.cat]||[]).push(i)});
-  return `<button class="back" onclick="OPEN=null;store.set('pack:openbag',null);render()">‹ All bags</button>
-    <div class="sec">
-      <div class="card" style="--bc:${BAGCOL[b.id]};margin-bottom:16px">
-        <div class="bagtop"><span class="bagic" style="--bc:${BAGCOL[b.id]}">${BAGICON[b.id]||"🧳"}</span>
-          <span style="flex:1"><span class="bagname" style="display:block">${esc(b.name)}</span>
-          <span class="bagmeta">${s.done} of ${s.n} packed · ${kg(s.g)}</span></span></div>
-        <div class="fill" style="--bc:${BAGCOL[b.id]}"><i style="width:${pc}%"></i></div>
-        ${b.airtag?'<div class="atag">AirTag attached</div>':""}</div>
-      ${Object.keys(cats).map(c=>`<div class="catline">${CATICON[c]||"•"} ${esc(c)}<span></span></div>`+
-        listHTML(cats[c],in_)).join("")}
-      ${in_.length?"":'<div class="center">Nothing assigned to this bag.</div>'}</div>`;
-}
-
-function addItem(){const el=document.getElementById("newitem");const v=(el.value||"").trim();if(!v)return;
-  const item={id:"custom-"+Date.now(),name:v,cat:"added",bag:OPEN||"CB",qty:1,g:0,fate:"always",note:"",crit:false};
-  const c=store.get("pack:custom",[]);c.push(item);store.set("pack:custom",c);ITEMS.push(item);el.value="";render()}
-
-/* ---------- day bag ---------- */
-function vDayBag(){
-  const d=DAYBAGS.find(x=>x.id===OPENDAY);
-  if(!d)return(OPENDAY=null,vBags());
-  const tot=d.items.reduce((a,i)=>a+(i.g||0),0);
-  return `<button class="back" onclick="OPENDAY=null;render()">‹ Bags</button>
-    <div class="sec">
-      <div class="sg-head"><h2>${esc(d.name)}</h2><span class="n">${esc(d.dates)}</span></div>
-      <div class="card" style="margin-bottom:14px">
-        <div class="bagmeta" style="margin:0 0 8px">${esc(d.where)} · ${esc(d.bag)} · ${kg(tot)}</div>
-        <div class="note">${esc(d.note)}</div></div>
-      ${d.warn?`<div class="alert"><b>The thing to get right</b><p>${esc(d.warn)}</p></div>`:""}
-      <div class="label">What goes in</div>
-      ${d.items.map((i,n)=>{
-        const id="day:"+d.id+":"+n, on=!!(STATE[id]&&STATE[id].packed);
-        return `<div class="row${on?" done":""}">
-          <button class="tick${on?" on":""}" onclick="toggleDay('${id}')" aria-label="packed">
-            <svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg></button>
-          <div class="rbody"><div class="rname">${esc(i.name)}
-            ${i.crit?'<span class="pill crit">essential</span>':""}</div>
-            ${i.note?`<div class="rnote">${esc(i.note)}</div>`:""}</div></div>`;
-      }).join("")}
-    </div>`;
-}
-function vShop(){
-  const sh=SHOPPING.find(x=>x.id===OPENSHOP);
-  if(!sh)return(OPENSHOP=null,vBags());
-  return `<button class="back" onclick="OPENSHOP=null;render()">‹ Bags</button>
-    <div class="sec">
-      <div class="sg-head"><h2>${esc(sh.name)}</h2><span class="n">${esc(sh.when)}</span></div>
-      <div class="card" style="margin-bottom:14px">
-        <div class="bagmeta" style="margin:0 0 8px">${esc(sh.where)}</div>
-        <div class="note">${esc(sh.note)}</div></div>
-      <div class="label">Shopping list</div>
-      ${sh.items.map((i,n)=>{
-        const id="shop:"+sh.id+":"+n, on=!!(STATE[id]&&STATE[id].packed);
-        return `<div class="row${on?" done":""}">
-          <button class="tick${on?" on":""}" onclick="toggleDay('${id}')" aria-label="bought">
-            <svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg></button>
-          <div class="rbody"><div class="rname">${esc(i.name)}
-            ${i.crit?'<span class="pill crit">don\'t skip</span>':""}</div>
-            ${i.note?`<div class="rnote">${esc(i.note)}</div>`:""}</div></div>`;
-      }).join("")}
-    </div>`;
 }
 function toggleDay(id){const s=STATE[id]||(STATE[id]={});s.packed=!s.packed;
   store.set("pack:state",STATE);push(id);render()}
@@ -578,7 +506,7 @@ function legProgress(l){
 }
 function vLegBag(l,b){
   const m=MODE[b.mode]||MODE.with, meta=bagMeta(b.bag), done=legBagDone(l,b), rows=legBagRows(b), g=legBagG(l,b);
-  return `<button class="back" onclick="OPENBAGLEG=null;render()">‹ ${esc(l.name)}</button>
+  return `<button class="back" onclick="OPENBAGLEG=null;window.scrollTo(0,0);render()">‹ ${esc(l.name)}</button>
     <div class="sec">
       <div class="sg-head"><h2>${esc(meta.name)}</h2><span class="n">${esc(l.dates)}</span></div>
       <div class="card" style="--bc:${BAGCOL[b.bag]||"var(--muted)"};margin-bottom:14px">
@@ -619,9 +547,7 @@ function vLeg(l){
       <span class="btile-m">${b.mode==="left"?"Left behind":done+" / "+n}${g?" · "+(legExact(b)?"":"~")+legKg(g):""}</span>
       ${b.mode==="left"?"":`<span class="btile-f"><i style="width:${n?done/n*100:0}%"></i></span>`}
     </button>`}).join("");
-  return `<button class="back" onclick="OPENLEG=null;render()">‹ All legs</button>
-    <div class="sec">
-      <div class="sg-head"><h2>${esc(l.name)}</h2><span class="n">${esc(l.dates)}</span></div>
+  return `<div class="sec">
       <div class="legwhere" style="margin-bottom:4px">${esc(l.where)}</div>
       ${l.via?`<div class="legvia">${esc(l.via)}</div>`:""}
       <div class="card" style="margin:11px 0 14px">
@@ -654,26 +580,6 @@ function vLeg(l){
         </div>`:""}
     </div>`;
 }
-function vLegs(){
-  if(OPENLEG){
-    const l=LEGS.find(x=>x.id===OPENLEG);
-    if(!l){OPENLEG=null;return vLegs()}
-    if(OPENBAGLEG!==null&&l.bags&&l.bags[OPENBAGLEG])return vLegBag(l,l.bags[OPENBAGLEG]);
-    return vLeg(l);
-  }
-  return `<div class="sec"><div class="sg-head"><h2>The journeys</h2><span class="n">${LEGS.length} legs</span></div>
-    <div class="tl">${LEGS.map(l=>{const pr=legProgress(l);
-      return `<div class="legcard${l.key?" key":""}" onclick="OPENLEG='${l.id}';OPENBAGLEG=null;render()">
-        <div class="legtop"><div class="legname">${esc(l.name)}</div><div class="legdate">${esc(l.dates)}</div></div>
-        <div class="legwhere">${esc(l.where)}</div>
-        ${l.via?`<div class="legvia">${esc(l.via)}</div>`:""}
-        <div class="legmodes">${(l.bags||[]).filter(b=>b.mode!=="left").map(b=>{
-          const m=MODE[b.mode]||MODE.with;
-          return `<span class="chip ${m.cls}">${b.bag==="worn"?"Worn":b.bag}</span>`}).join("")}</div>
-        <div class="fill" style="--bc:var(--blue);margin-top:11px"><i style="width:${pr.pc}%"></i></div>
-      </div>`}).join("")}</div></div>`;
-}
-
 /* ---------- all ---------- */
 function vAll(){
   const q=Q.toLowerCase();
@@ -692,12 +598,12 @@ function render(){
   document.getElementById("view").innerHTML =
     OPENSHOP?vShop():
     OPENDAY?vDayBag():
-    TAB==="bags"?vBags():TAB==="legs"?vLegs():vAll();
+    TAB==="bags"?vBags():vAll();
   paintHead();
 }
 document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{
-  TAB=b.dataset.t;store.set("pack:tab",TAB);OPENLEG=null;OPENBAGLEG=null;OPENDAY=null;OPENSHOP=null;
-  if(TAB!=="bags")OPEN=null;window.scrollTo(0,0);render()});
+  TAB=b.dataset.t;store.set("pack:tab",TAB);OPENBAGLEG=null;OPENDAY=null;OPENSHOP=null;
+  window.scrollTo(0,0);render()});
 render();pull();
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
 </script>
