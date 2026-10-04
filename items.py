@@ -95,8 +95,8 @@ it("suncream","Suncream — full size","toiletries","L2",1,200,"always",
    "Australian suncream is the best there is and cheap. Decant 100 ml for the onward leg.",True,inbag="washbag-lg")
 it("suncream-tr","Travel suncream","toiletries","CB",1,80,"always","For the plane and the first day before you buy properly.",inbag="liquids-bag")
 it("facewash","Travel facewash","toiletries","CB",1,90,"always","",inbag="washbag-mini")
-it("moisturiser","Moisturiser","toiletries","L2",1,100,"always",
-   "Cabin bag on both long-hauls. Three sectors of dry cabin air each way.",True,inbag="washbag-lg")
+it("moisturiser","Moisturiser","toiletries","CB",1,100,"always",
+   "Cabin bag on both long-hauls. Three sectors of dry cabin air each way.",True,inbag="washbag-mini")
 it("eyecream","Eye cream","toiletries","L2",1,40,"always","",inbag="washbag-lg")
 it("sanitiser","Hand sanitiser","toiletries","CB",1,60,"always","",inbag="liquids-bag")
 it("mozzie","Mosquito spray","toiletries","L2",1,120,"always",

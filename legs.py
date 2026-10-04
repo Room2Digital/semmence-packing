@@ -87,7 +87,7 @@ LEGS = [
                        "charger-3in1","cable-ext","mouthtape","eyemask","earplugs"]),
 
             B("CB", "cabin", [
-                P("Two mini washbags", "Everything you want on you: travel facewash, mini shaving foam, electric shaver and its cable, roll-on deodorant, mini toothpaste, electric toothbrush, aftershave atomiser, plus paracetamol, Imodium and ibuprofen. Nothing else — the rest is in the large washbag in Suitcase 2."),
+                P("Two mini washbags", "Everything you want on you: travel facewash, mini shaving foam, electric shaver and its cable, roll-on deodorant, mini toothpaste, electric toothbrush, aftershave atomiser, moisturiser, plus paracetamol, Imodium and ibuprofen. Nothing else — the rest is in the large washbag in Suitcase 2."),
                 P("Clear 1L liquids bag", "Cleared twice, Gatwick and Doha. Travel suncream, hand sanitiser, lip balm and the mini shaving foam all live in it, so pull it out before you join the queue."),
                 P("Prescription medication", "Original packaging. Cabin, never the hold."),
                 P("MacBook Air, the 60W USB-C mains supply and the mouse", "You are working from Perth from 23 Nov. That one supply charges the laptop and everything else — the fold-up 3-in-1 will not."),
@@ -98,7 +98,7 @@ LEGS = [
                 P("Microfibre towel, mini"),
             ],
                   ids=["washbag-mini","etoothbrush","toothpaste-mini","facewash","deodorant","aftershave",
-                    "shaver","cable-shaver","shave-foam","paracetamol","imodium","ibuprofen",
+                    "shaver","cable-shaver","shave-foam","moisturiser","paracetamol","imodium","ibuprofen",
                     "liquids-bag","suncream-tr","sanitiser","lipbalm","prescriptions",
                     "mba","mouse","plug-uk","running","towel-sm"]),
 
@@ -119,7 +119,7 @@ LEGS = [
                     "sunglasses","trainers-old","sandals","sliders","towel-lg"]),
 
             B("L2", "checked", [
-                P("Large fold-out washbag", "Everything that is not in the mini washbags: full-size suncream, mosquito spray, moisturiser, eye cream, nail clippers, the 5 decant bottles, and the rest of the health kit — medical pouch, motion sickness tablets, antihistamine, antiseptic, plasters, rehydration sachets, athlete's foot cream."),
+                P("Large fold-out washbag", "Everything that is not in the mini washbags: full-size suncream, mosquito spray, eye cream, nail clippers, the 5 decant bottles, and the rest of the health kit — medical pouch, motion sickness tablets, antihistamine, antiseptic, plasters, rehydration sachets, athlete's foot cream."),
                 P("MacBook Pro and iPad mini", "For the Phuket handover. In the case, not the cabin bag — you are not touching them until Phuket."),
                 P("Nintendo Switch, PS5 controller, Switch HDMI cable", "Remote play on the plane home. Starlink will cover you."),
                 P("Universal travel adapter with USB-C"),
@@ -129,7 +129,7 @@ LEGS = [
                 P("2 dirty laundry bags, 5 bin bags"),
                 P("Small dry bag and swimming goggles", "Both still to buy."),
             ],
-                  ids=["washbag-lg","suncream","decant","mozzie","moisturiser","eyecream","nail",
+                  ids=["washbag-lg","suncream","decant","mozzie","eyecream","nail",
                     "medkit","motion","antihistamine","antiseptic","plasters","rehydration","athletes",
                     "mbp","ipad-mini","switch","ps5-pad","hdmi-switch","adapter-universal",
                     "locks","scales","cubes","daypack","laundry-bag","binbags","drybag","goggles"]),
