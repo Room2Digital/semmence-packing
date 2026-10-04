@@ -103,6 +103,12 @@ h2{font-size:17px;font-weight:750;letter-spacing:-.015em}
 .bagnote{font-size:12.5px;color:var(--ink-2);line-height:1.45;margin-top:11px;position:relative;z-index:1}
 
 /* ---------- item rows ---------- */
+.kids{margin:-2px 0 4px 34px;padding-left:11px;border-left:1px solid var(--grid)}
+.kids .row{padding:8px 0}
+.kids .rname{font-size:13px}
+.inside{display:inline-block;margin-left:7px;font-size:10px;font-weight:700;letter-spacing:.06em;
+  padding:2px 6px;border-radius:5px;background:var(--surface-2);color:var(--muted);
+  border:1px solid var(--grid);vertical-align:1px}
 .catline{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.16em;
   text-transform:uppercase;color:var(--muted);font-weight:700;margin:22px 0 4px}
 .catline:first-child{margin-top:4px}
@@ -348,14 +354,41 @@ const tickHTML=i=>`<button class="tick${isPacked(i)?" on":""}" onclick="toggle('
 const bagSel=i=>`<select class="bagsel" onchange="move('${i.id}',this.value)" onclick="event.stopPropagation()">`+
   BAGS.map(b=>`<option value="${b.id}"${bagOf(i)===b.id?" selected":""}>${esc(b.id)}</option>`).join("")+`</select>`;
 
-function rowHTML(i){
+/* Items with an inbag live inside a container (a washbag, the liquids bag).
+   List them indented under their parent rather than loose in the category,
+   but only while they are still in the same bag as the parent — if one gets
+   reassigned the nesting would be a lie, so it goes back to the flat list. */
+const parentOf=i=>{
+  if(!i.inbag)return null;
+  const p=ITEMS.find(x=>x.id===i.inbag);
+  return p&&bagOf(p)===bagOf(i)?p:null;
+};
+/* pool is everything on screen, so a shaver filed under tech still nests
+   under a washbag filed under toiletries. */
+function kidsOf(pool){
+  const set=new Set(pool.map(i=>i.id)),k={};
+  pool.forEach(i=>{const p=parentOf(i);if(p&&set.has(p.id))(k[p.id]=k[p.id]||[]).push(i)});
+  return k;
+}
+const nestedIds=pool=>new Set([].concat(...Object.values(kidsOf(pool))).map(i=>i.id));
+function listHTML(arr,pool){
+  const all=pool||arr,kids=kidsOf(all),nested=nestedIds(all);
+  return arr.filter(i=>!nested.has(i.id)).map(i=>{
+    const k=kids[i.id];
+    if(!k||!k.length)return rowHTML(i);
+    const done=k.filter(isPacked).length;
+    return rowHTML(i,`<span class="inside">${done}/${k.length} inside</span>`)
+      +`<div class="kids">${k.map(x=>rowHTML(x)).join("")}</div>`;
+  }).join("");
+}
+function rowHTML(i,extra){
   const tags=[];
   if(i.crit)tags.push('<span class="pill crit">essential</span>');
   if(i.fate==="store")tags.push('<span class="pill store">parks in Bangkok</span>');
   if(i.fate==="buy")tags.push('<span class="pill buy">buy en route</span>');
   if(i.fate==="handover")tags.push('<span class="pill hand">given away in Phuket</span>');
   return `<div class="row${isPacked(i)?" done":""}">${tickHTML(i)}<div class="rbody">
-    <div class="rname">${esc(i.name)}${i.qty>1?` <span class="qty">×${i.qty}</span>`:""}</div>
+    <div class="rname">${esc(i.name)}${i.qty>1?` <span class="qty">×${i.qty}</span>`:""}${extra||""}</div>
     ${i.note?`<div class="rnote">${esc(i.note)}</div>`:""}
     <div class="rfoot">${bagSel(i)}${tags.join("")}</div></div></div>`;
 }
@@ -417,7 +450,8 @@ function vBagDetail(){
   const b=BAGS.find(x=>x.id===OPEN)||BAGS[0];
   const in_=ITEMS.filter(i=>bagOf(i)===b.id), s=bagStats(b.id);
   const pc=s.n?Math.round(s.done/s.n*100):0;
-  const cats={};in_.forEach(i=>(cats[i.cat]=cats[i.cat]||[]).push(i));
+  const cats={},nst=nestedIds(in_);
+  in_.forEach(i=>{if(!nst.has(i.id))(cats[i.cat]=cats[i.cat]||[]).push(i)});
   return `<button class="back" onclick="OPEN=null;store.set('pack:openbag',null);render()">‹ All bags</button>
     <div class="sec">
       <div class="card" style="--bc:${BAGCOL[b.id]};margin-bottom:16px">
@@ -427,7 +461,7 @@ function vBagDetail(){
         <div class="fill" style="--bc:${BAGCOL[b.id]}"><i style="width:${pc}%"></i></div>
         <div class="bagnote">${esc(b.note)}</div></div>
       ${Object.keys(cats).map(c=>`<div class="catline">${CATICON[c]||"•"} ${esc(c)}<span></span></div>`+
-        cats[c].map(rowHTML).join("")).join("")}
+        listHTML(cats[c],in_)).join("")}
       ${in_.length?"":'<div class="center">Nothing assigned to this bag.</div>'}</div>`;
 }
 
@@ -519,7 +553,6 @@ function vLegBag(l,b){
             <span class="bagmeta" style="display:block;margin-top:5px">${done} of ${b.items.length} packed</span>
           </span>
         </div>
-        ${b.note?`<div class="bagnote">${esc(b.note)}</div>`:""}
         <div class="fill" style="--bc:${BAGCOL[b.bag]||"var(--muted)"}"><i style="width:${b.items.length?done/b.items.length*100:0}%"></i></div>
       </div>
       <div class="card">
@@ -601,11 +634,12 @@ function vLegs(){
 function vAll(){
   const q=Q.toLowerCase();
   const list=ITEMS.filter(i=>!q||i.name.toLowerCase().includes(q)||(i.note||"").toLowerCase().includes(q)||i.cat.includes(q));
-  const cats={};list.forEach(i=>(cats[i.cat]=cats[i.cat]||[]).push(i));
+  const cats={},nst=nestedIds(list);
+  list.forEach(i=>{if(!nst.has(i.id))(cats[i.cat]=cats[i.cat]||[]).push(i)});
   return `<input class="search" id="q" placeholder="Search everything…" value="${esc(Q)}"
      oninput="Q=this.value;render();const e=document.getElementById('q');e.focus();e.setSelectionRange(e.value.length,e.value.length)">
     <div class="sec">${Object.keys(cats).length?Object.keys(cats).map(c=>
-      `<div class="catline">${CATICON[c]||"•"} ${esc(c)} <span></span></div>`+cats[c].map(rowHTML).join("")).join("")
+      `<div class="catline">${CATICON[c]||"•"} ${esc(c)} <span></span></div>`+listHTML(cats[c],list)).join("")
       :'<div class="center">Nothing matches.</div>'}</div>`;
 }
 

@@ -7,9 +7,14 @@
 #       handover given away in Phuket, 7–10 Jan
 #       buy      bought en route
 I = []
-def it(id, name, cat, bag, qty=1, g=0, fate="always", note="", crit=False):
-    I.append(dict(id=id, name=name, cat=cat, bag=bag, qty=qty, g=g,
-                  fate=fate, note=note, crit=crit))
+def it(id, name, cat, bag, qty=1, g=0, fate="always", note="", crit=False, inbag=""):
+    # inbag = the id of the container this lives inside (a washbag, the liquids
+    # bag). The app nests it under that item instead of listing it loose.
+    d = dict(id=id, name=name, cat=cat, bag=bag, qty=qty, g=g,
+             fate=fate, note=note, crit=crit)
+    if inbag:
+        d["inbag"] = inbag
+    I.append(d)
 
 # ───────────────────────── DOCUMENTS & MONEY ─────────────────────────
 it("passport","Passport — trackable holder","docs","SL",1,60,"always",
@@ -66,7 +71,7 @@ it("charger-3in1","Fold-up 3-in-1 charger","tech","SL",1,180,"always",
    "Watch, phone and AirPods from one plug. The best single item in the sling.")
 it("cable-ext","Extendable USB-C cable","tech","SL",1,70,"always","")
 it("cable-shaver","Shaver cable","tech","CB",1,40,"always",
-   "Not USB-C at both ends, so nothing else in the bag will charge it. The one cable with no substitute — pack it with the shaver, not loose.",True)
+   "Not USB-C at both ends, so nothing else in the bag will charge it. The one cable with no substitute — pack it with the shaver, not loose.",True,inbag="washbag-mini")
 it("brick-sm","Power bank — small","tech","SL",1,200,"always",
    "The only one you are taking — the large one is out. Cabin baggage only, never checked.",True)
 it("esim","Global SIM — 2 months","tech","SL",1,0,"always",
@@ -88,32 +93,32 @@ it("washbag-mini","Mini washbags","toiletries","CB",2,80,"always",
 it("liquids-bag","Clear 1L liquids bag","toiletries","SL",1,20,"always",
    "Re-cleared at Perth, Phuket, Bangkok and Krabi. Keep it reachable.",True)
 it("decant","Decant bottles, 100 ml","toiletries","CB",5,150,"always",
-   "Fill these at the Phuket repack. For the lake you really only need suncream and the basics — Hansar, Krabi La Playa and Theatre Residence all provide the rest.",True)
+   "Fill these at the Phuket repack. For the lake you really only need suncream and the basics — Hansar, Krabi La Playa and Theatre Residence all provide the rest.",True,inbag="washbag-mini")
 it("suncream","Suncream — full size","toiletries","L2",1,200,"always",
-   "Australian suncream is the best there is and cheap. Decant 100 ml for the onward leg.",True)
-it("suncream-tr","Travel suncream","toiletries","SL",1,80,"always","For the plane and the first day before you buy properly.")
-it("facewash","Travel facewash","toiletries","CB",1,90,"always","")
+   "Australian suncream is the best there is and cheap. Decant 100 ml for the onward leg.",True,inbag="washbag-lg")
+it("suncream-tr","Travel suncream","toiletries","SL",1,80,"always","For the plane and the first day before you buy properly.",inbag="liquids-bag")
+it("facewash","Travel facewash","toiletries","CB",1,90,"always","",inbag="washbag-mini")
 it("moisturiser","Moisturiser","toiletries","CB",1,100,"always",
-   "Cabin bag on both long-hauls. Three sectors of dry cabin air each way.",True)
-it("eyecream","Eye cream","toiletries","CB",1,40,"always","")
-it("sanitiser","Hand sanitiser","toiletries","SL",1,60,"always","")
+   "Cabin bag on both long-hauls. Three sectors of dry cabin air each way.",True,inbag="washbag-mini")
+it("eyecream","Eye cream","toiletries","CB",1,40,"always","",inbag="washbag-mini")
+it("sanitiser","Hand sanitiser","toiletries","SL",1,60,"always","",inbag="liquids-bag")
 it("mozzie","Mosquito spray","toiletries","CB",1,120,"always",
    "Khao Sok is jungle on water and the lake is worst at dusk. Top up with stronger DEET in Thailand if yours is mild.",True)
 it("shaver","Electric shaver","toiletries","CB",1,220,"always",
-   "Cabin bag on both long-hauls — you want a shave before landing in Perth and again before Heathrow. Lithium batteries belong in the cabin anyway, not the hold.",True)
+   "Cabin bag on both long-hauls — you want a shave before landing in Perth and again before Heathrow. Lithium batteries belong in the cabin anyway, not the hold.",True,inbag="washbag-mini")
 it("shave-foam","Mini shaving foam","toiletries","CB",1,100,"always",
    "Under 100 ml, so it lives in the clear liquids bag. Cabin bag on both long-hauls.",True)
 it("toothpaste-mini","Mini toothpaste","toiletries","CB",1,40,"always",
-   "For the Gatwick night and the flight. Full size bought in Perth.",True)
+   "For the Gatwick night and the flight. Full size bought in Perth.",True,inbag="washbag-mini")
 it("etoothbrush","Electric toothbrush","toiletries","CB",1,180,"always",
-   "Toothpaste bought on arrival; Qatar give you a travel one for the flight. Check the charger — most are an inductive base with a fixed plug, which needs the travel adapter.",True)
+   "Toothpaste bought on arrival; Qatar give you a travel one for the flight. Check the charger — most are an inductive base with a fixed plug, which needs the travel adapter.",True,inbag="washbag-mini")
 it("deodorant","Roll-on deodorant","toiletries","CB",3,300,"always",
-   "One lives in the mini washbag for the flight; two spares in the main toiletries. Roll-on is not a liquid for cabin purposes and does not leak at altitude.",True)
+   "One lives in the mini washbag for the flight; two spares in the main toiletries. Roll-on is not a liquid for cabin purposes and does not leak at altitude.",True,inbag="washbag-mini")
 it("aftershave","Aftershave atomiser","toiletries","CB",1,60,"always",
-   "One small atomiser covers all 67 days and clears cabin liquids without a thought.")
+   "One small atomiser covers all 67 days and clears cabin liquids without a thought.",inbag="washbag-mini")
 it("lipbalm","Lip balm with SPF","toiletries","SL",1,15,"always",
-   "Six hours cycling at Rottnest, a lot of beach, and three long-haul sectors of dry cabin air.")
-it("nail","Nail clippers","toiletries","CB",1,40,"always","Fine in checked. Cabin rules on clippers vary by airport.")
+   "Six hours cycling at Rottnest, a lot of beach, and three long-haul sectors of dry cabin air.",inbag="liquids-bag")
+it("nail","Nail clippers","toiletries","CB",1,40,"always","Fine in checked. Cabin rules on clippers vary by airport.",inbag="washbag-mini")
 
 # ────────────────────────────── HEALTH ──────────────────────────────
 it("medkit","Small medical pouch","health","CB",1,60,"always","")
@@ -180,9 +185,9 @@ it("sandals","Sandals","footwear","CB",1,400,"always",
 it("sliders","Sliders","footwear","CB",1,280,"always","Beach, pool, hotel bathrooms.")
 
 # ───────────────────────────── CLOTHING ─────────────────────────────
-it("shirts-nice","Nice shirts","clothing","CB",7,1400,"always","Dinners, Christmas, Bangkok, and sun cover that still reads as clothing.")
-it("tees","T-shirts","clothing","CB",10,1500,"always","")
-it("shorts","Shorts","clothing","CB",5,1000,"always","")
+it("shirts-nice","Nice shirts","clothing","CB",8,1600,"always","Dinners, Christmas, Bangkok, and sun cover that still reads as clothing.")
+it("tees","T-shirts","clothing","CB",12,1800,"always","")
+it("shorts","Shorts","clothing","CB",6,1200,"always","")
 it("trousers","Trousers","clothing","CB",1,450,"always",
    "For the two or three nights out — Vertigo, Blue Elephant, Christmas dinner. Elephant pants bought in Thailand cover the temples; shorts cover everything else.",True)
 it("swim","Swim shorts","clothing","CB",2,200,"always","Two, so one is always dry.",True)

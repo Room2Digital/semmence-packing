@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
-# The eight journeys. Nothing else — the stays are not legs, they are just
-# the gaps in between, and the app is for working out what goes in which bag
-# on the days you actually move.
+# The six flights. Nothing else — the stays are not legs, and neither are the
+# surface hops (Samui to Khao Sok to Krabi), because nothing gets repacked for
+# a car or a longtail. This file is only for the days a bag changes hands.
 #
 # Each leg holds a list of bags. Every bag has a mode, which is what the sash
 # on the tile says and the only thing that really matters at the airport:
 #
 #   cabin    comes on board with you
 #   checked  goes in the hold
-#   with     surface leg, no airline — it is simply with you
 #   worn     on your body, not in a bag
 #   left     not on this leg at all (in storage, or handed over)
 #
@@ -75,8 +74,8 @@ LEGS = [
                 P("Thai notepad"),
                 P("Offline documents — TDAC, Australian ETA, insurance, all 8 flights, all hotels, JQ71 and TG206 baggage receipts, Smilelugg 14XIWBX4, Bangkok taxi 911245279, apps page",
                   "Everything digital and saved offline. Phuket and Khao Sok have patchy signal."),
-            ], "Everything you cannot replace. It never leaves you.",
-               ids=["passport","licence","cards","cash-gbp","cash-thb","cash-aud","phone","watch",
+            ],
+                  ids=["passport","licence","cards","cash-gbp","cash-thb","cash-aud","phone","watch",
                     "airpods","charger-3in1","cable-ext","brick-sm","esim","prescriptions","liquids-bag",
                     "suncream-tr","sanitiser","lipbalm","sunglasses-daily","mouthtape","eyemask","earplugs",
                     "snacks","notepad","tdac","eta-aus","insurance","flights-off","hotels-off","bag-conf",
@@ -88,12 +87,11 @@ LEGS = [
                 P("USB-C dongle and HDMI cable"),
                 P("Compression socks", "Worth it on a 26-hour door to door."),
                 P("Larq bottle, empty", "Fill it after security."),
-            ], "The in-flight bag. Under the seat, not in the bin.",
-               ids=["ipad-air","sony","dongle","hdmi","compression","larq"]),
+            ],
+                  ids=["ipad-air","sony","dongle","hdmi","compression","larq"]),
 
             B("CB", "cabin", [
-                P("Two mini washbags", "Electric toothbrush, mini toothpaste, travel facewash, roll-on deodorant, aftershave atomiser, eye cream, moisturiser, nail clippers."),
-                P("Electric shaver and its cable", "Cabin, not hold — lithium batteries belong in the cabin anyway, and you land in Perth at 18:45 after 26 hours."),
+                P("Two mini washbags", "Electric toothbrush, mini toothpaste, travel facewash, roll-on deodorant, aftershave atomiser, eye cream, moisturiser, nail clippers, electric shaver and its cable, and the five decant bottles. The Bags tab lists all of it nested under the washbag."),
                 P("Mini shaving foam", "Under 100 ml, so it travels in the sling's liquids bag, not loose in here."),
                 P("Roll-on deodorant x3", "One in the washbag, two spare."),
                 P("The full health kit", "Medical pouch, Imodium, motion sickness tablets, paracetamol, ibuprofen, antihistamine, antiseptic cream, plasters and blister plasters, rehydration sachets, athlete's foot cream."),
@@ -104,14 +102,14 @@ LEGS = [
                 P("1 swim shorts"),
                 P("Running shoes"),
                 P("Microfibre towel, mini"),
-            ], "This bag alone has to get you through the Gatwick night.",
-               ids=["washbag-mini","etoothbrush","toothpaste-mini","facewash","deodorant","aftershave",
+            ],
+                  ids=["washbag-mini","etoothbrush","toothpaste-mini","facewash","deodorant","aftershave",
                     "moisturiser","eyecream","nail","shaver","cable-shaver","shave-foam","medkit","imodium",
                     "motion","paracetamol","ibuprofen","antihistamine","antiseptic","plasters","rehydration",
                     "athletes","mba","charger-mac","mouse","plug-uk","running","towel-sm"]),
 
             B("L1", "checked", [
-                P("7 nice shirts, 10 T-shirts, 5 shorts, 1 trousers", "Minus the one change already in the cabin bag."),
+                P("8 nice shirts, 12 T-shirts, 6 shorts, 1 trousers", "Minus the one change already in the cabin bag."),
                 P("8 boxers, 8 white socks, 3 gym socks"),
                 P("3 gym tops, 2 gym shorts"),
                 P("2 swim shorts", "One of them is in the cabin bag."),
@@ -121,8 +119,8 @@ LEGS = [
                 P("Sunglasses — 4 pairs in a travel case", "The cheap ones. The daily pair stays on you."),
                 P("Old trainers, sandals, sliders"),
                 P("Microfibre towel, large"),
-            ], "The clothing bulk for seven Perth weeks.",
-               ids=["shirts-nice","tees","shorts","trousers","boxers","socks-white","socks-gym","gym-tops",
+            ],
+                  ids=["shirts-nice","tees","shorts","trousers","boxers","socks-white","socks-gym","gym-tops",
                     "gym-shorts","swim","belt","hats","hat-gym","hoodie","tracksuit","windbreaker",
                     "sunglasses","trainers-old","sandals","sliders","towel-lg"]),
 
@@ -140,8 +138,8 @@ LEGS = [
                 P("Lockable daypack"),
                 P("2 dirty laundry bags, 5 bin bags"),
                 P("Small dry bag and swimming goggles", "Both still to buy."),
-            ], "Toiletries, the handover devices, and room left for Australia.",
-               ids=["washbag-lg","suncream","decant","mozzie","mbp","ipad-mini","switch","ps5-pad",
+            ],
+                  ids=["washbag-lg","suncream","decant","mozzie","mbp","ipad-mini","switch","ps5-pad",
                     "hdmi-switch","adapter-universal","airtags","locks","scales","cubes","daypack",
                     "laundry-bag","binbags","drybag","goggles"]),
 
@@ -149,8 +147,8 @@ LEGS = [
                 P("Nice trainers", "Wear the bulkiest footwear rather than packing it."),
                 P("T-shirt and light trousers", "Qatar hand you pyjamas, so do not overthink this."),
                 P("Qatar pyjamas — nothing to pack", "Given to you on board and they do not take them back, so you have them from the 19th. That is your sleepwear for the whole trip."),
-            ], "",
-               ids=["trainers-nice","pyjamas"]),
+            ],
+                  ids=["trainers-nice","pyjamas"]),
         ],
     ),
     dict(
@@ -183,7 +181,7 @@ LEGS = [
             ]),
             B("CB", "checked", [
                 P("Packed as normal", "It goes in the hold here — there is nothing in it you need for five hours, and the prepaid 40 kg covers it."),
-            ], "In the hold on this leg only."),
+            ]),
             B("L1", "checked", [P("Cubes 1, 2 and 3 near the top", "You open this case once, in Phuket, and you want the cubes to be the first thing you see.")]),
             B("L2", "checked", [P("Everything else"), P("The Perth surplus", "Whatever you bought and are keeping.")]),
             B("worn", "worn", [P("Trainers and a layer", "The plane is cold, Phuket is not.")]),
@@ -219,16 +217,17 @@ LEGS = [
                 P("iPad Air, chargers, power bank, shaver and cable", "About 1.7 kg."),
                 P("One change of clothes", "Insurance only — you are back into the cases three hours later."),
                 P("TARGET: under 7 kg", "Weigh it. Everything else waits in the cubes."),
-            ], "Has to be under 7 kg to board. Then it swallows the cubes at BKK."),
+            ]),
             B("L1", "checked", [
                 P("CUBE 1 — clothing", "5 tees, 3 shorts, 2 nice shirts, 1 trousers, 5 boxers, 3 socks, 2 swim shorts. About 4 kg."),
                 P("CUBE 2 — gym and footwear", "Gym top, shorts, socks, running shoes, sandals, sliders. About 2.5 kg. Shoes in a bin bag inside the cube."),
                 P("CUBE 3 — kit", "Mini towel, dry bag, laundry and bin bags, goggles, daypack, locks. About 1.4 kg."),
                 P("Larq bottle, loose", "Too awkward for a cube. Keep it near the top with them."),
-            ], "Checked to BKK, then straight into storage — but the cubes come out first."),
+            ]),
             B("L2", "checked", [
                 P("Staying behind for 13 days", "MacBook Air and its kit, Sony over-ears, Switch, PS5 pad, 4-pair sunglasses case, the Perth clothing surplus, old trainers, hoodie, tracksuit, large washbag, full-size suncream, large towel, driving licence. About 9 kg between the two cases."),
-            ], "Checked to BKK, then locked and left at Smilelugg."),
+            ],
+        ),
         ],
     ),
     dict(
@@ -245,67 +244,18 @@ LEGS = [
         ),
         do=[
             P("Buy DEET before you leave Bangkok", "Stronger and cheaper here than anything you would have carried from home."),
-            P("Take a motion sickness tablet the night before the 17th", "Not for this flight — for the 06:00 Donsak ferry four days later. Easy to forget once you are on the beach."),
+            P("BOOK THE DONSAK FERRY", "Still outstanding. 17 Jan, the 06:00 sailing — it docks 07:30 and leaves real margin; the 07:00 leaves you 25 minutes."),
+            P("Confirm the 500 Rai pick-up time", "Before you book the ferry, not after."),
+            P("Warn Hansar about the 17th", "You leave before any normal breakfast."),
+            P("Take a motion sickness tablet the night before the 17th", "1h30 of open water at 06:00. Easy to forget once you are on the beach."),
+            P("Dry bag ready for Khao Sok", "Everything after Samui is boats — the Donsak ferry, then an open longtail onto the lake and back off it. Pack the dry bag once and leave it packed; there is no repack between Samui, Khao Sok and Krabi."),
         ],
         bags=[
             B("SL", "cabin", [P("As always")]),
             B("BP", "cabin", [P("Day kit", "Dry bag, mini towel, daily sunglasses, suncream, Larq."), P("iPad and chargers", "The cabin bag is in the hold, so anything you want on the way travels here.")]),
-            B("CB", "checked", [P("Packed as it is", "5 kg cabin is not worth fighting. It goes in the hold and comes back to you at Samui.")], "In the hold — cabin is only 5 kg on this airline."),
+            B("CB", "checked", [P("Packed as it is", "5 kg cabin is not worth fighting. It goes in the hold and comes back to you at Samui.")]),
             B("L1", "left", [P("At Smilelugg, Bangkok", "Collected 23 Jan.")]),
             B("L2", "left", [P("At Smilelugg, Bangkok", "Collected 23 Jan.")]),
-        ],
-    ),
-    dict(
-        id="usm-kha",
-        name="Koh Samui – Khao Sok",
-        dates="17 Jan",
-        where="Lipa Noi → Donsak → Cheow Lan Lake",
-        via="06:00 ferry · 2h15 road · boat in",
-        key=1,
-        stored=1,
-        note=(
-            "No airline, so no weight limits — but two water crossings, and the second one is "
-            "an open longtail onto the lake. Everything that must stay dry needs to be in the "
-            "dry bag before you step on the boat, not after. 500 Rai is a raft house: there is "
-            "no shop, no ATM and no card machine."
-        ),
-        do=[
-            P("BOOK THE DONSAK FERRY", "Still outstanding. The 06:00 sailing docks 07:30 and leaves real margin; the 07:00 leaves you 25 minutes."),
-            P("Confirm the 500 Rai pick-up time", "Do this before you book the ferry, not after."),
-            P("Warn Hansar about the early start", "You are leaving before any normal breakfast."),
-            P("Take baht for the park fee", "THB 340 at the pier. The stay itself is fully prepaid, so this and any drinks are the only cash you need on the lake — but there is no card machine, so it has to be in your pocket."),
-        ],
-        bags=[
-            B("SL", "with", [P("On you for both crossings", "Passport, cash, phone. Inside the dry bag for the lake boat.")]),
-            B("BP", "with", [P("Dry bag, packed before the boat", "Phone, wallet, iPad. The lake transfer is open water both ways."), P("Mini towel, suncream, DEET, Larq, power bank")]),
-            B("CB", "with", [P("Can stay packed", "You are on the raft for two nights. There is nothing to lay out.")]),
-            B("L1", "left", [P("At Smilelugg, Bangkok")]),
-            B("L2", "left", [P("At Smilelugg, Bangkok")]),
-        ],
-    ),
-    dict(
-        id="kha-kbv",
-        name="Khao Sok – Krabi",
-        dates="19 Jan",
-        where="Cheow Lan Lake → Ao Nang",
-        via="10:00 boat · 2.5–3 hrs road",
-        stored=1,
-        note=(
-            "Check-out is 09:30 and the boat off the lake is 10:00, with a morning massage "
-            "booked at 07:30 — so the bag has to be packed the night before. Then two and a "
-            "half to three hours by road to Ao Nang."
-        ),
-        do=[
-            P("Pack the night of the 18th", "The morning is massage, breakfast, boat, in that order, with no slack in it."),
-            P("Settle the 500 Rai extras in cash", "Drinks and the park fees. No card machine on the lake."),
-            P("Dry bag again for the boat out", "Same crossing, same water."),
-        ],
-        bags=[
-            B("SL", "with", [P("On you")]),
-            B("BP", "with", [P("Dry bag with the phone and iPad", "Open boat off the lake.")]),
-            B("CB", "with", [P("Packed the night before", "Not on the morning.")]),
-            B("L1", "left", [P("At Smilelugg, Bangkok")]),
-            B("L2", "left", [P("At Smilelugg, Bangkok")]),
         ],
     ),
     dict(
