@@ -44,7 +44,8 @@ DAYBAGS = [
    dict(name="Power bank", ref="powerbank", g=300,
         note="Maps, photos and the return ferry QR all live on your phone."),
    dict(name="Card and some cash", ref="cards", g=20,
-        note="Hotel Rottnest and the Thomson Bay bakery take cards. Carry a little cash anyway."),
+        note="Hotel Rottnest and the Thomson Bay bakery take cards. Take a bit of the AUD 200 float "
+             "anyway — this is exactly the sort of day it exists for."),
    dict(name="Snacks", ref=None, g=200,
         note="Food away from Thomson Bay is essentially nothing. Even with lunch booked, "
              "carry something for the middle of the island."),

@@ -86,6 +86,12 @@ h2{font-size:17px;font-weight:750;letter-spacing:-.015em}
 .bagic{flex:0 0 auto;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
   background:color-mix(in srgb,var(--bc) 18%,transparent);
   border:1px solid color-mix(in srgb,var(--bc) 32%,transparent);font-size:19px}
+.bagph{flex:0 0 auto;width:58px;height:58px;border-radius:13px;overflow:hidden;background:#f4f4f2;
+  border:1px solid color-mix(in srgb,var(--bc) 34%,transparent);
+  box-shadow:0 1px 0 color-mix(in srgb,var(--bc) 18%,transparent)}
+.bagph img{width:100%;height:100%;object-fit:cover;display:block}
+.bagph.noimg{background:color-mix(in srgb,var(--bc) 18%,transparent)}
+.bagph.noimg img{display:none}
 .bagname{font-size:15.5px;font-weight:700;letter-spacing:-.015em}
 .bagmeta{font-size:12px;color:var(--muted);margin-top:2px}
 .bagpill{flex:0 0 auto;font-size:12px;font-weight:700;font-variant-numeric:tabular-nums;
@@ -148,6 +154,38 @@ h2{font-size:17px;font-weight:750;letter-spacing:-.015em}
 .chip{font-size:9.5px;font-weight:700;letter-spacing:.06em;padding:3px 7px;border-radius:6px;
   background:var(--surface-2);color:var(--baseline);border:1px solid var(--grid)}
 .chip.has{background:rgba(74,158,255,.15);color:#8cc4ff;border-color:rgba(74,158,255,.32)}
+.legvia{font-size:11.5px;color:var(--muted);margin-top:3px;font-variant-numeric:tabular-nums}
+.legmodes{display:flex;gap:5px;margin-top:11px;flex-wrap:wrap}
+
+/* ---------- sashes: cabin / checked / with you / worn ---------- */
+.sash{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  padding:3px 8px;border-radius:6px;border:1px solid transparent;white-space:nowrap}
+.sash.cabin,.chip.cabin{background:rgba(74,158,255,.17);color:#8cc4ff;border-color:rgba(74,158,255,.36)}
+.sash.checked,.chip.checked{background:rgba(255,122,69,.17);color:#ffa278;border-color:rgba(255,122,69,.38)}
+.sash.with,.chip.with{background:rgba(93,214,146,.15);color:#7fe0ad;border-color:rgba(93,214,146,.34)}
+.sash.worn,.chip.worn{background:rgba(191,140,255,.15);color:#c9a6ff;border-color:rgba(191,140,255,.34)}
+.sash.left,.chip.left{background:var(--surface-2);color:var(--baseline);border-color:var(--grid)}
+.chip.cabin,.chip.checked,.chip.with,.chip.worn{font-weight:700;letter-spacing:.06em}
+
+/* ---------- bag tiles inside a leg ---------- */
+.btiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:10px}
+.btile{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:8px;
+  background:var(--surface);border:1px solid var(--ring);border-radius:15px;padding:13px 13px 14px;
+  color:inherit;font:inherit;text-align:left;cursor:pointer;overflow:hidden;
+  transition:transform .13s,border-color .15s}
+.btile:active{transform:scale(.985)}
+.btile::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--bc)}
+.btile.off{opacity:.45}
+.btile-ph{width:100%;aspect-ratio:1/1;border-radius:11px;overflow:hidden;background:#f4f4f2;
+  display:grid;place-items:center;border:1px solid color-mix(in srgb,var(--bc) 30%,transparent)}
+.btile-ph img{width:100%;height:100%;object-fit:cover;display:block}
+.btile-ph.noimg{background:color-mix(in srgb,var(--bc) 16%,transparent)}
+.btile-ph.noimg img{display:none}
+.btile-ph i{font-size:30px;font-style:normal}
+.btile-n{font-size:13.5px;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+.btile-m{font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;margin-top:-4px}
+.btile-f{display:block;width:100%;height:3px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.btile-f i{display:block;height:100%;border-radius:999px;background:var(--bc)}
 
 /* ---------- repack ---------- */
 .split{display:grid;gap:12px}
@@ -250,7 +288,7 @@ const BAGS=DATA.bags, LEGS=DATA.legs, DAYBAGS=DATA.daybags||[], SHOPPING=DATA.sh
 let ITEMS=DATA.items.slice().concat(store.get("pack:custom",[]));
 let STATE=store.get("pack:state",{});
 let TAB=["bags","legs","all"].includes(store.get("pack:tab","bags"))?store.get("pack:tab","bags"):"bags", OPEN=store.get("pack:openbag",null),
-    OPENLEG=null, OPENDAY=null, OPENSHOP=null, Q="", STALE=false;
+    OPENLEG=null, OPENBAGLEG=null, OPENDAY=null, OPENSHOP=null, Q="", STALE=false;
 
 const BAGCOL={L1:"var(--blue)",L2:"var(--green)",CB:"var(--violet)",BP:"var(--orange)",SL:"var(--pink)"};
 const BAGICON={L1:"🧳",L2:"👟",CB:"🎒",BP:"🪢",SL:"📱"};
@@ -337,7 +375,9 @@ function vBags(){
       return `<button class="bagcard" style="--bc:${BAGCOL[b.id]||"var(--blue)"}"
         onclick="OPEN='${b.id}';store.set('pack:openbag','${b.id}');render()">
         <div class="bagtop">
-          <span class="bagic">${BAGICON[b.id]||"🧳"}</span>
+          ${b.img?`<span class="bagph"><img src="${esc(b.img)}" alt="" loading="lazy"
+            onerror="this.closest('.bagph').classList.add('noimg')"></span>`
+           :`<span class="bagic">${BAGICON[b.id]||"🧳"}</span>`}
           <span style="flex:1;min-width:0">
             <span class="bagname" style="display:block">${esc(b.name)}</span>
             <span class="bagmeta">${s.n} items · ${kg(s.g)}</span>
@@ -441,57 +481,110 @@ function toggleDay(id){const s=STATE[id]||(STATE[id]={});s.packed=!s.packed;
   store.set("pack:state",STATE);push(id);render()}
 
 /* ---------- legs ---------- */
-const BAGFULL={do:"To do here",worn:"Worn",SL:"Sling bag",BP:"Backpack",CB:"Cabin bag",L1:"Suitcases",L2:"Suitcase 2",checked:"Checked in"};
-const PLANORDER=["do","worn","SL","BP","CB","checked","L1","L2"];
-function planList(key,arr,l){
-  if(!arr||!arr.length)return"";
-  const id=b=>"plan:"+l.id+":"+key+":"+b;
-  return `<div class="label">${key==="worn"?"Worn":esc(BAGFULL[key]||key)}</div>
-    <div class="card" style="--bc:${BAGCOL[key]||"var(--muted)"}">
-    ${arr.map((x,n)=>{const k=id(n),on=!!(STATE[k]&&STATE[k].packed);
-      return `<div class="row${on?" done":""}" style="padding:10px 0">
-        <button class="tick${on?" on":""}" onclick="toggleDay('${k}')" aria-label="packed">
-          <svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg></button>
-        <div class="rbody"><div class="rname">${esc(x.n)}
-          ${x.add?'<span class="pill buy">I\'d add this</span>':""}</div>
-          ${x.note?`<div class="rnote">${esc(x.note)}</div>`:""}</div></div>`}).join("")}
+/* Each leg is a list of bags. A bag has a mode, which is the sash on the tile
+   and the only thing that matters at a bag drop: cabin, checked, with, worn, left. */
+const MODE={
+  cabin:  {label:"Cabin",   cls:"cabin"},
+  checked:{label:"Checked", cls:"checked"},
+  with:   {label:"With you",cls:"with"},
+  worn:   {label:"Worn",    cls:"worn"},
+  left:   {label:"Not with you",cls:"left"}
+};
+const bagMeta=id=>id==="worn"
+  ? {id:"worn",name:"Worn",note:"On you, not in a bag.",img:""}
+  : (BAGS.find(b=>b.id===id)||{id:id,name:id,note:"",img:""});
+const legBagKey=(l,b,n)=>"plan:"+l.id+":"+b.bag+":"+n;
+const legBagDone=(l,b)=>b.items.filter((x,n)=>{const k=legBagKey(l,b,n);return STATE[k]&&STATE[k].packed}).length;
+function legProgress(l){
+  let t=0,d=0;
+  (l.bags||[]).forEach(b=>{if(b.mode==="left")return;t+=b.items.length;d+=legBagDone(l,b)});
+  (l.do||[]).forEach((x,n)=>{t++;const k="do:"+l.id+":"+n;if(STATE[k]&&STATE[k].packed)d++});
+  return {t:t,d:d,pc:t?Math.round(d/t*100):0};
+}
+function vLegBag(l,b){
+  const m=MODE[b.mode]||MODE.with, meta=bagMeta(b.bag), done=legBagDone(l,b);
+  return `<button class="back" onclick="OPENBAGLEG=null;render()">‹ ${esc(l.name)}</button>
+    <div class="sec">
+      <div class="sg-head"><h2>${esc(meta.name)}</h2><span class="n">${esc(l.dates)}</span></div>
+      <div class="card" style="--bc:${BAGCOL[b.bag]||"var(--muted)"};margin-bottom:14px">
+        <div class="bagtop">
+          ${meta.img?`<span class="bagph"><img src="${esc(meta.img)}" alt="" loading="lazy"
+            onerror="this.closest('.bagph').classList.add('noimg')"></span>`
+           :`<span class="bagic">${BAGICON[b.bag]||"👕"}</span>`}
+          <span style="flex:1;min-width:0">
+            <span class="sash ${m.cls}">${m.label}</span>
+            <span class="bagmeta" style="display:block;margin-top:5px">${done} of ${b.items.length} packed</span>
+          </span>
+        </div>
+        ${b.note?`<div class="bagnote">${esc(b.note)}</div>`:""}
+        <div class="fill" style="--bc:${BAGCOL[b.bag]||"var(--muted)"}"><i style="width:${b.items.length?done/b.items.length*100:0}%"></i></div>
+      </div>
+      <div class="card">
+      ${b.items.map((x,n)=>{const k=legBagKey(l,b,n),on=!!(STATE[k]&&STATE[k].packed);
+        return `<div class="row${on?" done":""}" style="padding:10px 0">
+          <button class="tick${on?" on":""}" onclick="toggleDay('${k}')" aria-label="packed">
+            <svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg></button>
+          <div class="rbody"><div class="rname">${esc(x.n)}
+            ${x.add?'<span class="pill buy">I\'d add this</span>':""}</div>
+            ${x.note?`<div class="rnote">${esc(x.note)}</div>`:""}</div></div>`}).join("")}
+      </div>
     </div>`;
 }
-function planHTML(l){
-  const p=l.plan,added=PLANORDER.reduce((a,k)=>a+((p[k]||[]).filter(x=>x.add).length),0);
-  const total=PLANORDER.reduce((a,k)=>a+((p[k]||[]).length),0);
-  const done=PLANORDER.reduce((a,k)=>a+((p[k]||[]).filter((x,n)=>STATE["plan:"+l.id+":"+k+":"+n]&&STATE["plan:"+l.id+":"+k+":"+n].packed).length),0);
-  return `<div class="label">What goes where</div>
-    <div class="card" style="margin-bottom:14px"><div class="bagtop">
-      <span style="flex:1"><span class="bagname" style="display:block">${done} of ${total} done</span>
-      <span class="bagmeta">Tick as you pack</span></span>
-      <span class="bagpill${done===total&&total?" done":""}">${total?Math.round(done/total*100):0}%</span></div>
-      <div class="fill" style="--bc:var(--blue)"><i style="width:${total?done/total*100:0}%"></i></div></div>
-    ${added?`<div class="alert info"><b>${added} things I'd add</b><p>Marked below.</p></div>`:""}
-    ${PLANORDER.map(k=>planList(k,p[k],l)).join("")}`;
+function vLeg(l){
+  const pr=legProgress(l);
+  const tiles=(l.bags||[]).map((b,i)=>{
+    const m=MODE[b.mode]||MODE.with, meta=bagMeta(b.bag), done=legBagDone(l,b), n=b.items.length;
+    return `<button class="btile ${m.cls}${b.mode==="left"?" off":""}" style="--bc:${BAGCOL[b.bag]||"var(--muted)"}"
+      onclick="OPENBAGLEG=${i};render()">
+      <span class="sash ${m.cls}">${m.label}</span>
+      <span class="btile-ph">${meta.img?`<img src="${esc(meta.img)}" alt="" loading="lazy"
+        onerror="this.closest('.btile-ph').classList.add('noimg')">`:`<i>${BAGICON[b.bag]||"👕"}</i>`}</span>
+      <span class="btile-n">${esc(meta.name)}</span>
+      <span class="btile-m">${b.mode==="left"?"Left behind":done+" / "+n}</span>
+      ${b.mode==="left"?"":`<span class="btile-f"><i style="width:${n?done/n*100:0}%"></i></span>`}
+    </button>`}).join("");
+  return `<button class="back" onclick="OPENLEG=null;render()">‹ All legs</button>
+    <div class="sec">
+      <div class="sg-head"><h2>${esc(l.name)}</h2><span class="n">${esc(l.dates)}</span></div>
+      <div class="legwhere" style="margin-bottom:4px">${esc(l.where)}</div>
+      ${l.via?`<div class="legvia">${esc(l.via)}</div>`:""}
+      <div class="card" style="margin:11px 0 14px">
+        <div class="note">${esc(l.note)}</div>
+        <div class="bagtop" style="margin-top:13px">
+          <span style="flex:1"><span class="bagname" style="display:block">${pr.d} of ${pr.t} done</span>
+          <span class="bagmeta">Tick as you pack</span></span>
+          <span class="bagpill${pr.pc===100&&pr.t?" done":""}">${pr.pc}%</span></div>
+        <div class="fill" style="--bc:var(--blue)"><i style="width:${pr.pc}%"></i></div>
+      </div>
+      <div class="label">The bags</div>
+      <div class="btiles">${tiles}</div>
+      ${(l.do||[]).length?`<div class="label">Before this leg</div><div class="card">
+        ${l.do.map((x,n)=>{const k="do:"+l.id+":"+n,on=!!(STATE[k]&&STATE[k].packed);
+          return `<div class="row${on?" done":""}" style="padding:10px 0">
+            <button class="tick${on?" on":""}" onclick="toggleDay('${k}')" aria-label="done">
+              <svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg></button>
+            <div class="rbody"><div class="rname">${esc(x.n)}</div>
+              ${x.note?`<div class="rnote">${esc(x.note)}</div>`:""}</div></div>`}).join("")}
+        </div>`:""}
+    </div>`;
 }
 function vLegs(){
   if(OPENLEG){
     const l=LEGS.find(x=>x.id===OPENLEG);
-    const has=(l.bags||"").split(" ").filter(Boolean);
-    const avail=ITEMS.filter(i=>has.includes(bagOf(i))&&!(l.after==="repack"&&i.fate==="store"));
-    const crit=avail.filter(i=>i.crit);
-    return `<button class="back" onclick="OPENLEG=null;render()">‹ All legs</button>
-      <div class="sec"><div class="sg-head"><h2>${esc(l.name)}</h2><span class="n">${esc(l.dates)}</span></div>
-      <div class="legwhere" style="margin-bottom:11px">${esc(l.where)}</div>
-      <div class="card"><div class="note">${esc(l.note)}</div>
-        <div class="bagchips">${BAGS.map(b=>`<span class="chip${has.includes(b.id)?" has":""}">${b.id}</span>`).join("")}</div></div>
-      ${l.plan?planHTML(l):`<div class="label">With you</div><div class="card">
-        ${crit.map(i=>`<div class="mini"><b>${esc(i.name)}</b><span>${bagOf(i)}</span></div>`).join("")}</div>`}
-      </div>`;
+    if(!l){OPENLEG=null;return vLegs()}
+    if(OPENBAGLEG!==null&&l.bags&&l.bags[OPENBAGLEG])return vLegBag(l,l.bags[OPENBAGLEG]);
+    return vLeg(l);
   }
-  return `<div class="sec"><div class="sg-head"><h2>The trip, leg by leg</h2><span class="n">${LEGS.length} stages</span></div>
-    <div class="tl">${LEGS.map(l=>{const has=(l.bags||"").split(" ").filter(Boolean);
-      return `<div class="legcard${l.key?" key":""}" onclick="OPENLEG='${l.id}';render()">
+  return `<div class="sec"><div class="sg-head"><h2>The journeys</h2><span class="n">${LEGS.length} legs</span></div>
+    <div class="tl">${LEGS.map(l=>{const pr=legProgress(l);
+      return `<div class="legcard${l.key?" key":""}" onclick="OPENLEG='${l.id}';OPENBAGLEG=null;render()">
         <div class="legtop"><div class="legname">${esc(l.name)}</div><div class="legdate">${esc(l.dates)}</div></div>
         <div class="legwhere">${esc(l.where)}</div>
-        <div class="legnote">${esc(l.note)}</div>
-        <div class="bagchips">${BAGS.map(b=>`<span class="chip${has.includes(b.id)?" has":""}">${b.id}</span>`).join("")}</div>
+        ${l.via?`<div class="legvia">${esc(l.via)}</div>`:""}
+        <div class="legmodes">${(l.bags||[]).filter(b=>b.mode!=="left").map(b=>{
+          const m=MODE[b.mode]||MODE.with;
+          return `<span class="chip ${m.cls}">${b.bag==="worn"?"Worn":b.bag}</span>`}).join("")}</div>
+        <div class="fill" style="--bc:var(--blue);margin-top:11px"><i style="width:${pr.pc}%"></i></div>
       </div>`}).join("")}</div></div>`;
 }
 
@@ -516,7 +609,7 @@ function render(){
   paintHead();
 }
 document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{
-  TAB=b.dataset.t;store.set("pack:tab",TAB);OPENLEG=null;OPENDAY=null;OPENSHOP=null;
+  TAB=b.dataset.t;store.set("pack:tab",TAB);OPENLEG=null;OPENBAGLEG=null;OPENDAY=null;OPENSHOP=null;
   if(TAB!=="bags")OPEN=null;window.scrollTo(0,0);render()});
 render();pull();
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});

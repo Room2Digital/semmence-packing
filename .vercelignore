@@ -1,0 +1,4 @@
+*.py
+template.html
+deploy.command
+__pycache__/

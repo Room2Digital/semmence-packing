@@ -25,8 +25,10 @@ it("insurance","Travel insurance — policy and 24hr number","docs","SL",1,10,"a
 it("cards","Bank cards — two providers","docs","SL",2,20,"always",
    "Tracker card in the wallet. Split across two bags so one loss isn't total.",True)
 it("cash-gbp","Cash — GBP float","docs","SL",1,20,"always","Gatwick, and the taxi home on the 24th.")
-it("cash-thb","Cash — 50,000 THB","docs","SL",1,120,"always",
-   "About GBP 1,150. Well under Thailand's declaration threshold, which is USD 20,000 equivalent, so nothing to declare. Split it: some in the sling, some in a case, some in the hotel safe — do not carry the lot in one place for 67 days. It funds the ferries, longtails, Khao Sok and the 500 Rai extras, which is where cards stop working.",True)
+it("cash-thb","Cash — 25,000 THB","docs","SL",1,60,"always",
+   "Ordered and paid, ref STM30429677 — GBP 598.23 at 41.7898. Half what we first planned, which is fine: the cash-only spend is really the Khao Sok park fee (THB 340), the 500 Rai extras, ferries, longtails and street food. Top up from an ATM in Bangkok if it runs low. Well under Thailand's declaration threshold (USD 20,000 equivalent), so nothing to declare. Split it — some in the sling, some in a case, some in the hotel safe. Do not carry the lot in one place for 67 days.",True)
+it("cash-aud","Cash — 200 AUD","docs","SL",1,15,"always",
+   "Ordered and paid, ref STM30429677 — GBP 109.07 at 1.8337. You said Australia is effectively cashless and you'd made that mistake before, so treat this as an emergency float, not spending money: a cab that won't take cards, a tip, Rottnest, a market stall at Fremantle. Keep a twenty on you and the rest in the case. It is dead weight after 7 Jan — spend it or give it away before you fly to Phuket.")
 it("flights-off","All 8 flight confirmations — offline","docs","SL",1,0,"always",
    "Saved offline. Phuket and Khao Sok have patchy signal.",True)
 it("hotels-off","Accommodation confirmations — offline","docs","SL",1,0,"always",

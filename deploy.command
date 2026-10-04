@@ -11,8 +11,15 @@ echo " Folder: $(pwd)"
 echo "──────────────────────────────────────────────"
 echo
 
+# Rebuild index.html from the data modules so a deploy can never ship stale output.
+if [ -f build.py ]; then
+  echo "Rebuilding index.html from items.py / legs.py / bags.py / daybags.py / shopping.py ..."
+  python3 build.py || { echo "Build failed - nothing deployed."; read -r -p "Press return to close."; exit 1; }
+  echo
+fi
+
 echo "Files that will ship:"
-ls -1 index.html sw.js manifest.webmanifest icon-*.png 2>/dev/null | sed 's/^/  /'
+ls -1 index.html sw.js manifest.webmanifest icon-*.png img/* 2>/dev/null | sed 's/^/  /'
 echo
 
 if [ ! -d .vercel ]; then
