@@ -218,7 +218,7 @@ LEGS = [
             P("BOOK THE DONSAK FERRY", "Still outstanding. The 06:00 sailing docks 07:30 and leaves real margin; the 07:00 leaves you 25 minutes."),
             P("Confirm the 500 Rai pick-up time", "Do this before you book the ferry, not after."),
             P("Warn Hansar about the early start", "You are leaving before any normal breakfast."),
-            P("Take baht", "The least card-friendly place you will stay all trip."),
+            P("Take baht for the park fee", "THB 340 at the pier. The stay itself is fully prepaid, so this and any drinks are the only cash you need on the lake — but there is no card machine, so it has to be in your pocket."),
         ],
         bags=[
             B("SL", "with", [P("On you for both crossings", "Passport, cash, phone. Inside the dry bag for the lake boat.")]),
