@@ -91,14 +91,16 @@ it("suncream","Suncream — full size","toiletries","L2",1,200,"always",
    "Australian suncream is the best there is and cheap. Decant 100 ml for the onward leg.",True)
 it("suncream-tr","Travel suncream","toiletries","SL",1,80,"always","For the plane and the first day before you buy properly.")
 it("facewash","Travel facewash","toiletries","CB",1,90,"always","")
-it("moisturiser","Moisturiser","toiletries","CB",1,100,"always","")
+it("moisturiser","Moisturiser","toiletries","CB",1,100,"always",
+   "Cabin bag on both long-hauls. Three sectors of dry cabin air each way.",True)
 it("eyecream","Eye cream","toiletries","CB",1,40,"always","")
 it("sanitiser","Hand sanitiser","toiletries","SL",1,60,"always","")
 it("mozzie","Mosquito spray","toiletries","CB",1,120,"always",
    "Khao Sok is jungle on water and the lake is worst at dusk. Top up with stronger DEET in Thailand if yours is mild.",True)
 it("shaver","Electric shaver","toiletries","CB",1,220,"always",
-   "Check how it charges — if it's a proprietary barrel plug rather than USB-C, that charger has to come too and it's easy to leave behind.",True)
-it("shave-foam","Mini shaving foam","toiletries","CB",1,100,"always","Under 100 ml so it clears cabin security.")
+   "Cabin bag on both long-hauls — you want a shave before landing in Perth and again before Heathrow. Lithium batteries belong in the cabin anyway, not the hold.",True)
+it("shave-foam","Mini shaving foam","toiletries","CB",1,100,"always",
+   "Under 100 ml, so it lives in the clear liquids bag. Cabin bag on both long-hauls.",True)
 it("toothpaste-mini","Mini toothpaste","toiletries","CB",1,40,"always",
    "For the Gatwick night and the flight. Full size bought in Perth.",True)
 it("etoothbrush","Electric toothbrush","toiletries","CB",1,180,"always",
