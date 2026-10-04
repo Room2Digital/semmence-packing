@@ -66,9 +66,9 @@ it("plug-uk","60W USB-C mains supply","tech","CB",1,90,"always",
    "The one that charges the MacBook Air as well as everything else. The fold-up 3-in-1 will not.",True)
 it("adapter-universal","Travel adapter with USB-C","tech","CB",1,180,"always",
    "UK Type G, Australia Type I, Thailand A/C. Check it is rated for the laptop charger, not just phones.",True)
-it("charger-3in1","Fold-up 3-in-1 charger","tech","SL",1,180,"always",
+it("charger-3in1","Fold-up 3-in-1 charger","tech","BP",1,180,"always",
    "Watch, phone and AirPods from one plug. The best single item in the sling.")
-it("cable-ext","Extendable USB-C cable","tech","SL",1,70,"always","")
+it("cable-ext","Extendable USB-C cable","tech","BP",1,70,"always","")
 it("cable-shaver","Shaver cable","tech","CB",1,40,"always",
    "Not USB-C at both ends, so nothing else in the bag will charge it. The one cable with no substitute — pack it with the shaver, not loose.",True,inbag="washbag-mini")
 it("brick-sm","Power bank — small","tech","SL",1,200,"always",
@@ -77,9 +77,9 @@ it("esim","Global SIM — 2 months","tech","SL",1,0,"always",
    "Already organised. Covers both countries for the whole trip, so no Australian or Thai eSIM needed on arrival.")
 
 # ─────────────────────────── SLEEP & FLIGHT ───────────────────────────
-it("mouthtape","Mouth tape","flight","SL",1,20,"always","")
-it("eyemask","Eye mask","flight","SL",1,30,"always","QR835 is an overnight and QR107 lands at 06:35.")
-it("earplugs","Earplugs","flight","SL",1,10,"always","")
+it("mouthtape","Mouth tape","flight","BP",1,20,"always","")
+it("eyemask","Eye mask","flight","BP",1,30,"always","QR835 is an overnight and QR107 lands at 06:35.")
+it("earplugs","Earplugs","flight","BP",1,10,"always","")
 it("snacks","Snacks for travel days","flight","SL",1,150,"always","")
 
 # ───────────────────────────── TOILETRIES ─────────────────────────────
@@ -87,18 +87,18 @@ it("washbag-lg","Fold-out washbag — large","toiletries","L2",1,260,"store",
    "Lives in the suitcase. Into storage at the Phuket repack.")
 it("washbag-mini","Mini washbags","toiletries","CB",2,80,"always",
    "The hand-luggage pair. These are what you actually use on travel days and at the lake.",True)
-it("liquids-bag","Clear 1L liquids bag","toiletries","SL",1,20,"always",
+it("liquids-bag","Clear 1L liquids bag","toiletries","CB",1,20,"always",
    "Re-cleared at Perth, Phuket, Bangkok and Krabi. Keep it reachable.",True)
 it("decant","Decant bottles, 100 ml","toiletries","L2",5,150,"always",
    "Fill these at the Phuket repack. For the lake you really only need suncream and the basics — Hansar, Krabi La Playa and Theatre Residence all provide the rest.",True,inbag="washbag-lg")
 it("suncream","Suncream — full size","toiletries","L2",1,200,"always",
    "Australian suncream is the best there is and cheap. Decant 100 ml for the onward leg.",True,inbag="washbag-lg")
-it("suncream-tr","Travel suncream","toiletries","SL",1,80,"always","For the plane and the first day before you buy properly.",inbag="liquids-bag")
+it("suncream-tr","Travel suncream","toiletries","CB",1,80,"always","For the plane and the first day before you buy properly.",inbag="liquids-bag")
 it("facewash","Travel facewash","toiletries","CB",1,90,"always","",inbag="washbag-mini")
 it("moisturiser","Moisturiser","toiletries","L2",1,100,"always",
    "Cabin bag on both long-hauls. Three sectors of dry cabin air each way.",True,inbag="washbag-lg")
 it("eyecream","Eye cream","toiletries","L2",1,40,"always","",inbag="washbag-lg")
-it("sanitiser","Hand sanitiser","toiletries","SL",1,60,"always","",inbag="liquids-bag")
+it("sanitiser","Hand sanitiser","toiletries","CB",1,60,"always","",inbag="liquids-bag")
 it("mozzie","Mosquito spray","toiletries","L2",1,120,"always",
    "Khao Sok is jungle on water and the lake is worst at dusk. Top up with stronger DEET in Thailand if yours is mild.",True,inbag="washbag-lg")
 it("shaver","Electric shaver","toiletries","CB",1,220,"always",
@@ -113,7 +113,7 @@ it("deodorant","Roll-on deodorant","toiletries","CB",3,300,"always",
    "One lives in the mini washbag for the flight; two spares in the main toiletries. Roll-on is not a liquid for cabin purposes and does not leak at altitude.",True,inbag="washbag-mini")
 it("aftershave","Aftershave atomiser","toiletries","CB",1,60,"always",
    "One small atomiser covers all 67 days and clears cabin liquids without a thought.",inbag="washbag-mini")
-it("lipbalm","Lip balm with SPF","toiletries","SL",1,15,"always",
+it("lipbalm","Lip balm with SPF","toiletries","CB",1,15,"always",
    "Six hours cycling at Rottnest, a lot of beach, and three long-haul sectors of dry cabin air.",inbag="liquids-bag")
 it("nail","Nail clippers","toiletries","L2",1,40,"always","Fine in checked. Cabin rules on clippers vary by airport.",inbag="washbag-lg")
 
@@ -132,7 +132,7 @@ it("plasters","Plasters + blister plasters","health","L2",1,50,"always",
    "Blister plasters specifically — new sandals and a lot of walking.",True,inbag="washbag-lg")
 it("rehydration","Rehydration sachets","health","L2",6,60,"always","Heat, beer and stomach trouble. Tiny and cheap.",inbag="washbag-lg")
 it("athletes","Athlete's foot cream","health","L2",1,50,"always","Humidity, flip-flops, wet bathrooms.",inbag="washbag-lg")
-it("prescriptions","Prescription medication","health","SL",1,100,"always",
+it("prescriptions","Prescription medication","health","CB",1,100,"always",
    "Enough for 67 days plus buffer, in original packaging, in hand luggage.",True)
 
 # ─────────────────────── HANDOVER — leaves in Phuket ───────────────────────
