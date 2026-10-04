@@ -73,6 +73,28 @@ def main():
     print("  " + "  ".join("%s %d" % (k, v) for k, v in counts.items()))
     print("  total listed weight %.1f kg" % (weight / 1000.0))
     print("  DATA verified: round-trips exactly.")
+    coverage()
+
+
+def coverage():
+    """Any leg whose bags carry `ids` is claiming to account for part of the
+    inventory. Report what it misses and anything it names that does not exist,
+    so a leg that is meant to be complete cannot quietly stop being complete."""
+    known = {i["id"] for i in ITEMS}
+    for leg in LEGS:
+        claimed = set()
+        for b in leg.get("bags", []):
+            claimed |= set(b.get("ids") or [])
+        if not claimed:
+            continue
+        unknown = sorted(claimed - known)
+        missing = sorted(known - claimed)
+        if unknown:
+            print("  %s: %d id(s) not in items.py — %s" % (leg["id"], len(unknown), ", ".join(unknown)))
+        if missing:
+            print("  %s: %d item(s) unaccounted for — %s" % (leg["id"], len(missing), ", ".join(missing)))
+        else:
+            print("  %s: all %d items accounted for." % (leg["id"], len(known)))
 
 
 if __name__ == "__main__":

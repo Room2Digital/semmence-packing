@@ -26,8 +26,13 @@ def P(n, note="", add=False):
     return d
 
 
-def B(bag, mode, items, note=""):
-    return dict(bag=bag, mode=mode, items=items, note=note)
+def B(bag, mode, items, note="", ids=None):
+    """ids lists the items.py ids this bag accounts for on this leg.
+    build.py uses it to prove nothing in the inventory has been forgotten."""
+    d = dict(bag=bag, mode=mode, items=items, note=note)
+    if ids:
+        d["ids"] = ids
+    return d
 
 
 LEGS = [
@@ -42,60 +47,110 @@ LEGS = [
             "About 26 hours door to door, and it starts at the Gatwick hotel on the 18th — "
             "so the cabin bag has to cover that night without opening a suitcase. Qatar "
             "Business gives you 40 kg checked and two cabin pieces at 15 kg plus a personal "
-            "item, so all three carry-ons travel with you. Qsuite: pyjamas and bedding provided."
+            "item, so all three carry-ons travel with you. Qsuite: pyjamas and bedding provided. "
+            "This is the one leg where the entire inventory is in play, so every item you own "
+            "for this trip is listed below."
         ),
         do=[
-            P("Erase the MacBook Pro and iPad mini", "Sign out of your Apple ID, erase, remove from Find My. An activation-locked device is useless to whoever gets it, and doing this on Phuket hotel wifi with someone waiting is miserable."),
             P("Collect the Sainsbury's travel money", "Order STM30429677 — THB 25,000 and AUD 200, £707.30, already paid. Count it at the counter."),
             P("Buy the small dry bag and the goggles", "The last two outstanding items."),
-            P("Check passport validity", "Six months beyond 24 Jan 2027."),
             P("Download offline maps", "Perth, Bangkok, Samui, Krabi. Plus WhatsApp, Line, GetYourGuide and Bolt on your apps page."),
-            P("AirTags in both cases", "They sit in third-party storage for 13 days later on."),
         ],
         bags=[
             B("SL", "cabin", [
-                P("Passport holder"), P("Wallet and cards"),
-                P("Cash", "GBP float plus the Sainsbury's order: THB 25,000 and AUD 200. Split the baht between the sling and a case — not 25,000 in one pocket. Nothing to declare at either end."),
-                P("Phone"), P("Sunglasses — daily pair"), P("AirPods Pro"),
-                P("Fold-up 3-in-1 charger"), P("Extendable USB-C cable"),
-                P("Mini charger brick", "Cabin only, never checked."),
-                P("Earplugs"), P("Eye mask"), P("Mouth tape"),
+                P("Passport — trackable holder"),
+                P("Driving licence, physical card", "Needed for the Avis hire car on 29 Dec. Photos and photocopies are refused."),
+                P("Bank cards, two providers", "Split so one loss is not total."),
+                P("Cash — GBP float, THB 25,000, AUD 200", "Ref STM30429677. Split the baht between here and a case — not 25,000 in one pocket. Nothing to declare at either end."),
+                P("Phone, Apple Watch, AirPods Pro"),
+                P("Fold-up 3-in-1 charger and the extendable USB-C cable"),
+                P("Power bank, small", "Cabin only, never checked."),
+                P("Global SIM — 2 months", "Already organised."),
                 P("Prescription medication", "Hand luggage, original packaging."),
-                P("Clear 1L liquids bag", "Cleared twice — Gatwick and Doha."),
-            ], "Everything you cannot replace. It never leaves you."),
+                P("Clear 1L liquids bag", "Cleared twice — Gatwick and Doha. Travel suncream, hand sanitiser, lip balm and the mini shaving foam all live in it."),
+                P("Travel suncream, hand sanitiser, lip balm with SPF"),
+                P("Sunglasses — daily pair", "The other four pairs are in a case in Suitcase 1."),
+                P("Mouth tape, eye mask, earplugs", "Three sectors and a night flight out of Doha."),
+                P("Snacks"),
+                P("Thai notepad"),
+                P("Offline documents — TDAC, Australian ETA, insurance, all 8 flights, all hotels, JQ71 and TG206 baggage receipts, Smilelugg 14XIWBX4, Bangkok taxi 911245279, apps page",
+                  "Everything digital and saved offline. Phuket and Khao Sok have patchy signal."),
+            ], "Everything you cannot replace. It never leaves you.",
+               ids=["passport","licence","cards","cash-gbp","cash-thb","cash-aud","phone","watch",
+                    "airpods","charger-3in1","cable-ext","brick-sm","esim","prescriptions","liquids-bag",
+                    "suncream-tr","sanitiser","lipbalm","sunglasses-daily","mouthtape","eyemask","earplugs",
+                    "snacks","notepad","tdac","eta-aus","insurance","flights-off","hotels-off","bag-conf",
+                    "storage-receipt","taxi-conf","apps"]),
+
             B("BP", "cabin", [
                 P("iPad Air", "The main one, not the one being handed over in Phuket."),
                 P("Sony over-ear headphones", "The flight you bought them for."),
-                P("USB-C dongle"), P("HDMI cable"),
+                P("USB-C dongle and HDMI cable"),
                 P("Compression socks", "Worth it on a 26-hour door to door."),
                 P("Larq bottle, empty", "Fill it after security."),
-            ], "The in-flight bag. Under the seat, not in the bin."),
+            ], "The in-flight bag. Under the seat, not in the bin.",
+               ids=["ipad-air","sony","dongle","hdmi","compression","larq"]),
+
             B("CB", "cabin", [
-                P("Mini washbag", "Electric toothbrush, mini toothpaste, travel face wash, roll-on deodorant, aftershave atomiser. Covers the Gatwick night and the Doha spa at 23:30."),
+                P("Two mini washbags", "Electric toothbrush, mini toothpaste, travel facewash, roll-on deodorant, aftershave atomiser, eye cream, moisturiser, nail clippers."),
                 P("Electric shaver and its cable", "Cabin, not hold — lithium batteries belong in the cabin anyway, and you land in Perth at 18:45 after 26 hours."),
-                P("Mini shaving foam", "Under 100 ml, so it travels in the clear liquids bag."),
-                P("Moisturiser", "Three long-haul sectors of dry cabin air, and a shave at the end of it."),
-                P("2 boxers, 2 socks, 2 T-shirts"),
+                P("Mini shaving foam", "Under 100 ml, so it travels in the sling's liquids bag, not loose in here."),
+                P("Roll-on deodorant x3", "One in the washbag, two spare."),
+                P("The full health kit", "Medical pouch, Imodium, motion sickness tablets, paracetamol, ibuprofen, antihistamine, antiseptic cream, plasters and blister plasters, rehydration sachets, athlete's foot cream."),
+                P("MacBook Air, its high-wattage charger and the mouse", "You are working from Perth from 23 Nov."),
+                P("UK mains plug", "For the Gatwick hotel. The universal adapter is in Suitcase 2 — you do not need it until Perth."),
+                P("2 boxers, 2 socks, 2 T-shirts", "One clean change without opening a case."),
                 P("1 gym top, 1 gym shorts, 1 gym socks"),
-                P("1 swim shorts"), P("Running shoes"), P("MacBook Air"),
-            ], "This bag alone has to get you through the Gatwick night."),
+                P("1 swim shorts"),
+                P("Running shoes"),
+                P("Microfibre towel, mini"),
+            ], "This bag alone has to get you through the Gatwick night.",
+               ids=["washbag-mini","etoothbrush","toothpaste-mini","facewash","deodorant","aftershave",
+                    "moisturiser","eyecream","nail","shaver","cable-shaver","shave-foam","medkit","imodium",
+                    "motion","paracetamol","ibuprofen","antihistamine","antiseptic","plasters","rehydration",
+                    "athletes","mba","charger-mac","mouse","plug-uk","running","towel-sm"]),
+
             B("L1", "checked", [
-                P("The clothing bulk", "Shirts, tees, shorts, trousers, boxers, socks — seven weeks of Perth."),
-                P("Hoodie and tracksuit bottoms", "Not worn. You want them for the flight home, not this one."),
-                P("Windbreaker"), P("Travel adapter"),
-                P("4-pair sunglasses case"), P("Sliders, sandals, old trainers"),
-            ]),
+                P("7 nice shirts, 10 T-shirts, 5 shorts, 1 trousers", "Minus the one change already in the cabin bag."),
+                P("8 boxers, 8 white socks, 3 gym socks"),
+                P("3 gym tops, 2 gym shorts"),
+                P("2 swim shorts", "One of them is in the cabin bag."),
+                P("Belt, 3 hats, 1 gym hat"),
+                P("Hoodie and tracksuit bottoms", "Not worn. You want them for the flight home in January, not this one."),
+                P("Windbreaker", "Packs to nothing. It is what stands between you and a British 06:35 landing on 24 Jan."),
+                P("Sunglasses — 4 pairs in a travel case", "The cheap ones. The daily pair stays on you."),
+                P("Old trainers, sandals, sliders"),
+                P("Microfibre towel, large"),
+            ], "The clothing bulk for seven Perth weeks.",
+               ids=["shirts-nice","tees","shorts","trousers","boxers","socks-white","socks-gym","gym-tops",
+                    "gym-shorts","swim","belt","hats","hat-gym","hoodie","tracksuit","windbreaker",
+                    "sunglasses","trainers-old","sandals","sliders","towel-lg"]),
+
             B("L2", "checked", [
-                P("Full-size toiletries and the big washbag"),
-                P("Towels"),
-                P("MacBook Pro and iPad mini", "For the Phuket handover. Already erased and signed out."),
-                P("Switch, PS5 controller and the HDMI cable"),
-                P("Room left deliberately", "You are buying suncream, protein powder and the rest in Perth."),
-            ]),
+                P("Large fold-out washbag", "The full-size kit. You have toiletries waiting in Perth too, so this does not need to be heavy."),
+                P("Full-size suncream", "Buy the big Australian bottle on arrival as well — this is just the starter."),
+                P("5 decant bottles, 100 ml", "Filled in Phuket before the full-size goes into storage."),
+                P("Mosquito spray", "Buy stronger DEET in Bangkok; this covers you until then."),
+                P("MacBook Pro and iPad mini", "For the Phuket handover."),
+                P("Nintendo Switch, PS5 controller, Switch HDMI cable", "Remote play on the plane home. Starlink will cover you."),
+                P("Universal travel adapter with USB-C"),
+                P("5 AirTags", "Tech bag, sling, backpack and a case."),
+                P("3 TSA padlocks and the luggage scales", "The scales are what get the cabin bag under 7 kg in Phuket."),
+                P("4 packing cubes", "Pre-pack these: Cube 1 clothing, Cube 2 gym and footwear, Cube 3 kit."),
+                P("Lockable daypack"),
+                P("2 dirty laundry bags, 5 bin bags"),
+                P("Small dry bag and swimming goggles", "Both still to buy."),
+            ], "Toiletries, the handover devices, and room left for Australia.",
+               ids=["washbag-lg","suncream","decant","mozzie","mbp","ipad-mini","switch","ps5-pad",
+                    "hdmi-switch","adapter-universal","airtags","locks","scales","cubes","daypack",
+                    "laundry-bag","binbags","drybag","goggles"]),
+
             B("worn", "worn", [
                 P("Nice trainers", "Wear the bulkiest footwear rather than packing it."),
                 P("T-shirt and light trousers", "Qatar hand you pyjamas, so do not overthink this."),
-            ]),
+                P("Qatar pyjamas — nothing to pack", "Given to you on board and they do not take them back, so you have them from the 19th. That is your sleepwear for the whole trip."),
+            ], "",
+               ids=["trainers-nice","pyjamas"]),
         ],
     ),
     dict(

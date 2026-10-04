@@ -186,6 +186,9 @@ h2{font-size:17px;font-weight:750;letter-spacing:-.015em}
 .btile-m{font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;margin-top:-4px}
 .btile-f{display:block;width:100%;height:3px;border-radius:999px;background:var(--surface-2);overflow:hidden}
 .btile-f i{display:block;height:100%;border-radius:999px;background:var(--bc)}
+.covered{margin-top:11px;font-size:12px;color:#7fe0ad;text-align:center;
+  background:rgba(93,214,146,.1);border:1px solid rgba(93,214,146,.26);
+  border-radius:10px;padding:8px 10px}
 
 /* ---------- repack ---------- */
 .split{display:grid;gap:12px}
@@ -558,6 +561,12 @@ function vLeg(l){
       </div>
       <div class="label">The bags</div>
       <div class="btiles">${tiles}</div>
+      ${(()=>{const ids=new Set();(l.bags||[]).forEach(b=>(b.ids||[]).forEach(i=>ids.add(i)));
+        if(!ids.size)return"";
+        const missing=ITEMS.filter(i=>!ids.has(i.id));
+        return missing.length
+          ? `<div class="alert"><b>${missing.length} not placed on this leg</b><p>${missing.map(i=>esc(i.name)).join(", ")}.</p></div>`
+          : `<div class="covered">✓ All ${ITEMS.length} items accounted for on this leg</div>`})()}
       ${(l.do||[]).length?`<div class="label">Before this leg</div><div class="card">
         ${l.do.map((x,n)=>{const k="do:"+l.id+":"+n,on=!!(STATE[k]&&STATE[k].packed);
           return `<div class="row${on?" done":""}" style="padding:10px 0">
