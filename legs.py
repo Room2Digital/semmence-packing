@@ -91,12 +91,8 @@ LEGS = [
                   ids=["ipad-air","sony","dongle","hdmi","compression","larq"]),
 
             B("CB", "cabin", [
-                P("Two mini washbags", "Electric toothbrush, mini toothpaste, travel facewash, roll-on deodorant, aftershave atomiser, eye cream, moisturiser, nail clippers, electric shaver and its cable, and the five decant bottles. The Bags tab lists all of it nested under the washbag."),
-                P("Mini shaving foam", "Under 100 ml, so it travels in the sling's liquids bag, not loose in here."),
-                P("Roll-on deodorant x3", "One in the washbag, two spare."),
-                P("The full health kit", "Medical pouch, Imodium, motion sickness tablets, paracetamol, ibuprofen, antihistamine, antiseptic cream, plasters and blister plasters, rehydration sachets, athlete's foot cream."),
-                P("MacBook Air, its high-wattage charger and the mouse", "You are working from Perth from 23 Nov."),
-                P("UK mains plug", "For the Gatwick hotel. The universal adapter is in Suitcase 2 — you do not need it until Perth."),
+                P("Two mini washbags", "Everything you want on you: travel facewash, mini shaving foam, electric shaver and its cable, roll-on deodorant, mini toothpaste, electric toothbrush, aftershave atomiser, plus paracetamol, Imodium and ibuprofen. Nothing else — the rest is in the large washbag in Suitcase 2."),
+                P("MacBook Air, the 60W USB-C mains supply and the mouse", "You are working from Perth from 23 Nov. That one supply charges the laptop and everything else — the fold-up 3-in-1 will not."),
                 P("2 boxers, 2 socks, 2 T-shirts", "One clean change without opening a case."),
                 P("1 gym top, 1 gym shorts, 1 gym socks"),
                 P("1 swim shorts"),
@@ -104,9 +100,8 @@ LEGS = [
                 P("Microfibre towel, mini"),
             ],
                   ids=["washbag-mini","etoothbrush","toothpaste-mini","facewash","deodorant","aftershave",
-                    "moisturiser","eyecream","nail","shaver","cable-shaver","shave-foam","medkit","imodium",
-                    "motion","paracetamol","ibuprofen","antihistamine","antiseptic","plasters","rehydration",
-                    "athletes","mba","charger-mac","mouse","plug-uk","running","towel-sm"]),
+                    "shaver","cable-shaver","shave-foam","paracetamol","imodium","ibuprofen",
+                    "mba","mouse","plug-uk","running","towel-sm"]),
 
             B("L1", "checked", [
                 P("8 nice shirts, 12 T-shirts, 6 shorts, 1 trousers", "Minus the one change already in the cabin bag."),
@@ -125,23 +120,20 @@ LEGS = [
                     "sunglasses","trainers-old","sandals","sliders","towel-lg"]),
 
             B("L2", "checked", [
-                P("Large fold-out washbag", "The full-size kit. You have toiletries waiting in Perth too, so this does not need to be heavy."),
-                P("Full-size suncream", "Buy the big Australian bottle on arrival as well — this is just the starter."),
-                P("5 decant bottles, 100 ml", "Filled in Phuket before the full-size goes into storage."),
-                P("Mosquito spray", "Buy stronger DEET in Bangkok; this covers you until then."),
-                P("MacBook Pro and iPad mini", "For the Phuket handover."),
+                P("Large fold-out washbag", "Everything that is not in the mini washbags: full-size suncream, mosquito spray, moisturiser, eye cream, nail clippers, the 5 decant bottles, and the rest of the health kit — medical pouch, motion sickness tablets, antihistamine, antiseptic, plasters, rehydration sachets, athlete's foot cream."),
+                P("MacBook Pro and iPad mini", "For the Phuket handover. In the case, not the cabin bag — you are not touching them until Phuket."),
                 P("Nintendo Switch, PS5 controller, Switch HDMI cable", "Remote play on the plane home. Starlink will cover you."),
                 P("Universal travel adapter with USB-C"),
-                P("5 AirTags", "Tech bag, sling, backpack and a case."),
                 P("3 TSA padlocks and the luggage scales", "The scales are what get the cabin bag under 7 kg in Phuket."),
                 P("4 packing cubes", "Pre-pack these: Cube 1 clothing, Cube 2 gym and footwear, Cube 3 kit."),
                 P("Lockable daypack"),
                 P("2 dirty laundry bags, 5 bin bags"),
                 P("Small dry bag and swimming goggles", "Both still to buy."),
             ],
-                  ids=["washbag-lg","suncream","decant","mozzie","mbp","ipad-mini","switch","ps5-pad",
-                    "hdmi-switch","adapter-universal","airtags","locks","scales","cubes","daypack",
-                    "laundry-bag","binbags","drybag","goggles"]),
+                  ids=["washbag-lg","suncream","decant","mozzie","moisturiser","eyecream","nail",
+                    "medkit","motion","antihistamine","antiseptic","plasters","rehydration","athletes",
+                    "mbp","ipad-mini","switch","ps5-pad","hdmi-switch","adapter-universal",
+                    "locks","scales","cubes","daypack","laundry-bag","binbags","drybag","goggles"]),
 
             B("worn", "worn", [
                 P("Nice trainers", "Wear the bulkiest footwear rather than packing it."),

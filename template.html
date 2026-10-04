@@ -192,6 +192,10 @@ h2{font-size:17px;font-weight:750;letter-spacing:-.015em}
 .btile-m{font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;margin-top:-4px}
 .btile-f{display:block;width:100%;height:3px;border-radius:999px;background:var(--surface-2);overflow:hidden}
 .btile-f i{display:block;height:100%;border-radius:999px;background:var(--bc)}
+.atag{margin-top:10px;font-size:11px;letter-spacing:.04em;color:var(--muted);
+  display:flex;align-items:center;gap:6px;position:relative;z-index:1}
+.atag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--good,#5dd692);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--good,#5dd692) 22%,transparent)}
 .covered{margin-top:11px;font-size:12px;color:#7fe0ad;text-align:center;
   background:rgba(93,214,146,.1);border:1px solid rgba(93,214,146,.26);
   border-radius:10px;padding:8px 10px}
@@ -421,7 +425,7 @@ function vBags(){
           <span class="bagpill${pc===100&&s.n?" done":""}">${s.done}/${s.n}</span>
         </div>
         <div class="fill"><i style="width:${pc}%"></i></div>
-        <div class="bagnote">${esc(b.note)}</div></button>`}).join("")}
+        ${b.airtag?'<div class="atag">AirTag attached</div>':""}</button>`}).join("")}
     </div>
 
     ${DAYBAGS.length?`<div class="label">Day bags</div>
@@ -459,7 +463,7 @@ function vBagDetail(){
           <span style="flex:1"><span class="bagname" style="display:block">${esc(b.name)}</span>
           <span class="bagmeta">${s.done} of ${s.n} packed · ${kg(s.g)}</span></span></div>
         <div class="fill" style="--bc:${BAGCOL[b.id]}"><i style="width:${pc}%"></i></div>
-        <div class="bagnote">${esc(b.note)}</div></div>
+        ${b.airtag?'<div class="atag">AirTag attached</div>':""}</div>
       ${Object.keys(cats).map(c=>`<div class="catline">${CATICON[c]||"•"} ${esc(c)}<span></span></div>`+
         listHTML(cats[c],in_)).join("")}
       ${in_.length?"":'<div class="center">Nothing assigned to this bag.</div>'}</div>`;
@@ -576,7 +580,7 @@ function vLeg(l){
       <span class="btile-ph">${meta.img?`<img src="${esc(meta.img)}" alt="" loading="lazy"
         onerror="this.closest('.btile-ph').classList.add('noimg')">`:`<i>${BAGICON[b.bag]||"👕"}</i>`}</span>
       <span class="btile-n">${esc(meta.name)}</span>
-      <span class="btile-m">${b.mode==="left"?"Left behind":done+" / "+n}</span>
+      <span class="btile-m">${b.mode==="left"?"Left behind":done+" / "+n}${meta.airtag?" · AirTag":""}</span>
       ${b.mode==="left"?"":`<span class="btile-f"><i style="width:${n?done/n*100:0}%"></i></span>`}
     </button>`}).join("");
   return `<button class="back" onclick="OPENLEG=null;render()">‹ All legs</button>

@@ -62,9 +62,8 @@ it("ps5-pad","PS5 controller","tech","L1",1,280,"store",
    "For Remote Play. Qatar's Starlink should genuinely carry it — the bandwidth is there and satellite latency is usually workable. Worth testing on the Gatwick to Doha leg before you count on it for the 14 hours to Perth. Pairs natively with the iPad Air as the fallback.")
 it("switch","Nintendo Switch","tech","L1",1,400,"store",
    "Stays in the stored cases 10–23 Jan, then into the cabin bag at Bangkok for the flight home.")
-it("charger-mac","MacBook charger — high wattage","tech","CB",1,300,"store",
-   "Check the wattage covers the Air. The fold-up 3-in-1 will not charge a laptop.",True)
-it("plug-uk","Mains plug — UK","tech","CB",1,90,"always","")
+it("plug-uk","60W USB-C mains supply","tech","CB",1,90,"always",
+   "The one that charges the MacBook Air as well as everything else. The fold-up 3-in-1 will not.",True)
 it("adapter-universal","Travel adapter with USB-C","tech","CB",1,180,"always",
    "UK Type G, Australia Type I, Thailand A/C. Check it is rated for the laptop charger, not just phones.",True)
 it("charger-3in1","Fold-up 3-in-1 charger","tech","SL",1,180,"always",
@@ -76,8 +75,6 @@ it("brick-sm","Power bank — small","tech","SL",1,200,"always",
    "The only one you are taking — the large one is out. Cabin baggage only, never checked.",True)
 it("esim","Global SIM — 2 months","tech","SL",1,0,"always",
    "Already organised. Covers both countries for the whole trip, so no Australian or Thai eSIM needed on arrival.")
-it("airtags","AirTags","tech","CB",5,55,"always",
-   "On the tech bag, sling, backpack and both cases. Get the fifth so suitcase 2 is covered — it sits in third-party storage for 13 days.",True)
 
 # ─────────────────────────── SLEEP & FLIGHT ───────────────────────────
 it("mouthtape","Mouth tape","flight","SL",1,20,"always","")
@@ -92,22 +89,22 @@ it("washbag-mini","Mini washbags","toiletries","CB",2,80,"always",
    "The hand-luggage pair. These are what you actually use on travel days and at the lake.",True)
 it("liquids-bag","Clear 1L liquids bag","toiletries","SL",1,20,"always",
    "Re-cleared at Perth, Phuket, Bangkok and Krabi. Keep it reachable.",True)
-it("decant","Decant bottles, 100 ml","toiletries","CB",5,150,"always",
-   "Fill these at the Phuket repack. For the lake you really only need suncream and the basics — Hansar, Krabi La Playa and Theatre Residence all provide the rest.",True,inbag="washbag-mini")
+it("decant","Decant bottles, 100 ml","toiletries","L2",5,150,"always",
+   "Fill these at the Phuket repack. For the lake you really only need suncream and the basics — Hansar, Krabi La Playa and Theatre Residence all provide the rest.",True,inbag="washbag-lg")
 it("suncream","Suncream — full size","toiletries","L2",1,200,"always",
    "Australian suncream is the best there is and cheap. Decant 100 ml for the onward leg.",True,inbag="washbag-lg")
 it("suncream-tr","Travel suncream","toiletries","SL",1,80,"always","For the plane and the first day before you buy properly.",inbag="liquids-bag")
 it("facewash","Travel facewash","toiletries","CB",1,90,"always","",inbag="washbag-mini")
-it("moisturiser","Moisturiser","toiletries","CB",1,100,"always",
-   "Cabin bag on both long-hauls. Three sectors of dry cabin air each way.",True,inbag="washbag-mini")
-it("eyecream","Eye cream","toiletries","CB",1,40,"always","",inbag="washbag-mini")
+it("moisturiser","Moisturiser","toiletries","L2",1,100,"always",
+   "Cabin bag on both long-hauls. Three sectors of dry cabin air each way.",True,inbag="washbag-lg")
+it("eyecream","Eye cream","toiletries","L2",1,40,"always","",inbag="washbag-lg")
 it("sanitiser","Hand sanitiser","toiletries","SL",1,60,"always","",inbag="liquids-bag")
-it("mozzie","Mosquito spray","toiletries","CB",1,120,"always",
-   "Khao Sok is jungle on water and the lake is worst at dusk. Top up with stronger DEET in Thailand if yours is mild.",True)
+it("mozzie","Mosquito spray","toiletries","L2",1,120,"always",
+   "Khao Sok is jungle on water and the lake is worst at dusk. Top up with stronger DEET in Thailand if yours is mild.",True,inbag="washbag-lg")
 it("shaver","Electric shaver","toiletries","CB",1,220,"always",
    "Cabin bag on both long-hauls — you want a shave before landing in Perth and again before Heathrow. Lithium batteries belong in the cabin anyway, not the hold.",True,inbag="washbag-mini")
 it("shave-foam","Mini shaving foam","toiletries","CB",1,100,"always",
-   "Under 100 ml, so it lives in the clear liquids bag. Cabin bag on both long-hauls.",True)
+   "Under 100 ml, so it lives in the clear liquids bag. Cabin bag on both long-hauls.",True,inbag="washbag-mini")
 it("toothpaste-mini","Mini toothpaste","toiletries","CB",1,40,"always",
    "For the Gatwick night and the flight. Full size bought in Perth.",True,inbag="washbag-mini")
 it("etoothbrush","Electric toothbrush","toiletries","CB",1,180,"always",
@@ -118,30 +115,30 @@ it("aftershave","Aftershave atomiser","toiletries","CB",1,60,"always",
    "One small atomiser covers all 67 days and clears cabin liquids without a thought.",inbag="washbag-mini")
 it("lipbalm","Lip balm with SPF","toiletries","SL",1,15,"always",
    "Six hours cycling at Rottnest, a lot of beach, and three long-haul sectors of dry cabin air.",inbag="liquids-bag")
-it("nail","Nail clippers","toiletries","CB",1,40,"always","Fine in checked. Cabin rules on clippers vary by airport.",inbag="washbag-mini")
+it("nail","Nail clippers","toiletries","L2",1,40,"always","Fine in checked. Cabin rules on clippers vary by airport.",inbag="washbag-lg")
 
 # ────────────────────────────── HEALTH ──────────────────────────────
-it("medkit","Small medical pouch","health","CB",1,60,"always","")
+it("medkit","Small medical pouch","health","L2",1,60,"always","",inbag="washbag-lg")
 it("imodium","Imodium","health","CB",1,20,"always",
-   "The 06:00 ferry on the 17th, then 2h15 by road to the lake. You cannot buy this at 5am on a pier.",True)
-it("motion","Motion sickness tablets","health","CB",1,20,"always",
-   "Samui to Donsak is 1h30 of open water. Take one before boarding, not when you feel it.",True)
-it("paracetamol","Paracetamol","health","CB",1,40,"always","")
-it("ibuprofen","Ibuprofen","health","CB",1,40,"always","")
-it("antihistamine","Antihistamine","health","CB",1,20,"always","Bites, heat rash, unfamiliar food.")
-it("antiseptic","Antiseptic cream","health","CB",1,40,"always",
-   "Coral and scooter scrapes infect fast in the tropics.",True)
-it("plasters","Plasters + blister plasters","health","CB",1,50,"always",
-   "Blister plasters specifically — new sandals and a lot of walking.",True)
-it("rehydration","Rehydration sachets","health","CB",6,60,"always","Heat, beer and stomach trouble. Tiny and cheap.")
-it("athletes","Athlete's foot cream","health","CB",1,50,"always","Humidity, flip-flops, wet bathrooms.")
+   "The 06:00 ferry on the 17th, then 2h15 by road to the lake. You cannot buy this at 5am on a pier.",True,inbag="washbag-mini")
+it("motion","Motion sickness tablets","health","L2",1,20,"always",
+   "Samui to Donsak is 1h30 of open water. Take one before boarding, not when you feel it.",True,inbag="washbag-lg")
+it("paracetamol","Paracetamol","health","CB",1,40,"always","",inbag="washbag-mini")
+it("ibuprofen","Ibuprofen","health","CB",1,40,"always","",inbag="washbag-mini")
+it("antihistamine","Antihistamine","health","L2",1,20,"always","Bites, heat rash, unfamiliar food.",inbag="washbag-lg")
+it("antiseptic","Antiseptic cream","health","L2",1,40,"always",
+   "Coral and scooter scrapes infect fast in the tropics.",True,inbag="washbag-lg")
+it("plasters","Plasters + blister plasters","health","L2",1,50,"always",
+   "Blister plasters specifically — new sandals and a lot of walking.",True,inbag="washbag-lg")
+it("rehydration","Rehydration sachets","health","L2",6,60,"always","Heat, beer and stomach trouble. Tiny and cheap.",inbag="washbag-lg")
+it("athletes","Athlete's foot cream","health","L2",1,50,"always","Humidity, flip-flops, wet bathrooms.",inbag="washbag-lg")
 it("prescriptions","Prescription medication","health","SL",1,100,"always",
    "Enough for 67 days plus buffer, in original packaging, in hand luggage.",True)
 
 # ─────────────────────── HANDOVER — leaves in Phuket ───────────────────────
-it("mbp","MacBook Pro — for handover","tech","CB",1,1600,"handover",
+it("mbp","MacBook Pro — for handover","tech","L2",1,1600,"handover",
    "Given away in Phuket, 7–10 Jan. Sign out of your Apple ID and erase it BEFORE you fly — doing that over hotel wifi with a deadline is miserable. Remove it from Find My or it stays activation-locked and useless to them.",True)
-it("ipad-mini","iPad mini — for handover","tech","CB",1,300,"handover",
+it("ipad-mini","iPad mini — for handover","tech","L2",1,300,"handover",
    "Same: signed out, erased and removed from Find My before you fly.",True)
 
 # ─────────────────────────────── KIT ───────────────────────────────
